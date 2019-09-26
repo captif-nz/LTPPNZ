@@ -1,0 +1,33 @@
+---
+title: "LTPP Website"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+Hello, this a Summary of the NZ LTPP programmes data!
+
+It is a beta site hosted on Github and written with R and R Studio.  Update.
+
+
+After "Build" website in RStudio use Git CMD (Deprecated) to cd to right directory in 
+
+git add -A
+git commit -m "new website"
+git push
+
+And remember need redirect index.html in github repo if making new site
+and at .nojekyll file made (with nothing actually in it)
+
+<html>
+
+<head>
+
+<title>Redirect to dala009 site</title>
+
+<meta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site">
+
+<meta name="keywords" content="automatic redirection">
+
+</head>

@@ -1,0 +1,138 @@
+---
+title: "Roughness Summary"
+author: "David Alabaster"
+date: "21 March 2018"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+This is an R Markdown document. It contains the basic data from the LTPP database.  
+
+# Operating this Report!
+This report needs to correctly reference the following databases that are currently held in 
+
+"`C:\DDATA\LTPP\2019`"
+
+# Data Importing
+The code below imports the data from the 10m databases
+
+```{r import data, fig.height=16, fig.width=12, echo=TRUE}
+
+#Sys.Date()
+Sys.time()
+
+#load database connection library
+library(RODBC)
+
+db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb"
+
+con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
+
+Roughness10m <- sqlFetch(con2, "10mRoughness")
+CalibrationSections <- sqlFetch(con2, "CalibrationSections")
+
+library(tidyverse)
+Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
+
+Roughness10m <- Roughness10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+```
+
+# All Roughness Plots
+
+```{r plot Roughness10m on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+# View(Roughness10m)
+
+library(dplyr)
+Roughness10mL <- Roughness10m %>% filter(LwpIRI < 25)
+Roughness10mR <- Roughness10m %>% filter(RwpIRI < 25)
+Roughness10mLN <- Roughness10m %>% filter(LaneIRI < 25)
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Roughness10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Roughness10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# SH Site Roughness
+
+```{r plot Roughness10m SH Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#SH Sites
+
+Roughness10mLNSH <- Roughness10mLN %>% filter(OwnerType == "SH")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# SH CAL Sites
+
+```{r plot Roughness SH CAL Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#SH CAL Sites
+
+Roughness10mLNSHCAL <- Roughness10mLNSH %>% filter(stringr::str_detect(SECTION_ID, "CAL"))
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mLNSHCAL, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH CAL Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# SH CS Sites
+
+```{r plot Roughness SH Cs Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#SH Cs Sites
+
+Roughness10mLNSHCS <- Roughness10mLNSH %>% filter(stringr::str_detect(SECTION_ID, "CS"))
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mLNSHCS, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH CS Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# LA Site Roughness
+
+```{r plot Roughness10m LA Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#LA Sites
+
+Roughness10mLNSH <- Roughness10mLN %>% filter(OwnerType == "LA")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("LA Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# Big individual Roughness plots 
+
+```{r plot  Big individual  Roughness plots , fig.height=12, fig.width=20, echo=TRUE}
+
+library(dplyr)
+ggobj2Roughness10m <- Roughness10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("Roughness - Lane IRI", subtitle = .$SECTION_ID))  
+
+print(ggobj2Roughness10m$plots)
+```
+

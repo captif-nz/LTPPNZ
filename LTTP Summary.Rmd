@@ -1,0 +1,498 @@
+---
+title: "LTPP"
+author: "David Alabaster"
+date: "21 March 2018"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+This is an R Markdown document. It contains the basic data from the LTPP database.  
+
+# Operating this Report!
+This report needs to correctly reference the following databases that are currently held in 
+
+"`C:\DDATA\LTPP\2019`"
+
+# Data Importing
+The code below imports the data from the 10m databases
+
+```{r import data, fig.height=10, fig.width=12, echo=TRUE}
+
+#Sys.Date()
+Sys.time()
+
+#setup plot theme for plots
+#library(ggplot2)
+#mytheme <- theme_grey() + theme(text = element_text(colour = "black", size=18))
+
+
+#load database connection library
+library(RODBC)
+ 
+#connect to database 1 - CAPTIF PR3 0404.mdb
+db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb"
+
+#con2 <- odbcConnectAccess2007(db)
+con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
+
+# find all tables
+library(knitr)
+LTPPtables <-(sqlTables(con2, tableType = "TABLE")$TABLE_NAME)
+kable(LTPPtables, format = "html", caption = "Tables in LTPP Database")
+
+
+#Check column names of a table 
+#sqlColumns(con2, "Profilometer Profiles")$COLUMN_NAME
+
+Rutting10m <- sqlFetch(con2, "10mRutting")
+Texture10m <- sqlFetch(con2, "10mTexture")
+Roughness10m <- sqlFetch(con2, "10mRoughness")
+Rating50m <- sqlFetch(con2, "50mRating")
+CalibrationSections <- sqlFetch(con2, "CalibrationSections")
+GPS <- sqlFetch(con2, "GPS")
+
+kable(CalibrationSections, format = "html", caption = "List of LTPP sites")
+
+
+library(tidyverse)
+Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
+kable(Councils, format = "html", caption = "Councils with LTPP Sites")
+
+
+#Summary of layer Info
+AdditionalInfoPaveLayer <- sqlFetch(con2, "tAdditionalInfoPaveLayer")
+View(AdditionalInfoPaveLayer)
+kable(AdditionalInfoPaveLayer, format = "html"caption = "Additional Info on Pavement Layers")
+
+
+# Summary of a testpits
+TestPitSummary <- sqlFetch(con2, "Test Pit Summary")
+View(TestPitSummary)
+kable(TestPitSummary, format = "html", caption = "Test Pit Summary")
+
+
+# Summary of Scalas
+AdditionalInfoPenetrationTest <- sqlFetch(con2, "tAdditionalInfoPenetrationTest")
+View(AdditionalInfoPenetrationTest)
+kable(AdditionalInfoPenetrationTest, format = "html"caption = "Scalas")
+
+
+AdditionalInfoPenetrationTestDetail <- sqlFetch(con2, "tAdditionalInfoPenetrationTestDetail")
+View(AdditionalInfoPenetrationTestDetail)
+
+#Photo listing
+#TmpImportTmp <- sqlFetch(con2, "TmpImportTmp") #Photo listing
+#View(TmpImportTmp)
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+GPSSH <- GPS %>% filter(Projection == "NZMG")
+GPSLA <- GPS %>% filter(Projection == "NZTM")
+
+
+CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
+
+View(CalibrationSections)
+#print(CalibrationSections)
+
+Rutting10m <- Rutting10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+
+Texture10m <- Texture10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+Roughness10m <- Roughness10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+Rating50m<- Rating50m%>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+
+```
+
+# Rutting
+
+## All Sites Rutting
+
+```{r plot Rutting10m on A3, echo=TRUE}
+
+#All Site
+
+#View(Rutting10m)
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+```
+
+## SH Site Rutting
+
+```{r plot Rutting10m SH Site on A3, echo=TRUE}
+
+#SH Sites
+
+Rutting10mSH <- Rutting10m %>% filter(OwnerType == "SH")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+```
+
+## LA Site Rutting
+
+```{r plot Rutting10m LA Site on A3, fig.height=12, fig.width=20, echo=TRUE}
+
+
+#LA Sites
+
+Rutting10mLA <- Rutting10m %>% filter(OwnerType == "LA")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("LA Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("LA Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+```
+
+
+# Roughness Plots
+
+## All Roughness Plots
+
+```{r plot Roughness10m on A3, fig.height=28, fig.width=40, echo=TRUE}
+
+# View(Roughness10m)
+
+library(dplyr)
+Roughness10mL <- Roughness10m %>% filter(LwpIRI < 25)
+Roughness10mR <- Roughness10m %>% filter(RwpIRI < 25)
+Roughness10mLN <- Roughness10m %>% filter(LaneIRI < 25)
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Roughness10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Roughness10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+```
+
+## SH Site Roughness
+
+```{r plot Roughness10m SH Site on A3, fig.height=12, fig.width=20, echo=TRUE}
+
+#SH Sites
+
+Roughness10mLNSH <- Roughness10mLN %>% filter(OwnerType == "SH")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+```
+
+
+## LA Site Roughness
+
+```{r plot Roughness10m LA Site on A3, fig.height=12, fig.width=20, echo=TRUE}
+
+#LA Sites
+
+Roughness10mLNSH <- Roughness10mLN %>% filter(OwnerType == "LA")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("LA Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+
+```
+
+#Texture Plots
+
+## All texture plots
+
+```{r plot Texture10m on A3, fig.height=28, fig.width=40, echo=TRUE}
+
+#View(Texture10m)
+
+library(dplyr)
+Texture10mL <- Texture10m %>% filter(LWPTxt < 10)
+Texture10mR <- Texture10m %>% filter(RWPTxt < 10)
+
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Texture10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Texture10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+
+```
+
+## SH texture plots
+
+```{r plot SH Texture10m on A3, fig.height=28, fig.width=40, echo=TRUE}
+
+#View(Texture10m)
+
+#SH Sites
+
+Texture10mLSH <- Texture10mL  %>% filter(OwnerType == "SH")
+Texture10mRSH <- Texture10mR  %>% filter(OwnerType == "SH")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Texture10mLSH, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Texture10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Texture10mRSH, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Texture10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+```
+
+## LA texture plots - none exist
+
+```{r plot LA Texture10m on A3, fig.height=28, fig.width=40, eval = FALSE}
+
+#View(Texture10m)
+
+#SH Sites
+
+Texture10mLLA <- Texture10mL  %>% filter(OwnerType == "LA")
+Texture10mRLA <- Texture10mR  %>% filter(OwnerType == "LA")
+
+
+```
+
+# All Rating 50m - working but not run
+
+```{r plot Rating 50m on A3, fig.height=28, fig.width=40, echo=TRUE, eval = FALSE}
+
+#View(Rutting10m)
+
+library(ggplot2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ALoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m ALoss% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`SLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m SLoss% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ChipLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m ChipLoss% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Delam%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Delam% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`MechDamage%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m MechDamage% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Low%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Flush-Low% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Mid%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Flush-Mid% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-High%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Flush-High% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongE-N% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongE-W% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongE-S% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongWT-N% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongWT-W% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongWT-S% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongIR-N% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongIR-W% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m LongIR-S% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Trans-N% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Trans-W% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m Trans-S% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlG-N Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlG-W Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlG-S Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlWT-N Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlWT-W Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlWT-S Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PAR-N Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PAR-W Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PAR-S Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PatchSurf`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PatchSurf Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PatchStructure`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PatchStructure Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeDiameter`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PotholeDiameter Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeDepth`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PotholeDepth Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeNumber`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m PotholeNumber Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`EdgeA`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m EdgeA Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`EdgeD`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m EdgeD Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Shoving%`, col = as.factor(LANE_DIRECTION))) + geom_boxplot() + ggtitle("Rating50m Shoving% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)
+
+```
+
+# Maps - not working
+
+```{r plot site map on A3, fig.height=28, fig.width=40, echo=FALSE, eval =FALSE}
+
+# issue with proj4
+
+# site locations
+
+# install.packages("maps")
+
+library(maps)
+#nz <- map_data("nz")
+#ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill="white", colour = "black")
+
+#nz <- map_data("nz")
+#ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill="white", colour = "black") + coord_quickmap() 
+
+
+#install.packages("proj4")
+#library(proj4)
+
+#install.packages("mapproj")
+library(proj4)
+library(maps)
+library(mapproj)
+#NZTM?
+#proj4string <- "+proj=tmerc +lat_0=0.0 +lon_0=173.0 +k=0.9996 +x_0=1600000.0 +y_0=10000000.0 +datum=WGS84 +units=m"
+#NZMG
+proj4string <- "+proj=nzmg +lat_0=-41.0 +lon_0=173.0 +x_0=2510000.0 +y_0=6023150.0 +ellps=intl +units=m"
+#NZ49?
+#proj4string <- "+proj=nzmg +lat_0=-41 +lon_0=173 +x_0=2510000 +y_0=6023150 +ellps=intl +datum=nzgd49 +units=m +towgs84=59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993 +nadgrids=nzgd2kgrid0005.gsb +no_defs"
+
+
+PallS <- data.frame(LTPP_long = NA, LTPP_lat = NA, SECTION_ID = NA, OwnerType = NA)
+View(Pall)
+#proje only accepts one co-ordinate at a time?
+for(i in 1:nrow(GPSSH)){
+p <- project(c(GPSSH$GPSStartEasting[i], GPSSH$GPSStartNorthing[i]), proj=proj4string, inverse=T) # should be wellington
+PallS[i,1] <- p[1]
+PallS[i,2] <- p[2]
+PallS[i,3] <- as.character(GPSSH$SECTION_ID[i])
+PallS[i,4] <- "SH"
+}
+
+
+#should be two points side by side (one increasing one decreasing)
+library(ggplot2)
+nz <- map_data("nz")
+ggobj2 <- ggplot(data = nz, aes(x=long, y=lat, group = group)) + geom_polygon(fill="white", colour = "black")  + geom_point(data = PallS, aes(x=PallS$LTPP_long, y=PallS$LTPP_lat, group = 1), size = 2, color = "red") + ggtitle("State Highway Sites Guide") +
+geom_text(data = PallS, aes(x=PallS$LTPP_long, y=PallS$LTPP_lat, label = PallS$SECTION_ID, group = 1), size = 5, color = "blue", check_overlap = TRUE) + coord_quickmap()
+print(ggobj2)
+
+
+
+proj4string <- "+proj=tmerc +lat_0=0.0 +lon_0=173.0 +k=0.9996 +x_0=1600000.0 +y_0=10000000.0 +datum=WGS84 +units=m"
+PallL <- data.frame(LTPP_long = NA, LTPP_lat = NA, SECTION_ID = NA, OwnerType = NA)
+View(Pall)
+#proje only accepts one co-ordinate at a time?
+for(i in 1:nrow(GPSLA)){
+p <- project(c(GPSLA$GPSStartEasting[i], GPSLA$GPSStartNorthing[i]), proj=proj4string, inverse=T) # should be wellington
+PallL[i,1] <- p[1]
+PallL[i,2] <- p[2]
+PallL[i,3] <- as.character(GPSLA$SECTION_ID[i])
+PallL[i,4] <- "LA"
+}
+
+
+#should be two points side by side (one increasing one decreasing)
+nz <- map_data("nz")
+ggobj2 <- ggplot(data = nz, aes(x=long, y=lat, group = group)) + geom_polygon(fill="white", colour = "black")  + geom_point(data = PallL, aes(x=PallL$LTPP_long, y=PallL$LTPP_lat, group = 1), size = 2, color = "red") + ggtitle("Local Authority Sites Guide") +
+geom_text(data = PallL, aes(x=PallL$LTPP_long, y=PallL$LTPP_lat, label = PallL$SECTION_ID, group = 1), size = 5, color = "blue", check_overlap = TRUE) + coord_quickmap()
+print(ggobj2)
+
+Pall <- rbind(PallS, PallL)
+
+nz <- map_data("nz")
+ggobj2 <- ggplot(data = nz, aes(x=long, y=lat, group = group)) + geom_polygon(fill="white", colour = "black")  + 
+  geom_point(data = Pall, aes(x=Pall$LTPP_long, y=Pall$LTPP_lat, group = 1), size = 2, color = as.numeric(as.factor(Pall$OwnerType))) + ggtitle("All Sites Plot") + coord_quickmap()
+print(ggobj2)
+
+
+#ggobj2 <- ggplot(data = GPS, aes(x=GPSStartEasting, y=GPSStartNorthing)) + 
+#geom_point(size = 5, color = "red") 
+#print(ggobj2)
+
+```
+
+```{r endy stuff on A3, fig.height=28, fig.width=40, echo=FALSE}
+
+#endy stuff
+```

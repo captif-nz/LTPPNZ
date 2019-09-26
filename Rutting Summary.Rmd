@@ -1,0 +1,157 @@
+---
+title: "LTPP Rutting Detail Report"
+author: "David Alabaster"
+date: "21 March 2018"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+This is an R Markdown document. It contains the basic data from the LTPP database.  
+
+# Operating this Report!
+This report needs to correctly reference the following databases that are currently held in 
+
+"`C:\DDATA\LTPP\2019`"
+
+# Data Importing
+The code below imports the data from the 10m databases
+
+```{r import data, fig.height=20, fig.width=12, echo=TRUE}
+
+Sys.time()
+
+#load database connection library
+library(RODBC)
+ 
+db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb"
+
+con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
+
+Rutting10m <- sqlFetch(con2, "10mRutting")
+
+CalibrationSections <- sqlFetch(con2, "CalibrationSections")
+
+library(tidyverse)
+Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
+
+Rutting10m <- Rutting10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+```
+
+
+# All Sites Rutting
+
+```{r plot Rutting10m on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("All Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# SH Site Rutting
+
+```{r plot Rutting10m SH Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#SH Sites
+
+Rutting10mSH <- Rutting10m %>% filter(OwnerType == "SH")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+```
+
+# SH CAL Sites
+
+```{r plot Rutting10m SH CAL Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#SH CAL Sites
+
+Rutting10mSHCAL <- Rutting10mSH %>% filter(stringr::str_detect(SECTION_ID, "CAL"))
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10mSHCAL, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH CAL Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10mSHCAL, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH CAL Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+```
+
+# SH CS Sites
+
+```{r plot Rutting10m SH CS Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#SH CS Sites
+
+Rutting10mSHCS <- Rutting10mSH %>% filter(stringr::str_detect(SECTION_ID, "CS"))
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10mSHCS, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH CS Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10mSHCS, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("SH CS Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+```
+
+# LA Site Rutting
+
+```{r plot Rutting10m LA Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+
+#LA Sites
+
+Rutting10mLA <- Rutting10m %>% filter(OwnerType == "LA")
+
+library(ggplot2)
+ggobj2 <- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("LA Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+ggobj2 <- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle("LA Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+print(ggobj2)
+
+```
+
+# Big individual rutting plots LWP
+
+```{r plot Rutting10m Big individual rutting plots LWP on A3, fig.height=12, fig.width=20, echo=TRUE}
+
+library(dplyr)
+ggobj2LWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Rut", subtitle = .$SECTION_ID))  
+
+print(ggobj2LWPrut$plots)
+```
+
+# Big individual rutting plots RWP
+
+```{r plot Rutting10m Big individual rutting plots RWP on A3, fig.height=12, fig.width=20, echo=TRUE}
+
+ggobj2RWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Rut", subtitle = .$SECTION_ID))
+
+print(ggobj2RWPrut$plots)
+
+```

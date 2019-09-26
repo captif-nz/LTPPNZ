@@ -1,0 +1,18 @@
+name: "LTPP-website"
+navbar:
+  title: "LTPP Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "LTTP Summary"
+      href: LTTP-Summary.html
+    - text: "Rutting Summary"
+      href: Rutting-Summary.html
+    - text: "Roughness Summary"
+      href: RoughnessSummary.html
+    - text: "Texture Summary"
+      href: TextureSummary.html
+    - text: "Single Site Summary"
+      href: SingleSummary.html      
