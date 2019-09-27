@@ -399,7 +399,15 @@ div.tocify {
 <li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
 <li>USer Rstudio to Build the website</li>
 <li>I havent had much joy pushing the website to Github using Rstudio so</li>
-<li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then git add -A git commit -m “new website” git push</li>
+<li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) then cd.. and cd into right directory then use Git to push files to GitHub</li> 
+  <pre><code> 
+  
+  git add -A 
+  git commit -m “new website” 
+  git push
+  
+  </code> 
+  
 </ol>
 <p>And your new website should be up and running at <a href="https://Github_user_name.github.io/Github_repo_name/" class="uri">https://Github_user_name.github.io/Github_repo_name/</a> ie for me <a href="https://dala009.github.io/LTPPNZ/" class="uri">https://dala009.github.io/LTPPNZ/</a></p>
 <p>And remember you need that redirect index.html in github repo and at .nojekyll file made (with nothing actually in it)</p>
@@ -421,11 +429,11 @@ Redirecting to LTPP Data site
 </div>
 <div id="index.rmd" class="section level2">
 <h2>index.Rmd</h2>
-<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. I am not sure if this could just be called “home” and the yml file adjust - will give it a go one day.</p>
+<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. I am not sure if this could just be called “home” and the yml file adjust - will give it a go one day. Actually have tried it now - you need to call it index otherwise it breaks</p>
 </div>
 <div id="site.yml-file" class="section level2">
 <h2>_Site.yml file</h2>
-<p>You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page</p>
+<p>You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the website as its home page</p>
 
   <pre><code>
   name: “LTPP-website” 
