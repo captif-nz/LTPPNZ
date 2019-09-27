@@ -408,14 +408,14 @@ div.tocify {
 <p>You will need a redirect file called index.html that gets loaded directly to the Githun master repo. This just makes the link to the _site folder the RStudio creates you website in.</p>
 
 <pre><code>  
-&lt html>
-&lt head>
-&lt title>
+&lthtml>
+&lthead>
+&lttitle>
 Redirecting to LTPP Data site
-&lt /title>
-&lt meta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site"></p>
-&lt meta name="keywords" content="automatic redirection"></p>
-&lt head>
+&lt/title>
+&ltmeta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site"></p>
+&ltmeta name="keywords" content="automatic redirection"></p>
+&lthead>
 </code>  
 
 </div>
@@ -426,7 +426,21 @@ Redirecting to LTPP Data site
 <div id="site.yml-file" class="section level2">
 <h2>_Site.yml file</h2>
 <p>You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page</p>
-<p>name: “LTPP-website” navbar: title: “LTPP Website” left: - text: “Home” href: index.html - text: “About” href: about.html - text: “LTTP Summary” href: LTTP-Summary.html - text: “Rutting Summary” href: Rutting-Summary.html - text: “Roughness Summary” href: RoughnessSummary.html - text: “Texture Summary” href: TextureSummary.html - text: “Single Site Summary” href: SingleSummary.html</p>
+
+  <pre><code>
+  name: “LTPP-website” 
+  navbar:
+  title: “LTPP Website” 
+  left: 
+  - text: “Home” href: index.html 
+  - text: “About” href: about.html 
+  - text: “LTTP Summary” href: LTTP-Summary.html 
+  - text: “Rutting Summary” href: Rutting-Summary.html 
+  - text: “Roughness Summary” href: RoughnessSummary.html 
+  - text: “Texture Summary” href: TextureSummary.html 
+  - text: “Single Site Summary” href: SingleSummary.html
+  </code>
+  </p>
 </div>
 </div>
 
