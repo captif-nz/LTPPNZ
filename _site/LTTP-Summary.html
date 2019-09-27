@@ -394,7 +394,7 @@ div.tocify {
 <p>The code below imports the data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-09-27 14:51:42 NZST&quot;</code></pre>
+<pre><code>## [1] &quot;2019-09-27 16:13:39 NZST&quot;</code></pre>
 <pre class="r"><code>#setup plot theme for plots
 #library(ggplot2)
 #mytheme &lt;- theme_grey() + theme(text = element_text(colour = &quot;black&quot;, size=18))
@@ -157202,12 +157202,12 @@ CS-42
 <div id="councils-with-ltpp-sites" class="section level1">
 <h1>Councils with LTPP sites</h1>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ----------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   0.8.3     v stringr 1.4.0
 ## v readr   1.3.1     v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts -------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
@@ -157367,11 +157367,11 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-2.png" width="1152" /></p>
 </div>
 <div id="sh-site-rutting" class="section level2">
 <h2>SH Site Rutting</h2>
@@ -157383,11 +157383,11 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;SH Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20SH%20Site%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20SH%20Site%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;SH Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20SH%20Site%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20SH%20Site%20-2.png" width="1152" /></p>
 </div>
 <div id="la-site-rutting" class="section level2">
 <h2>LA Site Rutting</h2>
@@ -157399,11 +157399,11 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;LA Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20LA%20Site%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20LA%20Site%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;LA Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20LA%20Site%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20LA%20Site%20-2.png" width="1152" /></p>
 </div>
 </div>
 <div id="roughness-plots" class="section level1">
@@ -157421,15 +157421,15 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Roughness10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Roughness10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-2.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Roughness10m Lane Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20on%20A3-3.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-3.png" width="1152" /></p>
 </div>
 <div id="sh-site-roughness" class="section level2">
 <h2>SH Site Roughness</h2>
@@ -157441,7 +157441,7 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;SH Roughness10m Lane Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20SH%20Site%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20SH%20Site%20-1.png" width="1152" /></p>
 </div>
 <div id="la-site-roughness" class="section level2">
 <h2>LA Site Roughness</h2>
@@ -157453,7 +157453,7 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;LA Roughness10m Lane Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20LA%20Site%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20LA%20Site%20-1.png" width="1152" /></p>
 </div>
 </div>
 <div id="texture-plots" class="section level1">
@@ -157471,11 +157471,11 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-2.png" width="1152" /></p>
 </div>
 <div id="sh-texture-plots" class="section level2">
 <h2>SH texture plots</h2>
@@ -157490,11 +157490,11 @@ library(ggplot2)
 ggobj2 &lt;- ggplot(data=Texture10mLSH, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;SH Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20SH%20Texture10m%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20SH%20Texture10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mRSH, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;SH Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20SH%20Texture10m%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20SH%20Texture10m%20-2.png" width="1152" /></p>
 </div>
 <div id="la-texture-plots---none-exist" class="section level2">
 <h2>LA texture plots - none exist</h2>
@@ -157510,151 +157510,261 @@ Texture10mRLA &lt;- Texture10mR  %&gt;% filter(OwnerType == &quot;LA&quot;)</cod
 <h1>All Rating 50m - plots!</h1>
 <pre class="r"><code>#View(Rutting10m)
 
-library(ggplot2)
-
-ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ALoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ALoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+library(ggplot2)</code></pre>
+<div id="aloss" class="section level2">
+<h2>ALoss%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ALoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ALoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 9 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-1.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20ALoss%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="sloss" class="section level2">
+<h2>SLoss%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`SLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m SLoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 9 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-2.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20SLoss%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="chiploss" class="section level2">
+<h2>ChipLoss%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ChipLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ChipLoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 18609 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-3.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20ChipLoss%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="delam" class="section level2">
+<h2>Delam%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Delam%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Delam% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-4.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Delam%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="mechdamage" class="section level2">
+<h2>MechDamage%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`MechDamage%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m MechDamage% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-5.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20MechDamage%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="flush-low" class="section level2">
+<h2>Flush-Low%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Low%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-Low% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 12 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-6.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Flush-Low%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="flush-mid" class="section level2">
+<h2>Flush-Mid%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Mid%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-Mid% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-7.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Flush-Mid%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="flush-high" class="section level2">
+<h2>Flush-High%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-High%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-High% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-8.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Flush-High%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longe-n" class="section level2">
+<h2>LongE-N%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongE-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-9.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongE-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longe-w" class="section level2">
+<h2>LongE-W%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongE-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-10.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongE-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longe-s" class="section level2">
+<h2>LongE-S%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongE-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-11.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongE-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longwt-n" class="section level2">
+<h2>LongWT-N%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongWT-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-12.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongWT-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longwt-w" class="section level2">
+<h2>LongWT-W%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongWT-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-13.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20%20LongWT-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longwt-s" class="section level2">
+<h2>LongWT-S%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongWT-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-14.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongWT-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longir-n" class="section level2">
+<h2>LongIR-N%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongIR-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-15.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongIR-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longir-w" class="section level2">
+<h2>LongIR-W%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongIR-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-16.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongIR-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longir-s" class="section level2">
+<h2>LongIR-S%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongIR-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-17.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20LongIR-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="trans-n" class="section level2">
+<h2>Trans-N%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Trans-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-18.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Trans-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="trans-w" class="section level2">
+<h2>Trans-W%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Trans-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-19.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Trans-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="trans-s" class="section level2">
+<h2>Trans-S%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Trans-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-20.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Trans-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alg-n" class="section level2">
+<h2>AlG-N</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlG-N Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-21.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20AlG-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alg-w" class="section level2">
+<h2>AlG-W</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlG-W Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-22.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20AlG-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alg-s" class="section level2">
+<h2>AlG-S</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlG-S Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-23.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20AlG-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alwt-n" class="section level2">
+<h2>AlWT-N</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlWT-N Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-24.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20AlWT-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alwt-w" class="section level2">
+<h2>AlWT-W</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlWT-W Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-25.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20AlWT-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alwt-s" class="section level2">
+<h2>AlWT-S</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlWT-S Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-26.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20AlWT-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="par-n" class="section level2">
+<h2>PAR-N</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PAR-N Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-27.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PAR-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="par-w" class="section level2">
+<h2>PAR-W</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PAR-W Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-28.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PAR-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="par-s" class="section level2">
+<h2>PAR-S</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PAR-S Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-29.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PAR-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="patchsurf" class="section level2">
+<h2>PatchSurf</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PatchSurf`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PatchSurf Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-30.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PatchSurf%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="patchstructure" class="section level2">
+<h2>PatchStructure</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PatchStructure`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PatchStructure Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-31.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PatchStructure%20%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="potholediameter" class="section level2">
+<h2>PotholeDiameter</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeDiameter`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PotholeDiameter Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-32.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PotholeDiameter%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="potholedepth" class="section level2">
+<h2>PotholeDepth</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeDepth`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PotholeDepth Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-33.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PotholeDepth%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="potholenumber" class="section level2">
+<h2>PotholeNumber</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeNumber`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PotholeNumber Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-34.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20PotholeNumber%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="edgea" class="section level2">
+<h2>EdgeA</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`EdgeA`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m EdgeA Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-35.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20EdgeA%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="edged" class="section level2">
+<h2>EdgeD</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`EdgeD`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m EdgeD Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-36.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20EdgeD%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="shoving" class="section level2">
+<h2>Shoving%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Shoving%`, col = as.factor(LANE_DIRECTION))) + geom_boxplot() + ggtitle(&quot;Rating50m Shoving% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 7 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="LTTP-Summary_files/figure-html/plot%20Rating%2050m%20on%20A3-37.png" width="1152" /></p>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Shoving%2050m%20-1.png" width="1152" /></p>
+</div>
 </div>
 <div id="maps---not-working" class="section level1">
 <h1>Maps - not working</h1>
