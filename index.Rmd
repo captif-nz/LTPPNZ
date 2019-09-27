@@ -16,25 +16,26 @@ It is a beta site hosted on Github and written with R and R Studio.
 Assuming R and RStudio are already installed and R Markdown is being used for files.
 
 Steps
-1 Create Github account
-2 Create Github Repo (folder) and make it public
-3 Go to settings - Git Hub pages - Source - and make it "Master branch"
-3 Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)
-4 create a .nojekyll file (to stop Github from trying to make a wesite)
-5 create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)
-6 Download Git to computer
-7 In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)"
-8 View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys
-9 Back in Rstudio - open a new project with version control 
-10 Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC
-11 USer Rstudio to Build the website
-12 I havent had much joy pushing the website to Github using Rstudio so 
-13 After "Build" website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then
+
+(@) Create Github account
+(@) Create Github Repo (folder) and make it public
+(@) Go to settings - Git Hub pages - Source - and make it "Master branch"
+(@) Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)
+(@) create a .nojekyll file (to stop Github from trying to make a wesite)
+(@) create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)
+(@) Download Git to computer
+(@) In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)"
+(@) View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys
+(@) Back in Rstudio - open a new project with version control 
+(@) Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC
+(@) USer Rstudio to Build the website
+(@) I havent had much joy pushing the website to Github using Rstudio so 
+(@) After "Build" website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then
 git add -A
 git commit -m "new website"
 git push
 
-And your new website shoudld be up and running at 
+And your new website should be up and running at 
 https://Github_user_name.github.io/Github_repo_name/
 ie for me 
 https://dala009.github.io/LTPPNZ/

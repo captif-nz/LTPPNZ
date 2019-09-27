@@ -17,7 +17,7 @@ This report needs to correctly reference the following databases that are curren
 # Data Importing
 The code below imports the data from the 10m databases
 
-```{r import data, fig.height=20, fig.width=12, echo=TRUE}
+```{r import data, fig.height=40, fig.width=12, echo=TRUE}
 
 Sys.time()
 
@@ -47,7 +47,7 @@ Rutting10m <- Rutting10m %>% left_join(CalibrationSections, by = c("SECTION_ID"=
 
 # All Sites Rutting
 
-```{r plot Rutting10m on A3, fig.height=20, fig.width=12, echo=TRUE}
+```{r plot Rutting10m on A3, fig.height=40, fig.width=12, echo=TRUE}
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
@@ -61,7 +61,7 @@ print(ggobj2)
 
 # SH Site Rutting
 
-```{r plot Rutting10m SH Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+```{r plot Rutting10m SH Site on A3, fig.height=40, fig.width=12, echo=TRUE}
 
 #SH Sites
 

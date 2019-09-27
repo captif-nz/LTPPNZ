@@ -17,7 +17,7 @@ This report needs to correctly reference the following databases that are curren
 # Data Importing
 The code below imports the data from the 10m databases
 
-```{r import data, fig.height=16, fig.width=12, echo=TRUE}
+```{r import data, fig.height=40, fig.width=12, echo=TRUE}
 
 #Sys.Date()
 Sys.time()
@@ -46,7 +46,7 @@ Roughness10m <- Roughness10m %>% left_join(CalibrationSections, by = c("SECTION_
 
 # All Roughness Plots
 
-```{r plot Roughness10m on A3, fig.height=20, fig.width=12, echo=TRUE}
+```{r plot Roughness10m on A3, fig.height=40, fig.width=12, echo=TRUE}
 
 # View(Roughness10m)
 
@@ -71,7 +71,7 @@ print(ggobj2)
 
 # SH Site Roughness
 
-```{r plot Roughness10m SH Site on A3, fig.height=20, fig.width=12, echo=TRUE}
+```{r plot Roughness10m SH Site on A3, fig.height=40, fig.width=12, echo=TRUE}
 
 #SH Sites
 

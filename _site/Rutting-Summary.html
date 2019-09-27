@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="David Alabaster" />
+
+<meta name="date" content="2018-03-21" />
+
+<title>LTPP Rutting Detail Report</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LTPP Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index1.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="LTTP-Summary.html">LTTP Summary</a>
+</li>
+<li>
+  <a href="Rutting-Summary.html">Rutting Summary</a>
+</li>
+<li>
+  <a href="RoughnessSummary.html">Roughness Summary</a>
+</li>
+<li>
+  <a href="TextureSummary.html">Texture Summary</a>
+</li>
+<li>
+  <a href="SingleSummary.html">Single Site Summary</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">LTPP Rutting Detail Report</h1>
+<h4 class="author">David Alabaster</h4>
+<h4 class="date">21 March 2018</h4>
+
+</div>
+
+
+<p>This is an R Markdown document. It contains the basic data from the LTPP database.</p>
+<div id="operating-this-report" class="section level1">
+<h1>Operating this Report!</h1>
+<p>This report needs to correctly reference the following databases that are currently held in</p>
+<p>“<code>C:\DDATA\LTPP\2019</code>”</p>
+</div>
+<div id="data-importing" class="section level1">
+<h1>Data Importing</h1>
+<p>The code below imports the data from the 10m databases</p>
+<pre class="r"><code>Sys.time()</code></pre>
+<pre><code>## [1] &quot;2019-09-27 13:49:19 NZST&quot;</code></pre>
+<pre class="r"><code>#load database connection library
+library(RODBC)
+ 
+db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+
+con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))
+
+Rutting10m &lt;- sqlFetch(con2, &quot;10mRutting&quot;)
+
+CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)
+
+library(tidyverse)
+Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;))
+
+Rutting10m &lt;- Rutting10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+</div>
+<div id="all-sites-rutting" class="section level1">
+<h1>All Sites Rutting</h1>
+<pre class="r"><code>library(ggplot2)
+ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="sh-site-rutting" class="section level1">
+<h1>SH Site Rutting</h1>
+<pre class="r"><code>#SH Sites
+
+Rutting10mSH &lt;- Rutting10m %&gt;% filter(OwnerType == &quot;SH&quot;)
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20SH%20Site%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20SH%20Site%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="sh-cal-sites" class="section level1">
+<h1>SH CAL Sites</h1>
+<pre class="r"><code>#SH CAL Sites
+
+Rutting10mSHCAL &lt;- Rutting10mSH %&gt;% filter(stringr::str_detect(SECTION_ID, &quot;CAL&quot;))
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Rutting10mSHCAL, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH CAL Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20SH%20CAL%20Site%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10mSHCAL, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH CAL Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20SH%20CAL%20Site%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="sh-cs-sites" class="section level1">
+<h1>SH CS Sites</h1>
+<pre class="r"><code>#SH CS Sites
+
+Rutting10mSHCS &lt;- Rutting10mSH %&gt;% filter(stringr::str_detect(SECTION_ID, &quot;CS&quot;))
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Rutting10mSHCS, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH CS Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20SH%20CS%20Site%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10mSHCS, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH CS Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20SH%20CS%20Site%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="la-site-rutting" class="section level1">
+<h1>LA Site Rutting</h1>
+<pre class="r"><code>#LA Sites
+
+Rutting10mLA &lt;- Rutting10m %&gt;% filter(OwnerType == &quot;LA&quot;)
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;LA Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20LA%20Site%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;LA Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+print(ggobj2)</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20LA%20Site%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="big-individual-rutting-plots-lwp" class="section level1">
+<h1>Big individual rutting plots LWP</h1>
+<pre class="r"><code>library(dplyr)
+ggobj2LWPrut &lt;- Rutting10m %&gt;% group_by(SECTION_ID) %&gt;% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;LWP Rut&quot;, subtitle = .$SECTION_ID))  
+
+print(ggobj2LWPrut$plots)</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-1.png" width="1920" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-2.png" width="1920" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-3.png" width="1920" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-4.png" width="1920" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-5.png" width="1920" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-6.png" width="1920" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-7.png" width="1920" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-8.png" width="1920" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-9.png" width="1920" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-10.png" width="1920" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-11.png" width="1920" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-12.png" width="1920" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-13.png" width="1920" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-14.png" width="1920" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-15.png" width="1920" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-16.png" width="1920" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-17.png" width="1920" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-18.png" width="1920" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-19.png" width="1920" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-20.png" width="1920" /></p>
+<pre><code>## 
+## [[21]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-21.png" width="1920" /></p>
+<pre><code>## 
+## [[22]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-22.png" width="1920" /></p>
+<pre><code>## 
+## [[23]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-23.png" width="1920" /></p>
+<pre><code>## 
+## [[24]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-24.png" width="1920" /></p>
+<pre><code>## 
+## [[25]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-25.png" width="1920" /></p>
+<pre><code>## 
+## [[26]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-26.png" width="1920" /></p>
+<pre><code>## 
+## [[27]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-27.png" width="1920" /></p>
+<pre><code>## 
+## [[28]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-28.png" width="1920" /></p>
+<pre><code>## 
+## [[29]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-29.png" width="1920" /></p>
+<pre><code>## 
+## [[30]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-30.png" width="1920" /></p>
+<pre><code>## 
+## [[31]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-31.png" width="1920" /></p>
+<pre><code>## 
+## [[32]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-32.png" width="1920" /></p>
+<pre><code>## 
+## [[33]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-33.png" width="1920" /></p>
+<pre><code>## 
+## [[34]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-34.png" width="1920" /></p>
+<pre><code>## 
+## [[35]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-35.png" width="1920" /></p>
+<pre><code>## 
+## [[36]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-36.png" width="1920" /></p>
+<pre><code>## 
+## [[37]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-37.png" width="1920" /></p>
+<pre><code>## 
+## [[38]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-38.png" width="1920" /></p>
+<pre><code>## 
+## [[39]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-39.png" width="1920" /></p>
+<pre><code>## 
+## [[40]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-40.png" width="1920" /></p>
+<pre><code>## 
+## [[41]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-41.png" width="1920" /></p>
+<pre><code>## 
+## [[42]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-42.png" width="1920" /></p>
+<pre><code>## 
+## [[43]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-43.png" width="1920" /></p>
+<pre><code>## 
+## [[44]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-44.png" width="1920" /></p>
+<pre><code>## 
+## [[45]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-45.png" width="1920" /></p>
+<pre><code>## 
+## [[46]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-46.png" width="1920" /></p>
+<pre><code>## 
+## [[47]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-47.png" width="1920" /></p>
+<pre><code>## 
+## [[48]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-48.png" width="1920" /></p>
+<pre><code>## 
+## [[49]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-49.png" width="1920" /></p>
+<pre><code>## 
+## [[50]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-50.png" width="1920" /></p>
+<pre><code>## 
+## [[51]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-51.png" width="1920" /></p>
+<pre><code>## 
+## [[52]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-52.png" width="1920" /></p>
+<pre><code>## 
+## [[53]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-53.png" width="1920" /></p>
+<pre><code>## 
+## [[54]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-54.png" width="1920" /></p>
+<pre><code>## 
+## [[55]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-55.png" width="1920" /></p>
+<pre><code>## 
+## [[56]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-56.png" width="1920" /></p>
+<pre><code>## 
+## [[57]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-57.png" width="1920" /></p>
+<pre><code>## 
+## [[58]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-58.png" width="1920" /></p>
+<pre><code>## 
+## [[59]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-59.png" width="1920" /></p>
+<pre><code>## 
+## [[60]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-60.png" width="1920" /></p>
+<pre><code>## 
+## [[61]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-61.png" width="1920" /></p>
+<pre><code>## 
+## [[62]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-62.png" width="1920" /></p>
+<pre><code>## 
+## [[63]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-63.png" width="1920" /></p>
+<pre><code>## 
+## [[64]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-64.png" width="1920" /></p>
+<pre><code>## 
+## [[65]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-65.png" width="1920" /></p>
+<pre><code>## 
+## [[66]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-66.png" width="1920" /></p>
+<pre><code>## 
+## [[67]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-67.png" width="1920" /></p>
+<pre><code>## 
+## [[68]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-68.png" width="1920" /></p>
+<pre><code>## 
+## [[69]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-69.png" width="1920" /></p>
+<pre><code>## 
+## [[70]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-70.png" width="1920" /></p>
+<pre><code>## 
+## [[71]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-71.png" width="1920" /></p>
+<pre><code>## 
+## [[72]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-72.png" width="1920" /></p>
+<pre><code>## 
+## [[73]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-73.png" width="1920" /></p>
+<pre><code>## 
+## [[74]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-74.png" width="1920" /></p>
+<pre><code>## 
+## [[75]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-75.png" width="1920" /></p>
+<pre><code>## 
+## [[76]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-76.png" width="1920" /></p>
+<pre><code>## 
+## [[77]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-77.png" width="1920" /></p>
+<pre><code>## 
+## [[78]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-78.png" width="1920" /></p>
+<pre><code>## 
+## [[79]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-79.png" width="1920" /></p>
+<pre><code>## 
+## [[80]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-80.png" width="1920" /></p>
+<pre><code>## 
+## [[81]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-81.png" width="1920" /></p>
+<pre><code>## 
+## [[82]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-82.png" width="1920" /></p>
+<pre><code>## 
+## [[83]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-83.png" width="1920" /></p>
+<pre><code>## 
+## [[84]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-84.png" width="1920" /></p>
+<pre><code>## 
+## [[85]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-85.png" width="1920" /></p>
+<pre><code>## 
+## [[86]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-86.png" width="1920" /></p>
+<pre><code>## 
+## [[87]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-87.png" width="1920" /></p>
+<pre><code>## 
+## [[88]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-88.png" width="1920" /></p>
+<pre><code>## 
+## [[89]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-89.png" width="1920" /></p>
+<pre><code>## 
+## [[90]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-90.png" width="1920" /></p>
+<pre><code>## 
+## [[91]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-91.png" width="1920" /></p>
+<pre><code>## 
+## [[92]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-92.png" width="1920" /></p>
+<pre><code>## 
+## [[93]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-93.png" width="1920" /></p>
+<pre><code>## 
+## [[94]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-94.png" width="1920" /></p>
+<pre><code>## 
+## [[95]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-95.png" width="1920" /></p>
+<pre><code>## 
+## [[96]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-96.png" width="1920" /></p>
+<pre><code>## 
+## [[97]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-97.png" width="1920" /></p>
+<pre><code>## 
+## [[98]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-98.png" width="1920" /></p>
+<pre><code>## 
+## [[99]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-99.png" width="1920" /></p>
+<pre><code>## 
+## [[100]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-100.png" width="1920" /></p>
+<pre><code>## 
+## [[101]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-101.png" width="1920" /></p>
+<pre><code>## 
+## [[102]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-102.png" width="1920" /></p>
+<pre><code>## 
+## [[103]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-103.png" width="1920" /></p>
+<pre><code>## 
+## [[104]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-104.png" width="1920" /></p>
+<pre><code>## 
+## [[105]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-105.png" width="1920" /></p>
+<pre><code>## 
+## [[106]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-106.png" width="1920" /></p>
+<pre><code>## 
+## [[107]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-107.png" width="1920" /></p>
+<pre><code>## 
+## [[108]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-108.png" width="1920" /></p>
+<pre><code>## 
+## [[109]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-109.png" width="1920" /></p>
+<pre><code>## 
+## [[110]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-110.png" width="1920" /></p>
+<pre><code>## 
+## [[111]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-111.png" width="1920" /></p>
+<pre><code>## 
+## [[112]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-112.png" width="1920" /></p>
+<pre><code>## 
+## [[113]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-113.png" width="1920" /></p>
+<pre><code>## 
+## [[114]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-114.png" width="1920" /></p>
+<pre><code>## 
+## [[115]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-115.png" width="1920" /></p>
+<pre><code>## 
+## [[116]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-116.png" width="1920" /></p>
+<pre><code>## 
+## [[117]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-117.png" width="1920" /></p>
+<pre><code>## 
+## [[118]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-118.png" width="1920" /></p>
+<pre><code>## 
+## [[119]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-119.png" width="1920" /></p>
+<pre><code>## 
+## [[120]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-120.png" width="1920" /></p>
+<pre><code>## 
+## [[121]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-121.png" width="1920" /></p>
+<pre><code>## 
+## [[122]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-122.png" width="1920" /></p>
+<pre><code>## 
+## [[123]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-123.png" width="1920" /></p>
+<pre><code>## 
+## [[124]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-124.png" width="1920" /></p>
+<pre><code>## 
+## [[125]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-125.png" width="1920" /></p>
+<pre><code>## 
+## [[126]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-126.png" width="1920" /></p>
+<pre><code>## 
+## [[127]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-127.png" width="1920" /></p>
+<pre><code>## 
+## [[128]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-128.png" width="1920" /></p>
+<pre><code>## 
+## [[129]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-129.png" width="1920" /></p>
+<pre><code>## 
+## [[130]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-130.png" width="1920" /></p>
+<pre><code>## 
+## [[131]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-131.png" width="1920" /></p>
+<pre><code>## 
+## [[132]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-132.png" width="1920" /></p>
+<pre><code>## 
+## [[133]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-133.png" width="1920" /></p>
+<pre><code>## 
+## [[134]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-134.png" width="1920" /></p>
+<pre><code>## 
+## [[135]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-135.png" width="1920" /></p>
+<pre><code>## 
+## [[136]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-136.png" width="1920" /></p>
+<pre><code>## 
+## [[137]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-137.png" width="1920" /></p>
+<pre><code>## 
+## [[138]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-138.png" width="1920" /></p>
+<pre><code>## 
+## [[139]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-139.png" width="1920" /></p>
+<pre><code>## 
+## [[140]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-140.png" width="1920" /></p>
+<pre><code>## 
+## [[141]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-141.png" width="1920" /></p>
+<pre><code>## 
+## [[142]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-142.png" width="1920" /></p>
+<pre><code>## 
+## [[143]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-143.png" width="1920" /></p>
+<pre><code>## 
+## [[144]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-144.png" width="1920" /></p>
+<pre><code>## 
+## [[145]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-145.png" width="1920" /></p>
+<pre><code>## 
+## [[146]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-146.png" width="1920" /></p>
+<pre><code>## 
+## [[147]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-147.png" width="1920" /></p>
+<pre><code>## 
+## [[148]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-148.png" width="1920" /></p>
+<pre><code>## 
+## [[149]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-149.png" width="1920" /></p>
+<pre><code>## 
+## [[150]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-150.png" width="1920" /></p>
+<pre><code>## 
+## [[151]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-151.png" width="1920" /></p>
+<pre><code>## 
+## [[152]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-152.png" width="1920" /></p>
+<pre><code>## 
+## [[153]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-153.png" width="1920" /></p>
+<pre><code>## 
+## [[154]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-154.png" width="1920" /></p>
+<pre><code>## 
+## [[155]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-155.png" width="1920" /></p>
+<pre><code>## 
+## [[156]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-156.png" width="1920" /></p>
+<pre><code>## 
+## [[157]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-157.png" width="1920" /></p>
+<pre><code>## 
+## [[158]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-158.png" width="1920" /></p>
+<pre><code>## 
+## [[159]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-159.png" width="1920" /></p>
+<pre><code>## 
+## [[160]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-160.png" width="1920" /></p>
+<pre><code>## 
+## [[161]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-161.png" width="1920" /></p>
+<pre><code>## 
+## [[162]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-162.png" width="1920" /></p>
+<pre><code>## 
+## [[163]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-163.png" width="1920" /></p>
+<pre><code>## 
+## [[164]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-164.png" width="1920" /></p>
+<pre><code>## 
+## [[165]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-165.png" width="1920" /></p>
+<pre><code>## 
+## [[166]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-166.png" width="1920" /></p>
+<pre><code>## 
+## [[167]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-167.png" width="1920" /></p>
+<pre><code>## 
+## [[168]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-168.png" width="1920" /></p>
+<pre><code>## 
+## [[169]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-169.png" width="1920" /></p>
+<pre><code>## 
+## [[170]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-170.png" width="1920" /></p>
+<pre><code>## 
+## [[171]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-171.png" width="1920" /></p>
+<pre><code>## 
+## [[172]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-172.png" width="1920" /></p>
+<pre><code>## 
+## [[173]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-173.png" width="1920" /></p>
+<pre><code>## 
+## [[174]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-174.png" width="1920" /></p>
+<pre><code>## 
+## [[175]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-175.png" width="1920" /></p>
+<pre><code>## 
+## [[176]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-176.png" width="1920" /></p>
+<pre><code>## 
+## [[177]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-177.png" width="1920" /></p>
+<pre><code>## 
+## [[178]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-178.png" width="1920" /></p>
+<pre><code>## 
+## [[179]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-179.png" width="1920" /></p>
+<pre><code>## 
+## [[180]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-180.png" width="1920" /></p>
+<pre><code>## 
+## [[181]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20LWP%20on%20A3-181.png" width="1920" /></p>
+</div>
+<div id="big-individual-rutting-plots-rwp" class="section level1">
+<h1>Big individual rutting plots RWP</h1>
+<pre class="r"><code>ggobj2RWPrut &lt;- Rutting10m %&gt;% group_by(SECTION_ID) %&gt;% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;RWP Rut&quot;, subtitle = .$SECTION_ID))
+
+print(ggobj2RWPrut$plots)</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-1.png" width="1920" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-2.png" width="1920" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-3.png" width="1920" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-4.png" width="1920" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-5.png" width="1920" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-6.png" width="1920" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-7.png" width="1920" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-8.png" width="1920" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-9.png" width="1920" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-10.png" width="1920" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-11.png" width="1920" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-12.png" width="1920" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-13.png" width="1920" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-14.png" width="1920" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-15.png" width="1920" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-16.png" width="1920" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-17.png" width="1920" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-18.png" width="1920" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-19.png" width="1920" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-20.png" width="1920" /></p>
+<pre><code>## 
+## [[21]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-21.png" width="1920" /></p>
+<pre><code>## 
+## [[22]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-22.png" width="1920" /></p>
+<pre><code>## 
+## [[23]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-23.png" width="1920" /></p>
+<pre><code>## 
+## [[24]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-24.png" width="1920" /></p>
+<pre><code>## 
+## [[25]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-25.png" width="1920" /></p>
+<pre><code>## 
+## [[26]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-26.png" width="1920" /></p>
+<pre><code>## 
+## [[27]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-27.png" width="1920" /></p>
+<pre><code>## 
+## [[28]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-28.png" width="1920" /></p>
+<pre><code>## 
+## [[29]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-29.png" width="1920" /></p>
+<pre><code>## 
+## [[30]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-30.png" width="1920" /></p>
+<pre><code>## 
+## [[31]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-31.png" width="1920" /></p>
+<pre><code>## 
+## [[32]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-32.png" width="1920" /></p>
+<pre><code>## 
+## [[33]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-33.png" width="1920" /></p>
+<pre><code>## 
+## [[34]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-34.png" width="1920" /></p>
+<pre><code>## 
+## [[35]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-35.png" width="1920" /></p>
+<pre><code>## 
+## [[36]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-36.png" width="1920" /></p>
+<pre><code>## 
+## [[37]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-37.png" width="1920" /></p>
+<pre><code>## 
+## [[38]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-38.png" width="1920" /></p>
+<pre><code>## 
+## [[39]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-39.png" width="1920" /></p>
+<pre><code>## 
+## [[40]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-40.png" width="1920" /></p>
+<pre><code>## 
+## [[41]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-41.png" width="1920" /></p>
+<pre><code>## 
+## [[42]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-42.png" width="1920" /></p>
+<pre><code>## 
+## [[43]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-43.png" width="1920" /></p>
+<pre><code>## 
+## [[44]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-44.png" width="1920" /></p>
+<pre><code>## 
+## [[45]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-45.png" width="1920" /></p>
+<pre><code>## 
+## [[46]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-46.png" width="1920" /></p>
+<pre><code>## 
+## [[47]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-47.png" width="1920" /></p>
+<pre><code>## 
+## [[48]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-48.png" width="1920" /></p>
+<pre><code>## 
+## [[49]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-49.png" width="1920" /></p>
+<pre><code>## 
+## [[50]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-50.png" width="1920" /></p>
+<pre><code>## 
+## [[51]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-51.png" width="1920" /></p>
+<pre><code>## 
+## [[52]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-52.png" width="1920" /></p>
+<pre><code>## 
+## [[53]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-53.png" width="1920" /></p>
+<pre><code>## 
+## [[54]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-54.png" width="1920" /></p>
+<pre><code>## 
+## [[55]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-55.png" width="1920" /></p>
+<pre><code>## 
+## [[56]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-56.png" width="1920" /></p>
+<pre><code>## 
+## [[57]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-57.png" width="1920" /></p>
+<pre><code>## 
+## [[58]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-58.png" width="1920" /></p>
+<pre><code>## 
+## [[59]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-59.png" width="1920" /></p>
+<pre><code>## 
+## [[60]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-60.png" width="1920" /></p>
+<pre><code>## 
+## [[61]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-61.png" width="1920" /></p>
+<pre><code>## 
+## [[62]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-62.png" width="1920" /></p>
+<pre><code>## 
+## [[63]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-63.png" width="1920" /></p>
+<pre><code>## 
+## [[64]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-64.png" width="1920" /></p>
+<pre><code>## 
+## [[65]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-65.png" width="1920" /></p>
+<pre><code>## 
+## [[66]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-66.png" width="1920" /></p>
+<pre><code>## 
+## [[67]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-67.png" width="1920" /></p>
+<pre><code>## 
+## [[68]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-68.png" width="1920" /></p>
+<pre><code>## 
+## [[69]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-69.png" width="1920" /></p>
+<pre><code>## 
+## [[70]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-70.png" width="1920" /></p>
+<pre><code>## 
+## [[71]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-71.png" width="1920" /></p>
+<pre><code>## 
+## [[72]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-72.png" width="1920" /></p>
+<pre><code>## 
+## [[73]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-73.png" width="1920" /></p>
+<pre><code>## 
+## [[74]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-74.png" width="1920" /></p>
+<pre><code>## 
+## [[75]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-75.png" width="1920" /></p>
+<pre><code>## 
+## [[76]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-76.png" width="1920" /></p>
+<pre><code>## 
+## [[77]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-77.png" width="1920" /></p>
+<pre><code>## 
+## [[78]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-78.png" width="1920" /></p>
+<pre><code>## 
+## [[79]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-79.png" width="1920" /></p>
+<pre><code>## 
+## [[80]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-80.png" width="1920" /></p>
+<pre><code>## 
+## [[81]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-81.png" width="1920" /></p>
+<pre><code>## 
+## [[82]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-82.png" width="1920" /></p>
+<pre><code>## 
+## [[83]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-83.png" width="1920" /></p>
+<pre><code>## 
+## [[84]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-84.png" width="1920" /></p>
+<pre><code>## 
+## [[85]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-85.png" width="1920" /></p>
+<pre><code>## 
+## [[86]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-86.png" width="1920" /></p>
+<pre><code>## 
+## [[87]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-87.png" width="1920" /></p>
+<pre><code>## 
+## [[88]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-88.png" width="1920" /></p>
+<pre><code>## 
+## [[89]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-89.png" width="1920" /></p>
+<pre><code>## 
+## [[90]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-90.png" width="1920" /></p>
+<pre><code>## 
+## [[91]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-91.png" width="1920" /></p>
+<pre><code>## 
+## [[92]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-92.png" width="1920" /></p>
+<pre><code>## 
+## [[93]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-93.png" width="1920" /></p>
+<pre><code>## 
+## [[94]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-94.png" width="1920" /></p>
+<pre><code>## 
+## [[95]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-95.png" width="1920" /></p>
+<pre><code>## 
+## [[96]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-96.png" width="1920" /></p>
+<pre><code>## 
+## [[97]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-97.png" width="1920" /></p>
+<pre><code>## 
+## [[98]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-98.png" width="1920" /></p>
+<pre><code>## 
+## [[99]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-99.png" width="1920" /></p>
+<pre><code>## 
+## [[100]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-100.png" width="1920" /></p>
+<pre><code>## 
+## [[101]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-101.png" width="1920" /></p>
+<pre><code>## 
+## [[102]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-102.png" width="1920" /></p>
+<pre><code>## 
+## [[103]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-103.png" width="1920" /></p>
+<pre><code>## 
+## [[104]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-104.png" width="1920" /></p>
+<pre><code>## 
+## [[105]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-105.png" width="1920" /></p>
+<pre><code>## 
+## [[106]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-106.png" width="1920" /></p>
+<pre><code>## 
+## [[107]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-107.png" width="1920" /></p>
+<pre><code>## 
+## [[108]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-108.png" width="1920" /></p>
+<pre><code>## 
+## [[109]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-109.png" width="1920" /></p>
+<pre><code>## 
+## [[110]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-110.png" width="1920" /></p>
+<pre><code>## 
+## [[111]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-111.png" width="1920" /></p>
+<pre><code>## 
+## [[112]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-112.png" width="1920" /></p>
+<pre><code>## 
+## [[113]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-113.png" width="1920" /></p>
+<pre><code>## 
+## [[114]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-114.png" width="1920" /></p>
+<pre><code>## 
+## [[115]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-115.png" width="1920" /></p>
+<pre><code>## 
+## [[116]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-116.png" width="1920" /></p>
+<pre><code>## 
+## [[117]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-117.png" width="1920" /></p>
+<pre><code>## 
+## [[118]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-118.png" width="1920" /></p>
+<pre><code>## 
+## [[119]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-119.png" width="1920" /></p>
+<pre><code>## 
+## [[120]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-120.png" width="1920" /></p>
+<pre><code>## 
+## [[121]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-121.png" width="1920" /></p>
+<pre><code>## 
+## [[122]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-122.png" width="1920" /></p>
+<pre><code>## 
+## [[123]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-123.png" width="1920" /></p>
+<pre><code>## 
+## [[124]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-124.png" width="1920" /></p>
+<pre><code>## 
+## [[125]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-125.png" width="1920" /></p>
+<pre><code>## 
+## [[126]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-126.png" width="1920" /></p>
+<pre><code>## 
+## [[127]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-127.png" width="1920" /></p>
+<pre><code>## 
+## [[128]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-128.png" width="1920" /></p>
+<pre><code>## 
+## [[129]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-129.png" width="1920" /></p>
+<pre><code>## 
+## [[130]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-130.png" width="1920" /></p>
+<pre><code>## 
+## [[131]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-131.png" width="1920" /></p>
+<pre><code>## 
+## [[132]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-132.png" width="1920" /></p>
+<pre><code>## 
+## [[133]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-133.png" width="1920" /></p>
+<pre><code>## 
+## [[134]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-134.png" width="1920" /></p>
+<pre><code>## 
+## [[135]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-135.png" width="1920" /></p>
+<pre><code>## 
+## [[136]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-136.png" width="1920" /></p>
+<pre><code>## 
+## [[137]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-137.png" width="1920" /></p>
+<pre><code>## 
+## [[138]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-138.png" width="1920" /></p>
+<pre><code>## 
+## [[139]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-139.png" width="1920" /></p>
+<pre><code>## 
+## [[140]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-140.png" width="1920" /></p>
+<pre><code>## 
+## [[141]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-141.png" width="1920" /></p>
+<pre><code>## 
+## [[142]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-142.png" width="1920" /></p>
+<pre><code>## 
+## [[143]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-143.png" width="1920" /></p>
+<pre><code>## 
+## [[144]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-144.png" width="1920" /></p>
+<pre><code>## 
+## [[145]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-145.png" width="1920" /></p>
+<pre><code>## 
+## [[146]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-146.png" width="1920" /></p>
+<pre><code>## 
+## [[147]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-147.png" width="1920" /></p>
+<pre><code>## 
+## [[148]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-148.png" width="1920" /></p>
+<pre><code>## 
+## [[149]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-149.png" width="1920" /></p>
+<pre><code>## 
+## [[150]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-150.png" width="1920" /></p>
+<pre><code>## 
+## [[151]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-151.png" width="1920" /></p>
+<pre><code>## 
+## [[152]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-152.png" width="1920" /></p>
+<pre><code>## 
+## [[153]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-153.png" width="1920" /></p>
+<pre><code>## 
+## [[154]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-154.png" width="1920" /></p>
+<pre><code>## 
+## [[155]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-155.png" width="1920" /></p>
+<pre><code>## 
+## [[156]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-156.png" width="1920" /></p>
+<pre><code>## 
+## [[157]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-157.png" width="1920" /></p>
+<pre><code>## 
+## [[158]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-158.png" width="1920" /></p>
+<pre><code>## 
+## [[159]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-159.png" width="1920" /></p>
+<pre><code>## 
+## [[160]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-160.png" width="1920" /></p>
+<pre><code>## 
+## [[161]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-161.png" width="1920" /></p>
+<pre><code>## 
+## [[162]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-162.png" width="1920" /></p>
+<pre><code>## 
+## [[163]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-163.png" width="1920" /></p>
+<pre><code>## 
+## [[164]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-164.png" width="1920" /></p>
+<pre><code>## 
+## [[165]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-165.png" width="1920" /></p>
+<pre><code>## 
+## [[166]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-166.png" width="1920" /></p>
+<pre><code>## 
+## [[167]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-167.png" width="1920" /></p>
+<pre><code>## 
+## [[168]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-168.png" width="1920" /></p>
+<pre><code>## 
+## [[169]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-169.png" width="1920" /></p>
+<pre><code>## 
+## [[170]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-170.png" width="1920" /></p>
+<pre><code>## 
+## [[171]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-171.png" width="1920" /></p>
+<pre><code>## 
+## [[172]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-172.png" width="1920" /></p>
+<pre><code>## 
+## [[173]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-173.png" width="1920" /></p>
+<pre><code>## 
+## [[174]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-174.png" width="1920" /></p>
+<pre><code>## 
+## [[175]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-175.png" width="1920" /></p>
+<pre><code>## 
+## [[176]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-176.png" width="1920" /></p>
+<pre><code>## 
+## [[177]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-177.png" width="1920" /></p>
+<pre><code>## 
+## [[178]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-178.png" width="1920" /></p>
+<pre><code>## 
+## [[179]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-179.png" width="1920" /></p>
+<pre><code>## 
+## [[180]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-180.png" width="1920" /></p>
+<pre><code>## 
+## [[181]]</code></pre>
+<p><img src="Rutting-Summary_files/figure-html/plot%20Rutting10m%20Big%20individual%20rutting%20plots%20RWP%20on%20A3-181.png" width="1920" /></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
