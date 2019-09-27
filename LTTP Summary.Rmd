@@ -420,9 +420,9 @@ ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Delam%`, col = as.facto
 print(ggobj2)
 ```
 
-## ALoss%
+## MechDamage%
 
-```{r plot Rating 50m on A3, fig.height=40, fig.width=12, echo=TRUE, eval = TRUE}
+```{r plot MechDamage% 50m on A3, fig.height=40, fig.width=12, echo=TRUE, eval = TRUE}
 ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`MechDamage%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m MechDamage% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 ```
@@ -567,9 +567,9 @@ ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-W`, col = as.facto
 print(ggobj2)
 ```
 
-## ALoss%
+## AlWT-S
 
-```{r plot Rating 50m on A3, fig.height=40, fig.width=12, echo=TRUE, eval = TRUE}
+```{r plot AlWT-S 50m on A3, fig.height=40, fig.width=12, echo=TRUE, eval = TRUE}
 ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle("Rating50m AlWT-S Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 ```
