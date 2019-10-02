@@ -1,18 +1,17 @@
 ---
-title: "LTPP -Tables"
-author: "David Alabaster"
-date: "21 March 2018"
+title: "LTPP Data Tables"
 output:
   html_document:
     toc: true
     toc_float: true
 ---
-This is an R Markdown document. It contains the basic data from the LTPP database.  
+This page contains a national summary of the data tables in the LTPP database that don't track distress but identify a property of the sites.  
 
-# Operating this Report!
-This report needs to correctly reference the following databases that are currently held in 
+The code to generate this is displayed first - then the table.  
+  
+Use the menu to left to go straight to the table required.    
 
-"`C:\DDATA\LTPP\2019`"
+The FWD data table only displays the first few lines as it is very large.   
 
 # Data Importing
 The code below imports the data that are tables in the databases - a bit ugly thanks to large field names

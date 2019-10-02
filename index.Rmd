@@ -6,103 +6,49 @@ output:
     toc_float: true
 ---
 
-Hello, this a Summary of the NZ LTPP programmes data!
+# Introduction
+
+Hello, this a Summary of the NZ LTPP programmes data to 2019!  
+  
+The aim of the site is to display the data from the NZ LTPP programme grapically and show case the freeware statistical software used to do this.
+  
+You will see the code used to extract the data from the LTPP database, tidy the data, graphically display the data and then you will see the graphics.  
+  
+The site is delibrately doing this as part of "Data Science" approach to make analysis accessible and reproducible.
+    
+All the code is available for download at Github and a copy of the database is available from the NZTA. 
+  
+The site contains only 8 pages but that contain a lot of detail as the short decriptions below will explain.
+   
+(@) The Home page - ie this page, contains the pupose and the structure of the site  
+(@) The About page - explains how to make a website like this  
+(@) The LTPP Summary page - contains a giant graphic showing all the data for each of the big 3 (Rutting, Roughness, Texture)  
+(@) The Rutting page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site
+(@) The Roughness page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site
+(@) The Texture page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site
+(@) The Ratings page - contains a giant graphic showing all the data for all sites for each visual rating type   
+(@) The Table page - provides all the table type data - its ugly as the the field names in the database are long   
+
+# Site Structure
+
+The tabs at the top of the page will take you to other pages containing the data.  
+
+# Menu  
+  
+The menu to the left will jump to titles locations on the page.  
+
+## 2nd Level Menus
+  
+There are often sub-menus hidden under a main menu that will take you to 2nd level titles on the page.  Click on Menu on the left to see this.
+
+
+# Software used
 
 It is a beta site hosted on Github and written with R and R Studio.  
-
-
-# Notes on Website creation
-
-Assuming R and RStudio are already installed and R Markdown is being used for files.
-
-Steps
-
-(@) Create Github account
-(@) Create Github Repo (folder) and make it public
-(@) Go to settings - Git Hub pages - Source - and make it "Master branch"
-(@) Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)
-(@) Create a .nojekyll file (to stop Github from trying to make a wesite)
-(@) Create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)
-(@) Download Git to computer
-(@) In Git CMD (depreciated)
-(@)  git config --global user.email "you@example.com"
-(@)  git config --global user.name "Your Name"
-(@) In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)"
-(@) View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys
-(@) Back in Rstudio - open a new project with version control 
-(@) Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC
-(@) Use Rstudio to Build the website
-(@) I havent had much joy pushing the website to Github using Rstudio so 
-(@) After "Build" website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then
-git add -A
-git commit -m "new website"
-git push
-
-And your new website should be up and running at   
-https://Github_user_name.github.io/Github_repo_name/  
-ie for me   
-https://dala009.github.io/LTPPNZ/  
-
-
-Working in RStudio
-- Pull first from Git tab in RStudio
-- Make and save changes to RMD files then
-- tick and commit in RStudio Git tab
-- Give commit a name and push from commit box in Rstudio
-
-
-And remember you need that redirect index.html in github repo   
-and at .nojekyll file made (with nothing actually in it)  
-
-
-## index.html Redirect file 
-
-You will need a redirect file called index.html that gets loaded directly to the Githun master repo.  This just makes the link to the _site folder the RStudio creates you website in.  
-
-You need to open the RMD file to see the html code as I cannot find a way of displaying it - HTML just takes over.
-
-
-<html>  
   
-<head>  
+R and Rstudio are very well documented online.  
   
-<title>Redirecting to LTPP Data site</title>  
-  
-<meta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site">  
-  
-<meta name="keywords" content="automatic redirection">  
-  
-</head>  
+A detailed discription on how to create a site like this is on the "About" page.  
 
-
-
-## index.Rmd
-
-You will also need a file called index.RMD file to act as a home page (It can contain anything)  when you build the website in Rstudio - if you use the _Site.yml file format on the next page.  Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page.  I am not sure if this could just be called "home" and the yml file adjust - will give it a go one day.    
-
-
-##_Site.yml file
-
-You will need create a text file in R Studio called "_Site.yml" in the R Project that looks a bit like this below.  It is the structure of your site. 
-That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page  
-
-name: "LTPP-website"  
-navbar:  
-  title: "LTPP Website"  
-  left:  
-    - text: "Home"  
-      href: index.html  
-    - text: "About"  
-      href: about.html  
-    - text: "LTTP Summary"  
-      href: LTTP-Summary.html  
-    - text: "Rutting Summary"  
-      href: Rutting-Summary.html  
-    - text: "Roughness Summary"  
-      href: RoughnessSummary.html  
-    - text: "Texture Summary"  
-      href: TextureSummary.html  
-    - text: "Single Site Summary"  
-      href: SingleSummary.html        
 
 

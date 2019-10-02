@@ -1,22 +1,20 @@
 ---
-title: "LTPP Summary"
-author: "David Alabaster"
-date: "21 March 2018"
+title: "LTPP Summary Report"
 output:
   html_document:
     toc: true
     toc_float: true
 ---
-This is an R Markdown document. It contains the basic data from the LTPP database.  
+This page contains a national summary of the rutting, rougness and texture data from the LTPP database.  
 
-# Operating this Report!
-This report needs to correctly reference the following databases that are currently held in 
-
-"`C:\DDATA\LTPP\2019`"
+The code to generate this is displayed first - then the graphics.  
+  
+Use the menu to left to go straight to the Rutting, Roughness and Texture plots.  
+  
 
 # Data Importing
-The code below imports the rutting, roughness and texture data from the 10m databases
-
+The code below imports the rutting, roughness and texture data from the 10m databases  
+  
 ```{r import data, fig.height=10, fig.width=12, echo=TRUE}
 
 #Sys.Date()

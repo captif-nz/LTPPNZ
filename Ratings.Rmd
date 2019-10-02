@@ -1,19 +1,16 @@
 ---
-title: "LTPP - Ratings"
-author: "David Alabaster"
-date: "21 March 2018"
+title: "LTPP Ratings Report"
 output:
   html_document:
     toc: true
     toc_float: true
 ---
-This is an R Markdown document. It contains the basic data from the LTPP database.  
+This page contains a national summary of the Visual Ratings from the LTPP database.  
 
-# Operating this Report!
-This report needs to correctly reference the following databases that are currently held in 
-
-"`C:\DDATA\LTPP\2019`"
-
+The code to generate this is displayed first - then the graphics.  
+  
+Use the menu to left to go straight to the Rating type for all sites.    
+  
 # Data Importing
 The code below imports the data from the Ratings in the database
 
