@@ -24,6 +24,9 @@ Steps
 (@) Create a .nojekyll file (to stop Github from trying to make a wesite)
 (@) Create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)
 (@) Download Git to computer
+(@) In Git CMD (depreciated)
+(@)  git config --global user.email "you@example.com"
+(@)  git config --global user.name "Your Name"
 (@) In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)"
 (@) View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys
 (@) Back in Rstudio - open a new project with version control 
@@ -41,10 +44,15 @@ ie for me
 https://dala009.github.io/LTPPNZ/  
 
 
+Working in RStudio
+- Pull first from Git tab in RStudio
+- Make and save changes to RMD files then
+- tick and commit in RStudio Git tab
+- Give commit a name and push from commit box in Rstudio
+
+
 And remember you need that redirect index.html in github repo   
 and at .nojekyll file made (with nothing actually in it)  
-
-
 
 
 ## index.html Redirect file 
