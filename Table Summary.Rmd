@@ -1,0 +1,186 @@
+---
+title: "LTPP -Tables"
+author: "David Alabaster"
+date: "21 March 2018"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+This is an R Markdown document. It contains the basic data from the LTPP database.  
+
+# Operating this Report!
+This report needs to correctly reference the following databases that are currently held in 
+
+"`C:\DDATA\LTPP\2019`"
+
+# Data Importing
+The code below imports the data that are tables in the databases - a bit ugly thanks to large field names
+
+```{r import data, fig.height=10, fig.width=12, echo=TRUE}
+
+#Sys.Date()
+Sys.time()
+
+#load database connection library
+library(RODBC)
+ 
+#connect to database 1 - CAPTIF PR3 0404.mdb
+db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb"
+
+#con2 <- odbcConnectAccess2007(db)
+con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
+
+# find all tables
+library(knitr)
+LTPPtables <-(sqlTables(con2, tableType = "TABLE")$TABLE_NAME)
+kable(LTPPtables, format = "html", caption = "Tables in LTPP Database")
+```
+
+## Importing tables
+
+```{r import table data, fig.height=10, fig.width=12, echo=TRUE}
+
+#Check column names of a table 
+#sqlColumns(con2, "Profilometer Profiles")$COLUMN_NAME
+
+
+CalibrationSections <- sqlFetch(con2, "CalibrationSections")
+CAL_SEC_PAVE_DATA <- sqlFetch(con2, "CAL_SEC_PAVE_DATA")
+CAL_SEC_PAVE_WIDTH <- sqlFetch(con2, "CAL_SEC_PAVE_WIDTH")
+CAL_SEC_RAINFALL_DATA <- sqlFetch(con2, "CAL_SEC_RAINFALL_DATA")
+CAL_SEC_SNP_DATA <- sqlFetch(con2, "CAL_SEC_SNP_DATA")
+CAL_SEC_SURF_DATA <- sqlFetch(con2, "CAL_SEC_SURF_DATA")
+CAL_SEC_TRAFFIC_DATA <- sqlFetch(con2, "CAL_SEC_TRAFFIC_DATA")
+NIWA2017 <- sqlFetch(con2, "NIWA weather monthly rainfall as at July 2017")
+NIWAlink <- sqlFetch(con2, "NIWA weather sites & calibration sections link")
+FWDHeader <- sqlFetch(con2, "OTHER-FallingWeightDeflectometerHeader")
+FWDData <- sqlFetch(con2, "OTHER-FallingWeightDeflectometer")
+AdditionalInfoPaveLayer <- sqlFetch(con2, "tAdditionalInfoPaveLayer")
+TestPitSummary <- sqlFetch(con2, "Test Pit Summary")
+AdditionalInfoPenetrationTest <- sqlFetch(con2, "tAdditionalInfoPenetrationTest")
+
+```
+
+# Data Tables 
+The code below displays data tables
+
+## CAL_SEC_PAVE_DATA
+
+```{r CAL_SEC_PAVE_DATA, fig.height=10, fig.width=12, echo=TRUE}
+
+kable(CAL_SEC_PAVE_DATA, format = "html", caption = "CAL_SEC_PAVE_DATA")
+```
+
+## CAL_SEC_PAVE_WIDTH
+
+```{r width data, fig.height=10, fig.width=12, echo=TRUE}
+
+
+kable(CAL_SEC_PAVE_WIDTH, format = "html", caption = "CAL_SEC_PAVE_WIDTH")
+```
+
+##CAL_SEC_RAINFALL_DATA
+
+```{r rain data, fig.height=10, fig.width=12, echo=TRUE}
+
+kable(CAL_SEC_RAINFALL_DATA, format = "html", caption = "CAL_SEC_RAINFALL_DATA")
+```
+
+## SNP Data
+```{r SNP data, fig.height=10, fig.width=12, echo=TRUE}
+
+kable(CAL_SEC_SNP_DATA, format = "html", caption = "CAL_SEC_SNP_DATA")
+```
+## CAL_SEC_SURF_DATA
+```{r iCAL_SEC_SURF_DATA data, fig.height=10, fig.width=12, echo=TRUE}
+kable(CAL_SEC_SURF_DATA, format = "html", caption = "CAL_SEC_SURF_DATA")
+```
+
+## CAL_SEC_TRAFFIC_DATA
+```{r CAL_SEC_TRAFFIC_DATA data, fig.height=10, fig.width=12, echo=TRUE}
+
+kable(CAL_SEC_TRAFFIC_DATA, format = "html", caption = "CAL_SEC_TRAFFIC_DATA")
+```
+
+## NIWA2017 Rain
+```{r NIWA2017, fig.height=10, fig.width=12, echo=TRUE}
+kable(NIWA2017, format = "html", caption = "NIWA2017 Rain")
+```
+
+## NIWAlink
+```{r NIWAlink data, fig.height=10, fig.width=12, echo=TRUE}
+kable(NIWAlink, format = "html", caption = "NIWA link data")
+```
+
+## FWD Headers
+
+```{r FWDHeader data, fig.height=10, fig.width=12, echo=TRUE}
+
+kable(FWDHeader, format = "html", caption = "FWDHeader")
+```
+
+## Head of FWD Data
+
+```{r FWDData data, fig.height=10, fig.width=12, echo=TRUE}
+kable(head(FWDData), format = "html", caption = "FWD Data")
+```
+
+##Summary of layer Info
+```{r layer Info data, fig.height=10, fig.width=12, echo=TRUE}
+#View(AdditionalInfoPaveLayer)
+kable(AdditionalInfoPaveLayer, format = "html", caption = "Additional Info on Pavement Layers")
+```
+
+
+## Summary of a testpits
+```{r testpits Info data, fig.height=10, fig.width=12, echo=TRUE}
+#View(TestPitSummary)
+kable(TestPitSummary, format = "html", caption = "Test Pit Summary")
+```
+
+## Summary of Scalas
+```{r Scalas Info data, fig.height=10, fig.width=12, echo=TRUE}
+#View(AdditionalInfoPenetrationTest)
+kable(AdditionalInfoPenetrationTest, format = "html", caption = "Scalas")
+```
+
+
+## Summary of AdditionalInfoPenetrationTestDetail
+```{r ltestpits Info data, fig.height=10, fig.width=12, echo=TRUE}
+AdditionalInfoPenetrationTestDetail <- sqlFetch(con2, "tAdditionalInfoPenetrationTestDetail")
+#View(AdditionalInfoPenetrationTestDetail)
+kable(AdditionalInfoPenetrationTestDetail, format = "html", caption = "AdditionalInfoPenetrationTestDetail")
+```
+
+
+##Photo listing - not operational
+```{r photos data, fig.height=10, fig.width=12, echo=TRUE}
+#TmpImportTmp <- sqlFetch(con2, "TmpImportTmp") #Photo listing
+#View(TmpImportTmp)
+```
+
+#Councils with LTPP sites
+
+```{r councils data, fig.height=10, fig.width=12, echo=TRUE}
+
+library(tidyverse)
+Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
+kable(Councils, format = "html", caption = "Councils with LTPP Sites")
+```
+
+#Data tidy
+
+```{r Data tidy Info data, fig.height=10, fig.width=12, echo=TRUE}
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+
+CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
+
+View(CalibrationSections)
+#print(CalibrationSections)
+
+```

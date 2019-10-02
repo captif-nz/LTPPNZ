@@ -8,11 +8,13 @@ navbar:
       href: about.html
     - text: "LTTP Summary"
       href: LTTP-Summary.html
-    - text: "Rutting Summary"
+    - text: "Rutting"
       href: Rutting-Summary.html
-    - text: "Roughness Summary"
+    - text: "Roughness"
       href: RoughnessSummary.html
-    - text: "Texture Summary"
+    - text: "Texture"
       href: TextureSummary.html
-    - text: "Single Site Summary"
-      href: SingleSummary.html      
+    - text: "Ratings"
+      href: Ratings.html 
+    - text: "Table"
+      href: Table-Summary.html  
