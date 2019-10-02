@@ -3,7 +3,7 @@ navbar:
   title: "LTPP Website"
   left:
     - text: "Home"
-      href: index1.html
+      href: index.html
     - text: "About"
       href: about.html
     - text: "LTTP Summary"
