@@ -10,11 +10,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="David Alabaster" />
 
-<meta name="date" content="2018-03-21" />
 
-<title>Texture Summary</title>
+<title>LTPP Texture Detail Report</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -344,7 +342,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index1.html">Home</a>
+  <a href="index.html">Home</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -353,16 +351,19 @@ div.tocify {
   <a href="LTTP-Summary.html">LTTP Summary</a>
 </li>
 <li>
-  <a href="Rutting-Summary.html">Rutting Summary</a>
+  <a href="Rutting-Summary.html">Rutting</a>
 </li>
 <li>
-  <a href="RoughnessSummary.html">Roughness Summary</a>
+  <a href="RoughnessSummary.html">Roughness</a>
 </li>
 <li>
-  <a href="TextureSummary.html">Texture Summary</a>
+  <a href="TextureSummary.html">Texture</a>
 </li>
 <li>
-  <a href="SingleSummary.html">Single Site Summary</a>
+  <a href="Ratings.html">Ratings</a>
+</li>
+<li>
+  <a href="Table-Summary.html">Table</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -376,25 +377,20 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Texture Summary</h1>
-<h4 class="author">David Alabaster</h4>
-<h4 class="date">21 March 2018</h4>
+<h1 class="title toc-ignore">LTPP Texture Detail Report</h1>
 
 </div>
 
 
-<p>This is an R Markdown document. It contains the basic data from the LTPP database.</p>
-<div id="operating-this-report" class="section level1">
-<h1>Operating this Report!</h1>
-<p>This report needs to correctly reference the following databases that are currently held in</p>
-<p>“<code>C:\DDATA\LTPP\2019</code>”</p>
-</div>
+<p>This page contains a national summary of the texture from the LTPP database.</p>
+<p>The code to generate this is displayed first - then the graphics.</p>
+<p>Use the menu to left to go straight to the texture for all sites, State Highway sites, Local Authority sites or Individual sites.</p>
 <div id="data-importing" class="section level1">
 <h1>Data Importing</h1>
 <p>The code below imports the data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-09-27 17:03:59 NZST&quot;</code></pre>
+<pre><code>## [1] &quot;2019-10-03 11:50:12 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
  

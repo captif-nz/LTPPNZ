@@ -342,7 +342,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index1.html">Home</a>
+  <a href="index.html">Home</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -351,16 +351,19 @@ div.tocify {
   <a href="LTTP-Summary.html">LTTP Summary</a>
 </li>
 <li>
-  <a href="Rutting-Summary.html">Rutting Summary</a>
+  <a href="Rutting-Summary.html">Rutting</a>
 </li>
 <li>
-  <a href="RoughnessSummary.html">Roughness Summary</a>
+  <a href="RoughnessSummary.html">Roughness</a>
 </li>
 <li>
-  <a href="TextureSummary.html">Texture Summary</a>
+  <a href="TextureSummary.html">Texture</a>
 </li>
 <li>
-  <a href="SingleSummary.html">Single Site Summary</a>
+  <a href="Ratings.html">Ratings</a>
+</li>
+<li>
+  <a href="Table-Summary.html">Table</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -390,27 +393,22 @@ div.tocify {
 <li>Create Github Repo (folder) and make it public</li>
 <li>Go to settings - Git Hub pages - Source - and make it “Master branch”</li>
 <li>Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)</li>
-<li>Create a .nojekyll file (to stop Github from trying to make a wesite)</li>
-<li>Create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)</li>
+<li>create a .nojekyll file (to stop Github from trying to make a wesite)</li>
+<li>create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)</li>
 <li>Download Git to computer</li>
 <li>In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)&quot;</li>
 <li>View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys</li>
 <li>Back in Rstudio - open a new project with version control</li>
 <li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
-<li>Use Rstudio to Build the website</li>
+<li>USer Rstudio to Build the website</li>
 <li>I havent had much joy pushing the website to Github using Rstudio so</li>
 <li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then git add -A git commit -m “new website” git push</li>
 </ol>
-<p>And your new website should be up and running at<br />
-<a href="https://Github_user_name.github.io/Github_repo_name/" class="uri">https://Github_user_name.github.io/Github_repo_name/</a><br />
-ie for me<br />
-<a href="https://dala009.github.io/LTPPNZ/" class="uri">https://dala009.github.io/LTPPNZ/</a></p>
-<p>And remember you need that redirect index.html in github repo<br />
-and at .nojekyll file made (with nothing actually in it)</p>
+<p>And your new website should be up and running at <a href="https://Github_user_name.github.io/Github_repo_name/" class="uri">https://Github_user_name.github.io/Github_repo_name/</a> ie for me <a href="https://dala009.github.io/LTPPNZ/" class="uri">https://dala009.github.io/LTPPNZ/</a></p>
+<p>And remember you need that redirect index.html in github repo and at .nojekyll file made (with nothing actually in it)</p>
 <div id="index.html-redirect-file" class="section level2">
 <h2>index.html Redirect file</h2>
 <p>You will need a redirect file called index.html that gets loaded directly to the Githun master repo. This just makes the link to the _site folder the RStudio creates you website in.</p>
-<p>You need to open the RMD file to see the html code as I cannot find a way of displaying it - HTML just takes over.</p>
 <html>
 <head>
 <title>
@@ -427,24 +425,7 @@ Redirecting to LTPP Data site
 <div id="site.yml-file" class="section level2">
 <h2>_Site.yml file</h2>
 <p>You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page</p>
-<p>name: “LTPP-website”<br />
-navbar:<br />
-title: “LTPP Website”<br />
-left:<br />
-- text: “Home”<br />
-href: index.html<br />
-- text: “About”<br />
-href: about.html<br />
-- text: “LTTP Summary”<br />
-href: LTTP-Summary.html<br />
-- text: “Rutting Summary”<br />
-href: Rutting-Summary.html<br />
-- text: “Roughness Summary”<br />
-href: RoughnessSummary.html<br />
-- text: “Texture Summary”<br />
-href: TextureSummary.html<br />
-- text: “Single Site Summary”<br />
-href: SingleSummary.html</p>
+<p>name: “LTPP-website” navbar: title: “LTPP Website” left: - text: “Home” href: index.html - text: “About” href: about.html - text: “LTTP Summary” href: LTTP-Summary.html - text: “Rutting Summary” href: Rutting-Summary.html - text: “Roughness Summary” href: RoughnessSummary.html - text: “Texture Summary” href: TextureSummary.html - text: “Single Site Summary” href: SingleSummary.html</p>
 </div>
 </div>
 

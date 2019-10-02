@@ -342,7 +342,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index1.html">Home</a>
+  <a href="index.html">Home</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -351,16 +351,19 @@ div.tocify {
   <a href="LTTP-Summary.html">LTTP Summary</a>
 </li>
 <li>
-  <a href="Rutting-Summary.html">Rutting Summary</a>
+  <a href="Rutting-Summary.html">Rutting</a>
 </li>
 <li>
-  <a href="RoughnessSummary.html">Roughness Summary</a>
+  <a href="RoughnessSummary.html">Roughness</a>
 </li>
 <li>
-  <a href="TextureSummary.html">Texture Summary</a>
+  <a href="TextureSummary.html">Texture</a>
 </li>
 <li>
-  <a href="SingleSummary.html">Single Site Summary</a>
+  <a href="Ratings.html">Ratings</a>
+</li>
+<li>
+  <a href="Table-Summary.html">Table</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -379,77 +382,46 @@ div.tocify {
 </div>
 
 
-<p>Hello, this a Summary of the NZ LTPP programmes data!</p>
-<p>It is a beta site hosted on Github and written with R and R Studio.</p>
-<div id="notes-on-website-creation" class="section level1">
-<h1>Notes on Website creation</h1>
-<p>Assuming R and RStudio are already installed and R Markdown is being used for files.</p>
-<p>Steps</p>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Hello, this a Summary of the NZ LTPP programmes data to 2019!</p>
+<p>The aim of the site is to display the data from the NZ LTPP programme grapically and show case the freeware statistical software used to do this.</p>
+<p>You will see the code used to extract the data from the LTPP database, tidy the data, graphically display the data and then you will see the graphics.</p>
+<p>The site is delibrately doing this as part of “Data Science” approach to make analysis accessible and reproducible.</p>
+<p>All the code is available for download at Github and a copy of the database is available from the NZTA.</p>
+<p>The site contains only 8 pages but that contain a lot of detail as the short decriptions below will explain.</p>
 <ol class="example" style="list-style-type: decimal">
-<li>Create Github account</li>
-<li>Create Github Repo (folder) and make it public</li>
-<li>Go to settings - Git Hub pages - Source - and make it “Master branch”</li>
-<li>Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)</li>
-<li>create a .nojekyll file (to stop Github from trying to make a wesite)</li>
-<li>create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)</li>
-<li>Download Git to computer</li>
-<li>In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)&quot;</li>
-<li>View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys</li>
-<li>Back in Rstudio - open a new project with version control</li>
-<li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
-<li>USer Rstudio to Build the website</li>
-<li>I havent had much joy pushing the website to Github using Rstudio so</li>
-<li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) then cd.. and cd into right directory then use Git to push files to GitHub</li> 
-  <pre><code> 
-  
-  git add -A 
-  git commit -m “new website” 
-  git push
-  
-  </code> 
-  
+<li>The Home page - ie this page, contains the pupose and the structure of the site<br />
+</li>
+<li>The About page - explains how to make a website like this<br />
+</li>
+<li>The LTPP Summary page - contains a giant graphic showing all the data for each of the big 3 (Rutting, Roughness, Texture)<br />
+</li>
+<li>The Rutting page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site</li>
+<li>The Roughness page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site</li>
+<li>The Texture page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site</li>
+<li>The Ratings page - contains a giant graphic showing all the data for all sites for each visual rating type<br />
+</li>
+<li>The Table page - provides all the table type data - its ugly as the the field names in the database are long</li>
 </ol>
-<p>And your new website should be up and running at <a href="https://Github_user_name.github.io/Github_repo_name/" class="uri">https://Github_user_name.github.io/Github_repo_name/</a> ie for me <a href="https://dala009.github.io/LTPPNZ/" class="uri">https://dala009.github.io/LTPPNZ/</a></p>
-<p>And remember you need that redirect index.html in github repo and at .nojekyll file made (with nothing actually in it)</p>
-<div id="index.html-redirect-file" class="section level2">
-<h2>index.html Redirect file</h2>
-<p>You will need a redirect file called index.html that gets loaded directly to the Githun master repo. This just makes the link to the _site folder the RStudio creates you website in.</p>
-
-<pre><code>  
-&lthtml>
-&lthead>
-&lttitle>
-Redirecting to LTPP Data site
-&lt/title>
-&ltmeta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site"></p>
-&ltmeta name="keywords" content="automatic redirection"></p>
-&lthead>
-</code>  
-
 </div>
-<div id="index.rmd" class="section level2">
-<h2>index.Rmd</h2>
-<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. I am not sure if this could just be called “home” and the yml file adjust - will give it a go one day. Actually have tried it now - you need to call it index otherwise it breaks</p>
+<div id="site-structure" class="section level1">
+<h1>Site Structure</h1>
+<p>The tabs at the top of the page will take you to other pages containing the data.</p>
 </div>
-<div id="site.yml-file" class="section level2">
-<h2>_Site.yml file</h2>
-<p>You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the website as its home page</p>
-
-  <pre><code>
-  name: “LTPP-website” 
-  navbar:
-  title: “LTPP Website” 
-  left: 
-  - text: “Home” href: index.html 
-  - text: “About” href: about.html 
-  - text: “LTTP Summary” href: LTTP-Summary.html 
-  - text: “Rutting Summary” href: Rutting-Summary.html 
-  - text: “Roughness Summary” href: RoughnessSummary.html 
-  - text: “Texture Summary” href: TextureSummary.html 
-  - text: “Single Site Summary” href: SingleSummary.html
-  </code>
-  </p>
+<div id="menu" class="section level1">
+<h1>Menu</h1>
+<p>The menu to the left will jump to titles locations on the page.</p>
+<div id="nd-level-menus" class="section level2">
+<h2>2nd Level Menus</h2>
+<p>There are often sub-menus hidden under a main menu that will take you to 2nd level titles on the page. Click on Menu on the left to see this.</p>
 </div>
+</div>
+<div id="software-used" class="section level1">
+<h1>Software used</h1>
+<p>It is a beta site hosted on Github and written with R and R Studio.</p>
+<p>R and Rstudio are very well documented online.</p>
+<p>A detailed discription on how to create a site like this is on the “About” page.</p>
 </div>
 
 
