@@ -65,18 +65,18 @@ You will need a redirect file called index.html that gets loaded directly to the
 You need to open the RMD file to see the html code as I cannot find a way of displaying it - HTML just takes over.
 
 
-&lthtml>  
-  
-&lthead>  
-  
-&lttitle>Redirecting to LTPP Data site
-&lt/title>  
-  
-&ltmeta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site">  
-  
-&ltmeta name="keywords" content="automatic redirection">  
-  
-&lt/head>  
+&lthtml>    
+    
+&lthead>    
+    
+&lttitle>Redirecting to LTPP Data site  
+&lt/title>    
+    
+&ltmeta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site">    
+    
+&ltmeta name="keywords" content="automatic redirection">    
+    
+&lt/head>    
 
 
 
