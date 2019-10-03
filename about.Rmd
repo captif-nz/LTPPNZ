@@ -12,7 +12,7 @@ These pages are in R Markdown document. Markdown is a simple formatting syntax f
 
 When in RStudio you click the **Knit** button and a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
 
-For more information - contact David ALabaster - dala009@aucklanduni.ac.nz
+For more information - contact David Alabaster - dala009@aucklanduni.ac.nz
 
 # Notes on Website creation
 
@@ -37,38 +37,44 @@ Steps
 (@) Use Rstudio to Build the website
 (@) I havent had much joy pushing the website to Github using Rstudio so 
 (@) After "Build" website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then
+
 <pre><code>
-
-git add -A
-git commit -m "new website"
-git push
-
-</code><pre>
+git add -A  
+git commit -m "new website"  
+git push  
+</code></pre>
 
 And your new website should be up and running at   
 https://Github_user_name.github.io/Github_repo_name/  
 ie for me   
 https://dala009.github.io/LTPPNZ/  
-
-
-Working in RStudio
-- Pull first from Git tab in RStudio
-- Make and save changes to RMD files then
-- tick and commit in RStudio Git tab
-- Give commit a name and push from commit box in Rstudio
-
-
+  
 And remember you need that redirect index.html in github repo   
-and at .nojekyll file made (with nothing actually in it)  
-
-
+and a .nojekyll file made (with nothing actually in it)    
+  
+  
+## Updating Website in RStudio  
+- Pull first from the Git tab in RStudio  
+- Make and save changes to RMD files then  
+- Tick and commit in RStudio Git tab  
+- Give commit a name and push from the commit box in Rstudio
+- Test the new look by "knitting"" the new page (except the index)
+- Build a new website if figures or pictures are on a updated page
+- If you dont need to build you can commit and push the html created
+- If pushing a new website, use step 17 above  
+  
+Note.  
+- "Kniting" HTML isn't the same as "Building" a website.    
+- Knitting includes pictures in the HTML, making it slow to load  
+- Building strips out the pictures and links to them - making it fast  
+ 
+    
 ## index.html Redirect file 
 
 You will need a redirect file called index.html that gets loaded directly to the Githun master repo.  This just makes the link to the _site folder the RStudio creates you website in.  
 
 
 <pre><code>
-
 &lthtml>    
     
 &lthead>    
@@ -81,8 +87,7 @@ You will need a redirect file called index.html that gets loaded directly to the
 &ltmeta name="keywords" content="automatic redirection">    
     
 &lt/head>    
-
-</code><pre>
+</code></pre>
 
 
 
@@ -96,7 +101,6 @@ You will also need a file called index.RMD file to act as a home page (It can co
 You will need create a text file in R Studio called "_Site.yml" in the R Project that looks a bit like this below.  It is the structure of your site. 
 That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page  
 <pre><code>
-
 name: "LTPP-website"  
 navbar:  
   title: "LTPP Website"  
@@ -117,21 +121,5 @@ navbar:
       href: Ratings.html
     - text: "Table Summary"  
       href: Table-Summary.html  
+</code></pre>
 
-</code><pre>
-
-# And this below is just some practice at automating menus
-
-```{r}
-
-rmarkdowntitle <- "# Test menu title"
-
-rmarkdowntitle
-
-```
-
-`r rmarkdowntitle`
-`r 1+1`
-`r Y <- "2nd test"`
-`r Y `
-test

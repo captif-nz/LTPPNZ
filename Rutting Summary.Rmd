@@ -29,9 +29,6 @@ Rutting10m <- sqlFetch(con2, "10mRutting")
 
 CalibrationSections <- sqlFetch(con2, "CalibrationSections")
 
-library(tidyverse)
-Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
-
 # Create SH/LA column
 library(dplyr)
 library(stringr)
@@ -48,11 +45,11 @@ Rutting10m <- Rutting10m %>% left_join(CalibrationSections, by = c("SECTION_ID"=
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("All Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + ylab("LWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("All Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + ylab("RWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 ```
 
@@ -66,11 +63,11 @@ Rutting10mSH <- Rutting10m %>% filter(OwnerType == "SH")
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + ylab("LWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Rutting10mSH, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5)  + ylab("RWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 ```
 
@@ -84,11 +81,11 @@ Rutting10mSHCAL <- Rutting10mSH %>% filter(stringr::str_detect(SECTION_ID, "CAL"
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10mSHCAL, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH CAL Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH CAL Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + ylab("LWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Rutting10mSHCAL, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH CAL Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH CAL Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5)  + ylab("RWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ```
@@ -103,11 +100,11 @@ Rutting10mSHCS <- Rutting10mSH %>% filter(stringr::str_detect(SECTION_ID, "CS"))
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10mSHCS, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH CS Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH CS Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + ylab("LWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Rutting10mSHCS, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH CS Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH CS Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5)  + ylab("RWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ```
@@ -122,11 +119,11 @@ Rutting10mLA <- Rutting10m %>% filter(OwnerType == "LA")
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("LA Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("LA Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + ylab("LWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Rutting10mLA, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("LA Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("LA Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5)  + ylab("RWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
 print(ggobj2)
 
 ```
@@ -137,7 +134,7 @@ print(ggobj2)
 
 library(dplyr)
 ggobj2LWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Rut", subtitle = .$SECTION_ID))  
+         aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Rut", subtitle = .$SECTION_ID)) + ylab("LWP Rutting (mm)") + xlab("Financial Year")  
 
 print(ggobj2LWPrut$plots)
 ```
@@ -147,7 +144,7 @@ print(ggobj2LWPrut$plots)
 ```{r plot Rutting10m Big individual rutting plots RWP on A3, fig.height=12, fig.width=20, echo=TRUE}
 
 ggobj2RWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Rut", subtitle = .$SECTION_ID))
+         aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Rut", subtitle = .$SECTION_ID)) + ylab("RWP Rutting (mm)") + xlab("Financial Year") 
 
 print(ggobj2RWPrut$plots)
 

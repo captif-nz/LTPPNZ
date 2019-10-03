@@ -54,15 +54,15 @@ Roughness10mLN <- Roughness10m %>% filter(LaneIRI < 25)
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Roughness10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("All Roughness10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("LWP Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Roughness10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("All Roughness10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("RWP Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("All Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("Lane Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 ```
 
@@ -76,7 +76,7 @@ Roughness10mLNSH <- Roughness10mLN %>% filter(OwnerType == "SH")
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("Lane Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 ```
 
@@ -90,7 +90,7 @@ Roughness10mLNSHCAL <- Roughness10mLNSH %>% filter(stringr::str_detect(SECTION_I
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Roughness10mLNSHCAL, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH CAL Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH CAL Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("Lane Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 ```
 
@@ -104,7 +104,7 @@ Roughness10mLNSHCS <- Roughness10mLNSH %>% filter(stringr::str_detect(SECTION_ID
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Roughness10mLNSHCS, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("SH CS Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("SH CS Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("Lane Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 ```
 
@@ -118,7 +118,7 @@ Roughness10mLNSH <- Roughness10mLN %>% filter(OwnerType == "LA")
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Roughness10mLNSH, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("LA Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D")
+  geom_boxplot() + ggtitle("LA Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol =5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = "I/D") + ylab("Lane Roughness (IRI)") + xlab("Financial Year") 
 print(ggobj2)
 ```
 
@@ -128,7 +128,7 @@ print(ggobj2)
 
 library(dplyr)
 ggobj2Roughness10m <- Roughness10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("Roughness - Lane IRI", subtitle = .$SECTION_ID))  
+         aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("Roughness - Lane IRI", subtitle = .$SECTION_ID)) + ylab("Lane Roughness (IRI)") + xlab("Financial Year") 
 
 print(ggobj2Roughness10m$plots)
 ```

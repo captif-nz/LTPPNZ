@@ -20,62 +20,25 @@ The code below imports the rutting, roughness and texture data from the 10m data
 #Sys.Date()
 Sys.time()
 
-#setup plot theme for plots
-#library(ggplot2)
-#mytheme <- theme_grey() + theme(text = element_text(colour = "black", size=18))
-
-
 #load database connection library
 library(RODBC)
  
-#connect to database 1 - CAPTIF PR3 0404.mdb
+#connect to database 
 db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb"
 
-#con2 <- odbcConnectAccess2007(db)
 con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
 
-# find all tables
-library(knitr)
-LTPPtables <-(sqlTables(con2, tableType = "TABLE")$TABLE_NAME)
-kable(LTPPtables, format = "html", caption = "Tables in LTPP Database")
 ```
 
 ## Importing tables
 
 ```{r import table data, fig.height=10, fig.width=12, echo=TRUE}
 
-#Check column names of a table 
-#sqlColumns(con2, "Profilometer Profiles")$COLUMN_NAME
-
 Rutting10m <- sqlFetch(con2, "10mRutting")
 Texture10m <- sqlFetch(con2, "10mTexture")
 Roughness10m <- sqlFetch(con2, "10mRoughness")
 Rating50m <- sqlFetch(con2, "50mRating")
 CalibrationSections <- sqlFetch(con2, "CalibrationSections")
-CAL_SEC_PAVE_DATA <- sqlFetch(con2, "CAL_SEC_PAVE_DATA")
-CAL_SEC_PAVE_WIDTH <- sqlFetch(con2, "CAL_SEC_PAVE_WIDTH")
-CAL_SEC_RAINFALL_DATA <- sqlFetch(con2, "CAL_SEC_RAINFALL_DATA")
-CAL_SEC_SNP_DATA <- sqlFetch(con2, "CAL_SEC_SNP_DATA")
-CAL_SEC_SURF_DATA <- sqlFetch(con2, "CAL_SEC_SURF_DATA")
-CAL_SEC_TRAFFIC_DATA <- sqlFetch(con2, "CAL_SEC_TRAFFIC_DATA")
-NIWA2017 <- sqlFetch(con2, "NIWA weather monthly rainfall as at July 2017")
-NIWAlink <- sqlFetch(con2, "NIWA weather sites & calibration sections link")
-FWDHeader <- sqlFetch(con2, "OTHER-FallingWeightDeflectometerHeader")
-FWDData <- sqlFetch(con2, "OTHER-FallingWeightDeflectometer")
-AdditionalInfoPaveLayer <- sqlFetch(con2, "tAdditionalInfoPaveLayer")
-TestPitSummary <- sqlFetch(con2, "Test Pit Summary")
-AdditionalInfoPenetrationTest <- sqlFetch(con2, "tAdditionalInfoPenetrationTest")
-
-GPS <- sqlFetch(con2, "GPS")
-```
-
-#Councils with LTPP sites
-
-```{r councils data, fig.height=10, fig.width=12, echo=TRUE}
-
-library(tidyverse)
-Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
-kable(Councils, format = "html", caption = "Councils with LTPP Sites")
 ```
 
 #Data tidy
@@ -86,17 +49,9 @@ kable(Councils, format = "html", caption = "Councils with LTPP Sites")
 library(dplyr)
 library(stringr)
 
-GPSSH <- GPS %>% filter(Projection == "NZMG")
-GPSLA <- GPS %>% filter(Projection == "NZTM")
-
-
 CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
 
-View(CalibrationSections)
-#print(CalibrationSections)
-
 Rutting10m <- Rutting10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
-
 Texture10m <- Texture10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
 Roughness10m <- Roughness10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
 Rating50m<- Rating50m%>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
@@ -107,17 +62,13 @@ Rating50m<- Rating50m%>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL
 
 ```{r plot Rutting10m , fig.height=40, fig.width=12, echo=TRUE}
 
-#All Site
-
-#View(Rutting10m)
-
 library(ggplot2)
 ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Rutting10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("LWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Rutting10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("RWP Rutting (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 ```
 
@@ -135,15 +86,15 @@ Roughness10mLN <- Roughness10m %>% filter(LaneIRI < 25)
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Roughness10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Roughness10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("LWP Roughness (IRI)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Roughness10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Roughness10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("RWP Roughness (IRI)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Roughness10m Lane Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("Lane Roughness (IRI)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 ```
 
@@ -160,105 +111,13 @@ Texture10mR <- Texture10m %>% filter(RWPTxt < 10)
 
 library(ggplot2)
 ggobj2 <- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Texture10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Texture10m LWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("LWP Texture MPD (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
 ggobj2 <- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle("All Texture10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle("All Texture10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("RWP Texture MPD (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
 
 ```
 
-
-# Maps - not working
-
-```{r plot site map , fig.height=28, fig.width=40, echo=FALSE, eval =FALSE}
-
-# issue with proj4
-
-# site locations
-
-# install.packages("maps")
-
-library(maps)
-#nz <- map_data("nz")
-#ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill="white", colour = "black")
-
-#nz <- map_data("nz")
-#ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill="white", colour = "black") + coord_quickmap() 
-
-
-#install.packages("proj4")
-#library(proj4)
-
-#install.packages("mapproj")
-library(proj4)
-library(maps)
-library(mapproj)
-#NZTM?
-#proj4string <- "+proj=tmerc +lat_0=0.0 +lon_0=173.0 +k=0.9996 +x_0=1600000.0 +y_0=10000000.0 +datum=WGS84 +units=m"
-#NZMG
-proj4string <- "+proj=nzmg +lat_0=-41.0 +lon_0=173.0 +x_0=2510000.0 +y_0=6023150.0 +ellps=intl +units=m"
-#NZ49?
-#proj4string <- "+proj=nzmg +lat_0=-41 +lon_0=173 +x_0=2510000 +y_0=6023150 +ellps=intl +datum=nzgd49 +units=m +towgs84=59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993 +nadgrids=nzgd2kgrid0005.gsb +no_defs"
-
-
-PallS <- data.frame(LTPP_long = NA, LTPP_lat = NA, SECTION_ID = NA, OwnerType = NA)
-View(Pall)
-#proje only accepts one co-ordinate at a time?
-for(i in 1:nrow(GPSSH)){
-p <- project(c(GPSSH$GPSStartEasting[i], GPSSH$GPSStartNorthing[i]), proj=proj4string, inverse=T) # should be wellington
-PallS[i,1] <- p[1]
-PallS[i,2] <- p[2]
-PallS[i,3] <- as.character(GPSSH$SECTION_ID[i])
-PallS[i,4] <- "SH"
-}
-
-
-#should be two points side by side (one increasing one decreasing)
-library(ggplot2)
-nz <- map_data("nz")
-ggobj2 <- ggplot(data = nz, aes(x=long, y=lat, group = group)) + geom_polygon(fill="white", colour = "black")  + geom_point(data = PallS, aes(x=PallS$LTPP_long, y=PallS$LTPP_lat, group = 1), size = 2, color = "red") + ggtitle("State Highway Sites Guide") +
-geom_text(data = PallS, aes(x=PallS$LTPP_long, y=PallS$LTPP_lat, label = PallS$SECTION_ID, group = 1), size = 5, color = "blue", check_overlap = TRUE) + coord_quickmap()
-print(ggobj2)
-
-
-
-proj4string <- "+proj=tmerc +lat_0=0.0 +lon_0=173.0 +k=0.9996 +x_0=1600000.0 +y_0=10000000.0 +datum=WGS84 +units=m"
-PallL <- data.frame(LTPP_long = NA, LTPP_lat = NA, SECTION_ID = NA, OwnerType = NA)
-View(Pall)
-#proje only accepts one co-ordinate at a time?
-for(i in 1:nrow(GPSLA)){
-p <- project(c(GPSLA$GPSStartEasting[i], GPSLA$GPSStartNorthing[i]), proj=proj4string, inverse=T) # should be wellington
-PallL[i,1] <- p[1]
-PallL[i,2] <- p[2]
-PallL[i,3] <- as.character(GPSLA$SECTION_ID[i])
-PallL[i,4] <- "LA"
-}
-
-
-#should be two points side by side (one increasing one decreasing)
-nz <- map_data("nz")
-ggobj2 <- ggplot(data = nz, aes(x=long, y=lat, group = group)) + geom_polygon(fill="white", colour = "black")  + geom_point(data = PallL, aes(x=PallL$LTPP_long, y=PallL$LTPP_lat, group = 1), size = 2, color = "red") + ggtitle("Local Authority Sites Guide") +
-geom_text(data = PallL, aes(x=PallL$LTPP_long, y=PallL$LTPP_lat, label = PallL$SECTION_ID, group = 1), size = 5, color = "blue", check_overlap = TRUE) + coord_quickmap()
-print(ggobj2)
-
-Pall <- rbind(PallS, PallL)
-
-nz <- map_data("nz")
-ggobj2 <- ggplot(data = nz, aes(x=long, y=lat, group = group)) + geom_polygon(fill="white", colour = "black")  + 
-  geom_point(data = Pall, aes(x=Pall$LTPP_long, y=Pall$LTPP_lat, group = 1), size = 2, color = as.numeric(as.factor(Pall$OwnerType))) + ggtitle("All Sites Plot") + coord_quickmap()
-print(ggobj2)
-
-
-#ggobj2 <- ggplot(data = GPS, aes(x=GPSStartEasting, y=GPSStartNorthing)) + 
-#geom_point(size = 5, color = "red") 
-#print(ggobj2)
-
-```
-
-```{r endy stuff , fig.height=28, fig.width=40, echo=FALSE}
-
-#endy stuff
-```
