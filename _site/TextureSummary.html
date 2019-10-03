@@ -390,7 +390,7 @@ div.tocify {
 <p>The code below imports the data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-10-03 11:50:12 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2019-10-03 17:02:23 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
  
@@ -424,11 +424,11 @@ Texture10mR &lt;- Texture10m %&gt;% filter(RWPTxt &lt; 10)
 
 library(ggplot2)
 ggobj2 &lt;- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) 
+  geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
 print(ggobj2)</code></pre>
 <p><img src="TextureSummary_files/figure-html/plot%20Texture10m%20on%20A3-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+  geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
 print(ggobj2)</code></pre>
 <p><img src="TextureSummary_files/figure-html/plot%20Texture10m%20on%20A3-2.png" width="1152" /></p>
 </div>
@@ -442,11 +442,11 @@ Texture10mRSH &lt;- Texture10mR  %&gt;% filter(OwnerType == &quot;SH&quot;)
 
 library(ggplot2)
 ggobj2 &lt;- ggplot(data=Texture10mLSH, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;SH Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+  geom_boxplot() + ggtitle(&quot;SH Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
 print(ggobj2)</code></pre>
 <p><img src="TextureSummary_files/figure-html/plot%20SH%20Texture10m%20on%20A3-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mRSH, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;SH Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;)
+  geom_boxplot() + ggtitle(&quot;SH Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
 print(ggobj2)</code></pre>
 <p><img src="TextureSummary_files/figure-html/plot%20SH%20Texture10m%20on%20A3-2.png" width="1152" /></p>
 </div>
@@ -461,7 +461,7 @@ Texture10mRLA &lt;- Texture10mR  %&gt;% filter(OwnerType == &quot;LA&quot;)</cod
 <h2>Big individual texture plots LWP</h2>
 <pre class="r"><code>library(dplyr)
 ggobj2Texture10mL &lt;- Texture10mL %&gt;% group_by(SECTION_ID) %&gt;% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;LWP Texture&quot;, subtitle = .$SECTION_ID))  
+         aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;LWP Texture&quot;, subtitle = .$SECTION_ID) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;))   
 
 print(ggobj2Texture10mL$plots)</code></pre>
 <pre><code>## [[1]]</code></pre>
@@ -567,7 +567,7 @@ print(ggobj2Texture10mL$plots)</code></pre>
 <h2>Big individual texture plots RWP</h2>
 <pre class="r"><code>library(dplyr)
 ggobj2Texture10mR &lt;- Texture10mR %&gt;% group_by(SECTION_ID) %&gt;% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;RWP Texture&quot;, subtitle = .$SECTION_ID))  
+         aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;RWP Texture&quot;, subtitle = .$SECTION_ID) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;))   
 
 print(ggobj2Texture10mR$plots)</code></pre>
 <pre><code>## [[1]]</code></pre>

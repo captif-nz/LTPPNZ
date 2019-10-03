@@ -390,453 +390,38 @@ div.tocify {
 <p>The code below imports the rutting, roughness and texture data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-10-03 11:02:08 NZDT&quot;</code></pre>
-<pre class="r"><code>#setup plot theme for plots
-#library(ggplot2)
-#mytheme &lt;- theme_grey() + theme(text = element_text(colour = &quot;black&quot;, size=18))
-
-
-#load database connection library
+<pre><code>## [1] &quot;2019-10-03 16:14:58 NZDT&quot;</code></pre>
+<pre class="r"><code>#load database connection library
 library(RODBC)
  
-#connect to database 1 - CAPTIF PR3 0404.mdb
+#connect to database 
 db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
 
-#con2 &lt;- odbcConnectAccess2007(db)
-con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))
-
-# find all tables
-library(knitr)
-LTPPtables &lt;-(sqlTables(con2, tableType = &quot;TABLE&quot;)$TABLE_NAME)
-kable(LTPPtables, format = &quot;html&quot;, caption = &quot;Tables in LTPP Database&quot;)</code></pre>
-<table>
-<caption>
-Tables in LTPP Database
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-x
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-100mRoughness
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-10mRoughness
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-10mRutting
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-10mTexture
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-300mRoughness
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-50mRating
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-50mRoughness
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-50mRutting
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-50mRutting_DR
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-50mTexture
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-50mTexture_DR
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Audit history
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CAL_SEC_PAVE_DATA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CAL_SEC_PAVE_WIDTH
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CAL_SEC_RAINFALL_DATA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CAL_SEC_SNP_DATA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CAL_SEC_SURF_DATA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CAL_SEC_TRAFFIC_DATA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CalibrationSections
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-GPS
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lActivity
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lCostGroup
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lFault
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lFinancialYear
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lPaveLayerSubgradeMaterialType
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lSurfaceMaterialType
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-lUnit
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NIWA weather monthly rainfall as at July 2017
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NIWA weather sites &amp; calibration sections link
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NIWA weather sites list complete unload 2016
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-OTHER-FallingWeightDeflectometer
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-OTHER-FallingWeightDeflectometerHeader
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Photos
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SiteNotes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tAdditionalInfoPaveLayer
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tAdditionalInfoPenetrationTest
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tAdditionalInfoPenetrationTestDetail
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tConsultant
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Test Pit Summary
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tMaintenanceDetail
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tMaintenanceDetailFile
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tMaintenanceHdr
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-TmpImportTmp
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Z_MtceCostVersionControl
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-zz_50mRating
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-zz_50mTexture
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-zz_Photos_BU
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-zz_rainfall 2008
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-zz_rainfall stn SHs
-</td>
-</tr>
-</tbody>
-</table>
+con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))</code></pre>
 <div id="importing-tables" class="section level2">
 <h2>Importing tables</h2>
-<pre class="r"><code>#Check column names of a table 
-#sqlColumns(con2, &quot;Profilometer Profiles&quot;)$COLUMN_NAME
-
-Rutting10m &lt;- sqlFetch(con2, &quot;10mRutting&quot;)
+<pre class="r"><code>Rutting10m &lt;- sqlFetch(con2, &quot;10mRutting&quot;)
 Texture10m &lt;- sqlFetch(con2, &quot;10mTexture&quot;)
 Roughness10m &lt;- sqlFetch(con2, &quot;10mRoughness&quot;)
 Rating50m &lt;- sqlFetch(con2, &quot;50mRating&quot;)
-CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)
-CAL_SEC_PAVE_DATA &lt;- sqlFetch(con2, &quot;CAL_SEC_PAVE_DATA&quot;)
-CAL_SEC_PAVE_WIDTH &lt;- sqlFetch(con2, &quot;CAL_SEC_PAVE_WIDTH&quot;)
-CAL_SEC_RAINFALL_DATA &lt;- sqlFetch(con2, &quot;CAL_SEC_RAINFALL_DATA&quot;)
-CAL_SEC_SNP_DATA &lt;- sqlFetch(con2, &quot;CAL_SEC_SNP_DATA&quot;)
-CAL_SEC_SURF_DATA &lt;- sqlFetch(con2, &quot;CAL_SEC_SURF_DATA&quot;)
-CAL_SEC_TRAFFIC_DATA &lt;- sqlFetch(con2, &quot;CAL_SEC_TRAFFIC_DATA&quot;)
-NIWA2017 &lt;- sqlFetch(con2, &quot;NIWA weather monthly rainfall as at July 2017&quot;)
-NIWAlink &lt;- sqlFetch(con2, &quot;NIWA weather sites &amp; calibration sections link&quot;)
-FWDHeader &lt;- sqlFetch(con2, &quot;OTHER-FallingWeightDeflectometerHeader&quot;)
-FWDData &lt;- sqlFetch(con2, &quot;OTHER-FallingWeightDeflectometer&quot;)
-AdditionalInfoPaveLayer &lt;- sqlFetch(con2, &quot;tAdditionalInfoPaveLayer&quot;)
-TestPitSummary &lt;- sqlFetch(con2, &quot;Test Pit Summary&quot;)
-AdditionalInfoPenetrationTest &lt;- sqlFetch(con2, &quot;tAdditionalInfoPenetrationTest&quot;)
-
-GPS &lt;- sqlFetch(con2, &quot;GPS&quot;)</code></pre>
+CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)</code></pre>
 </div>
-</div>
-<div id="councils-with-ltpp-sites" class="section level1">
-<h1>Councils with LTPP sites</h1>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages ----------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
-## v tibble  2.1.3     v dplyr   0.8.3
-## v tidyr   0.8.3     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts -------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
-kable(Councils, format = &quot;html&quot;, caption = &quot;Councils with LTPP Sites&quot;)</code></pre>
-<table>
-<caption>
-Councils with LTPP Sites
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-NMA
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Auckland City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Banks Peninsula District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Christchurch City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dunedin City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Grey District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Hastings District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Hutt City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Marlborough District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Napier City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-New Plymouth District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Queenstown Lakes District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Southland District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tasman District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tauranga City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Thames-Coromandel District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Waitaki District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Wanganui District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Wellington City Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Western Bay of Plenty District Council
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Whangarei District Council
-</td>
-</tr>
-</tbody>
-</table>
 </div>
 <div id="data-tidy" class="section level1">
 <h1>Data tidy</h1>
 <pre class="r"><code># Create SH/LA column
-library(dplyr)
-library(stringr)
-
-GPSSH &lt;- GPS %&gt;% filter(Projection == &quot;NZMG&quot;)
-GPSLA &lt;- GPS %&gt;% filter(Projection == &quot;NZTM&quot;)
-
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(stringr)
 
 CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;))
-
-View(CalibrationSections)
-#print(CalibrationSections)
 
 Rutting10m &lt;- Rutting10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
 <pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
@@ -853,17 +438,13 @@ Rutting10m &lt;- Rutting10m %&gt;% left_join(CalibrationSections, by = c(&quot;S
 </div>
 <div id="rutting" class="section level1">
 <h1>Rutting</h1>
-<pre class="r"><code>#All Site
-
-#View(Rutting10m)
-
-library(ggplot2)
+<pre class="r"><code>library(ggplot2)
 ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Rutting (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Rutting (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-2.png" width="1152" /></p>
 </div>
@@ -878,15 +459,15 @@ Roughness10mLN &lt;- Roughness10m %&gt;% filter(LaneIRI &lt; 25)
 
 library(ggplot2)
 ggobj2 &lt;- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Roughness10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Roughness10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Roughness (IRI)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Roughness10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Roughness10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Roughness (IRI)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-2.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Roughness10m Lane Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Roughness10m Lane Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;Lane Roughness (IRI)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-3.png" width="1152" /></p>
 </div>
@@ -901,16 +482,13 @@ Texture10mR &lt;- Texture10m %&gt;% filter(RWPTxt &lt; 10)
 
 library(ggplot2)
 ggobj2 &lt;- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-1.png" width="1152" /></p>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
-  geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+  geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-2.png" width="1152" /></p>
-</div>
-<div id="maps---not-working" class="section level1">
-<h1>Maps - not working</h1>
 </div>
 
 
