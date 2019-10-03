@@ -37,9 +37,13 @@ Steps
 (@) Use Rstudio to Build the website
 (@) I havent had much joy pushing the website to Github using Rstudio so 
 (@) After "Build" website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then
+<pre><code>
+
 git add -A
 git commit -m "new website"
 git push
+
+</code><pre>
 
 And your new website should be up and running at   
 https://Github_user_name.github.io/Github_repo_name/  
@@ -62,8 +66,8 @@ and at .nojekyll file made (with nothing actually in it)
 
 You will need a redirect file called index.html that gets loaded directly to the Githun master repo.  This just makes the link to the _site folder the RStudio creates you website in.  
 
-You need to open the RMD file to see the html code as I cannot find a way of displaying it - HTML just takes over.
 
+<pre><code>
 
 &lthtml>    
     
@@ -78,17 +82,20 @@ You need to open the RMD file to see the html code as I cannot find a way of dis
     
 &lt/head>    
 
+</code><pre>
+
 
 
 ## index.Rmd
 
-You will also need a file called index.RMD file to act as a home page (It can contain anything)  when you build the website in Rstudio - if you use the _Site.yml file format on the next page.  Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page.  I am not sure if this could just be called "home" and the yml file adjust - will give it a go one day.    
+You will also need a file called index.RMD file to act as a home page (It can contain anything)  when you build the website in Rstudio - if you use the _Site.yml file format on the next page.  Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page.  And it must be called index as the github looks for index in the folder - tried calling it something else and wasn't successful.    
 
 
 ##_Site.yml file
 
 You will need create a text file in R Studio called "_Site.yml" in the R Project that looks a bit like this below.  It is the structure of your site. 
 That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page  
+<pre><code>
 
 name: "LTPP-website"  
 navbar:  
@@ -111,7 +118,7 @@ navbar:
     - text: "Table Summary"  
       href: Table-Summary.html  
 
-
+</code><pre>
 
 # And this below is just some practice at automating menus
 
