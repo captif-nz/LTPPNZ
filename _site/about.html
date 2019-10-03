@@ -404,7 +404,7 @@ div.tocify {
 <li>git config –global user.email “<a href="mailto:you@example.com">you@example.com</a>”</li>
 <li>git config –global user.name “Your Name”</li>
 <li>In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)&quot;</li>
-&lt<li>View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys</li>
+<li>View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys</li>
 <li>Back in Rstudio - open a new project with version control</li>
 <li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
 <li>Use Rstudio to Build the website</li>
@@ -422,14 +422,17 @@ and at .nojekyll file made (with nothing actually in it)</p>
 <h2>index.html Redirect file</h2>
 <p>You will need a redirect file called index.html that gets loaded directly to the Githun master repo. This just makes the link to the _site folder the RStudio creates you website in.</p>
 <p>You need to open the RMD file to see the html code as I cannot find a way of displaying it - HTML just takes over.</p>
-&lthtml>
-&lthead>
-&lttitle>
-Redirecting to LTPP Data site
-&lt/title>
-&ltmeta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site"></p>
-&ltmeta name="keywords" content="automatic redirection"></p>
-&lt/head>
+<pre>
+<p><code></p>
+<p>&amp;lthtml&gt;</p>
+<p>&amp;lthead&gt;</p>
+<p>&amp;lttitle&gt;Redirecting to LTPP Data site<br />
+&amp;lt/title&gt;</p>
+<p>&amp;ltmeta http-equiv=“refresh” content=“1; URL=<a href="https://dala009.github.io/LTPPNZ/_site" class="uri">https://dala009.github.io/LTPPNZ/_site</a>”&gt;</p>
+<p>&amp;ltmeta name=“keywords” content=“automatic redirection”&gt;</p>
+<p>&amp;lt/head&gt;</p>
+</code>
+<pre>
 </div>
 <div id="index.rmd" class="section level2">
 <h2>index.Rmd</h2>
