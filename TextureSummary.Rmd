@@ -101,7 +101,7 @@ Texture10mRLA <- Texture10mR  %>% filter(OwnerType == "LA")
 
 library(dplyr)
 ggobj2Texture10mL <- Texture10mL %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Texture", subtitle = .$SECTION_ID)) + ylab("LWP Texture MPD (mm)") + xlab("Financial Year")   
+         aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Texture", subtitle = .$SECTION_ID) + ylab("LWP Texture MPD (mm)") + xlab("Financial Year"))   
 
 print(ggobj2Texture10mL$plots)
 ```
@@ -112,7 +112,7 @@ print(ggobj2Texture10mL$plots)
 
 library(dplyr)
 ggobj2Texture10mR <- Texture10mR %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Texture", subtitle = .$SECTION_ID)) + ylab("RWP Texture MPD (mm)") + xlab("Financial Year")   
+         aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Texture", subtitle = .$SECTION_ID) + ylab("RWP Texture MPD (mm)") + xlab("Financial Year"))   
 
 print(ggobj2Texture10mR$plots)
 ```

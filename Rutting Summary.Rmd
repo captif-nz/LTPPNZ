@@ -134,7 +134,7 @@ print(ggobj2)
 
 library(dplyr)
 ggobj2LWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Rut", subtitle = .$SECTION_ID)) + ylab("LWP Rutting (mm)") + xlab("Financial Year")  
+         aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("LWP Rut", subtitle = .$SECTION_ID) + ylab("LWP Rutting (mm)") + xlab("Financial Year"))  
 
 print(ggobj2LWPrut$plots)
 ```
@@ -144,7 +144,7 @@ print(ggobj2LWPrut$plots)
 ```{r plot Rutting10m Big individual rutting plots RWP on A3, fig.height=12, fig.width=20, echo=TRUE}
 
 ggobj2RWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) +
-         aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Rut", subtitle = .$SECTION_ID)) + ylab("RWP Rutting (mm)") + xlab("Financial Year") 
+         aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Rut", subtitle = .$SECTION_ID) + ylab("RWP Rutting (mm)") + xlab("Financial Year")) 
 
 print(ggobj2RWPrut$plots)
 
