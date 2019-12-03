@@ -1,0 +1,10505 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>LTPP Summary Report</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LTPP Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="LTTP-Summary.html">LTTP Summary</a>
+</li>
+<li>
+  <a href="Rutting-Summary.html">Rutting</a>
+</li>
+<li>
+  <a href="RoughnessSummary.html">Roughness</a>
+</li>
+<li>
+  <a href="TextureSummary.html">Texture</a>
+</li>
+<li>
+  <a href="Ratings.html">Ratings</a>
+</li>
+<li>
+  <a href="Table-Summary.html">Table Data</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">LTPP Summary Report</h1>
+
+</div>
+
+
+<p>This page contains a national summary of the rutting, rougness and texture data from the LTPP database.</p>
+<p>The code to generate this is displayed first - then the graphics.</p>
+<p>Use the menu to left to go straight to the Rutting, Roughness and Texture plots.</p>
+<div id="data-importing" class="section level1">
+<h1>Data Importing</h1>
+<p>The code below imports the rutting, roughness and texture data from the 10m databases</p>
+<pre class="r"><code>#Sys.Date()
+Sys.time()</code></pre>
+<pre><code>## [1] &quot;2019-12-03 12:08:03 NZDT&quot;</code></pre>
+<pre class="r"><code>#load database connection library
+library(RODBC)
+ 
+#connect to database 
+db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+
+con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))</code></pre>
+<div id="importing-tables" class="section level2">
+<h2>Importing tables</h2>
+<pre class="r"><code>Rutting10m &lt;- sqlFetch(con2, &quot;10mRutting&quot;)
+Texture10m &lt;- sqlFetch(con2, &quot;10mTexture&quot;)
+Roughness10m &lt;- sqlFetch(con2, &quot;10mRoughness&quot;)
+Rating50m &lt;- sqlFetch(con2, &quot;50mRating&quot;)
+CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)</code></pre>
+</div>
+</div>
+<div id="data-tidy" class="section level1">
+<h1>Data tidy</h1>
+<pre class="r"><code># Create SH/LA column
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(stringr)
+
+CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;)) %&gt;% arrange(OwnerType, CAL_SECTION_ID)
+
+Rutting10m &lt;- Rutting10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+<pre class="r"><code>Texture10m &lt;- Texture10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+<pre class="r"><code>Roughness10m &lt;- Roughness10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+<pre class="r"><code>Rating50m&lt;- Rating50m%&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+</div>
+<div id="ltpp-sites" class="section level1">
+<h1>LTPP Sites</h1>
+<pre class="r"><code>CalibrationSections &lt;- CalibrationSections %&gt;%select(-COMMENTS)
+
+library(kableExtra)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<pre class="r"><code>kable(CalibrationSections, format = &quot;html&quot;, caption = &quot;LTPP Sites&quot;) %&gt;%
+  kable_styling(&quot;striped&quot;, fixed_thead = T) %&gt;% scroll_box(width = &quot;100%&quot;, height = &quot;500px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+LTPP Sites
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+ConsultantID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Region
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+NMA
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+ROAD_ID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+RoadName/SH
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+RS
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Direction
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+CAL_SECTION_ID
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+CAL_RP_START
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+CAL_RP_END
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Sterilised?
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Sensitivity
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Current
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+ClimaticZone
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+BM Site ID
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+BM RP Start
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+BM RP End
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+FY_WhenAbandoned
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+OwnerType
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+1309
+</td>
+<td style="text-align:left;">
+Tamaki Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+AKL1
+</td>
+<td style="text-align:right;">
+630
+</td>
+<td style="text-align:right;">
+930
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+4233
+</td>
+<td style="text-align:left;">
+Pah Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+AKL2-S
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+466
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+4137
+</td>
+<td style="text-align:left;">
+Neilson Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+AKL3-S
+</td>
+<td style="text-align:right;">
+815
+</td>
+<td style="text-align:right;">
+1115
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Western Bay of Plenty District Council
+</td>
+<td style="text-align:right;">
+1218
+</td>
+<td style="text-align:left;">
+Snodgrass Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+BOP1
+</td>
+<td style="text-align:right;">
+1060
+</td>
+<td style="text-align:right;">
+1360
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2006/07
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Western Bay of Plenty District Council
+</td>
+<td style="text-align:right;">
+1063
+</td>
+<td style="text-align:left;">
+Lindemann road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+BOP2-S
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+380
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Western Bay of Plenty District Council
+</td>
+<td style="text-align:right;">
+1521
+</td>
+<td style="text-align:left;">
+Rangiuru Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+BOP3-S
+</td>
+<td style="text-align:right;">
+10700
+</td>
+<td style="text-align:right;">
+11000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Banks Peninsula District Council
+</td>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:left;">
+Governors Bay Teddington Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+BPC1
+</td>
+<td style="text-align:right;">
+4130
+</td>
+<td style="text-align:right;">
+4430
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Banks Peninsula District Council
+</td>
+<td style="text-align:right;">
+237
+</td>
+<td style="text-align:left;">
+Rue Balguerie
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+BPC2
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+520
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Christchurch City Council
+</td>
+<td style="text-align:right;">
+1149
+</td>
+<td style="text-align:left;">
+Hills Rd 1 Avalon St to Akaroa St
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+CCC1-S
+</td>
+<td style="text-align:right;">
+680
+</td>
+<td style="text-align:right;">
+980
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2008/09
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Christchurch City Council
+</td>
+<td style="text-align:right;">
+3146
+</td>
+<td style="text-align:left;">
+Hereford St 2 East Fitzgerald Ave
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+CCC2
+</td>
+<td style="text-align:right;">
+1120
+</td>
+<td style="text-align:right;">
+1420
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2008/09
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Christchurch City Council
+</td>
+<td style="text-align:right;">
+3145
+</td>
+<td style="text-align:left;">
+Gloucester St2 East Fitzgerald Ave
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+CCC3-S
+</td>
+<td style="text-align:right;">
+2080
+</td>
+<td style="text-align:right;">
+2380
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2008/09
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Christchurch City Council
+</td>
+<td style="text-align:right;">
+2080
+</td>
+<td style="text-align:left;">
+Rossall Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+CCC4
+</td>
+<td style="text-align:right;">
+270
+</td>
+<td style="text-align:right;">
+570
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Christchurch City Council
+</td>
+<td style="text-align:right;">
+2107
+</td>
+<td style="text-align:left;">
+Rugby Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+CCC5-S
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+340
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2008/09
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dunedin City Council
+</td>
+<td style="text-align:right;">
+765
+</td>
+<td style="text-align:left;">
+David Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+DUN1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dunedin City Council
+</td>
+<td style="text-align:right;">
+896
+</td>
+<td style="text-align:left;">
+Marne Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+DUN2-S
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+340
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dunedin City Council
+</td>
+<td style="text-align:right;">
+1333
+</td>
+<td style="text-align:left;">
+Queens Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+DUN3-S
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dunedin City Council
+</td>
+<td style="text-align:right;">
+878
+</td>
+<td style="text-align:left;">
+Highcliff Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+DUN4
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dunedin City Council
+</td>
+<td style="text-align:right;">
+761
+</td>
+<td style="text-align:left;">
+Riselaw Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+DUN5
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dunedin City Council
+</td>
+<td style="text-align:right;">
+1355
+</td>
+<td style="text-align:left;">
+Richardson Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+DUN6
+</td>
+<td style="text-align:right;">
+875
+</td>
+<td style="text-align:right;">
+1175
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Grey District Council
+</td>
+<td style="text-align:right;">
+807
+</td>
+<td style="text-align:left;">
+Rutherglen Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+GRE1
+</td>
+<td style="text-align:right;">
+560
+</td>
+<td style="text-align:right;">
+860
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Grey District Council
+</td>
+<td style="text-align:right;">
+1311
+</td>
+<td style="text-align:left;">
+Lake Brunner Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+GRE2-S
+</td>
+<td style="text-align:right;">
+5650
+</td>
+<td style="text-align:right;">
+5950
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Grey District Council
+</td>
+<td style="text-align:right;">
+921
+</td>
+<td style="text-align:left;">
+Atarau Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+GRE3
+</td>
+<td style="text-align:right;">
+21800
+</td>
+<td style="text-align:right;">
+22100
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Grey District Council
+</td>
+<td style="text-align:right;">
+1215
+</td>
+<td style="text-align:left;">
+Taylorville Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+GRE4
+</td>
+<td style="text-align:right;">
+990
+</td>
+<td style="text-align:right;">
+1290
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Grey District Council
+</td>
+<td style="text-align:right;">
+907
+</td>
+<td style="text-align:left;">
+Bell Hill Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+GRE5-S
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hastings District Council
+</td>
+<td style="text-align:right;">
+8001
+</td>
+<td style="text-align:left;">
+Ada Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+HAS1-S
+</td>
+<td style="text-align:right;">
+535
+</td>
+<td style="text-align:right;">
+835
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hastings District Council
+</td>
+<td style="text-align:right;">
+9073
+</td>
+<td style="text-align:left;">
+Thompson Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+HAS2
+</td>
+<td style="text-align:right;">
+1370
+</td>
+<td style="text-align:right;">
+1670
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hutt City Council
+</td>
+<td style="text-align:right;">
+548
+</td>
+<td style="text-align:left;">
+Hutt Park Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+HUT1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hutt City Council
+</td>
+<td style="text-align:right;">
+245
+</td>
+<td style="text-align:left;">
+Fenchurch Gr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+HUT2A-S
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hutt City Council
+</td>
+<td style="text-align:right;">
+243
+</td>
+<td style="text-align:left;">
+Aldergate Gr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+HUT2B-S
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hutt City Council
+</td>
+<td style="text-align:right;">
+591
+</td>
+<td style="text-align:left;">
+Holyoake Cr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+HUT3-S
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+330
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Marlborough District Council
+</td>
+<td style="text-align:right;">
+372
+</td>
+<td style="text-align:left;">
+Redwood St
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MAR1
+</td>
+<td style="text-align:right;">
+1850
+</td>
+<td style="text-align:right;">
+2150
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Marlborough District Council
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+Alabama Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MAR2-S
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+2100
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Marlborough District Council
+</td>
+<td style="text-align:right;">
+676
+</td>
+<td style="text-align:left;">
+Northbank Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MAR3-S
+</td>
+<td style="text-align:right;">
+650
+</td>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Marlborough District Council
+</td>
+<td style="text-align:right;">
+352
+</td>
+<td style="text-align:left;">
+Old Renwick Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MAR4-S
+</td>
+<td style="text-align:right;">
+5800
+</td>
+<td style="text-align:right;">
+6100
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+1790
+</td>
+<td style="text-align:left;">
+Mahia Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MCC1-S
+</td>
+<td style="text-align:right;">
+330
+</td>
+<td style="text-align:right;">
+630
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+2492
+</td>
+<td style="text-align:left;">
+Te Rakau Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MCC2
+</td>
+<td style="text-align:right;">
+1600
+</td>
+<td style="text-align:right;">
+1900
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+2159
+</td>
+<td style="text-align:left;">
+Prince Regent Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MCC3
+</td>
+<td style="text-align:right;">
+550
+</td>
+<td style="text-align:right;">
+850
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Napier City Council
+</td>
+<td style="text-align:right;">
+842
+</td>
+<td style="text-align:left;">
+Tironui Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPE1-S
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Napier City Council
+</td>
+<td style="text-align:right;">
+488
+</td>
+<td style="text-align:left;">
+Shackleton Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPE2-S
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Napier City Council
+</td>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:left;">
+Guppy Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPE3-S
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+New Plymouth District Council
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:left;">
+Waitara Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPY1
+</td>
+<td style="text-align:right;">
+8025
+</td>
+<td style="text-align:right;">
+8325
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+New Plymouth District Council
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:left;">
+Waitara Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPY2
+</td>
+<td style="text-align:right;">
+7575
+</td>
+<td style="text-align:right;">
+7875
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+New Plymouth District Council
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:left;">
+Waitara Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPY3
+</td>
+<td style="text-align:right;">
+4475
+</td>
+<td style="text-align:right;">
+4775
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+New Plymouth District Council
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:left;">
+Waitara Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPY4-S
+</td>
+<td style="text-align:right;">
+6650
+</td>
+<td style="text-align:right;">
+6950
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+New Plymouth District Council
+</td>
+<td style="text-align:right;">
+254
+</td>
+<td style="text-align:left;">
+Devon Street East
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPY5
+</td>
+<td style="text-align:right;">
+2275
+</td>
+<td style="text-align:right;">
+2575
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+New Plymouth District Council
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+Connett Road East
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NPY6
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:left;">
+Porchester Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+PAP1-S
+</td>
+<td style="text-align:right;">
+3235
+</td>
+<td style="text-align:right;">
+3535
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+285
+</td>
+<td style="text-align:left;">
+Airfield Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+PAP2
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Queenstown Lakes District Council
+</td>
+<td style="text-align:right;">
+208
+</td>
+<td style="text-align:left;">
+Centennial Ave
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+QLD1
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+337
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Queenstown Lakes District Council
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:left;">
+Glenorchy - Queenstown Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+QLD2-S
+</td>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:right;">
+433
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Queenstown Lakes District Council
+</td>
+<td style="text-align:right;">
+1300
+</td>
+<td style="text-align:left;">
+Crown Range Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+QLD3-S
+</td>
+<td style="text-align:right;">
+4306
+</td>
+<td style="text-align:right;">
+4606
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Queenstown Lakes District Council
+</td>
+<td style="text-align:right;">
+413
+</td>
+<td style="text-align:left;">
+Malaghans Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+QLD4
+</td>
+<td style="text-align:right;">
+2185
+</td>
+<td style="text-align:right;">
+2485
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Queenstown Lakes District Council
+</td>
+<td style="text-align:right;">
+413
+</td>
+<td style="text-align:left;">
+Malaghans Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+QLD5-S
+</td>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+1250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2006/07
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Queenstown Lakes District Council
+</td>
+<td style="text-align:right;">
+750
+</td>
+<td style="text-align:left;">
+Wanaka Mt Aspiring Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+QLD6-S
+</td>
+<td style="text-align:right;">
+13009
+</td>
+<td style="text-align:right;">
+13309
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Southland District Council
+</td>
+<td style="text-align:right;">
+3512
+</td>
+<td style="text-align:left;">
+Dusky St
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SDC1-S
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+370
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Southland District Council
+</td>
+<td style="text-align:right;">
+3155
+</td>
+<td style="text-align:left;">
+Queen St 3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SDC2-S
+</td>
+<td style="text-align:right;">
+954
+</td>
+<td style="text-align:right;">
+1254
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Southland District Council
+</td>
+<td style="text-align:right;">
+1424
+</td>
+<td style="text-align:left;">
+Balaclaava St
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SDC3-S
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Southland District Council
+</td>
+<td style="text-align:right;">
+2531
+</td>
+<td style="text-align:left;">
+Winton Substation Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SDC4
+</td>
+<td style="text-align:right;">
+1140
+</td>
+<td style="text-align:right;">
+1440
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Southland District Council
+</td>
+<td style="text-align:right;">
+2325
+</td>
+<td style="text-align:left;">
+Bayswater Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SDC5
+</td>
+<td style="text-align:right;">
+7040
+</td>
+<td style="text-align:right;">
+7340
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tasman District Council
+</td>
+<td style="text-align:right;">
+605
+</td>
+<td style="text-align:left;">
+Moutere Highway
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAS1
+</td>
+<td style="text-align:right;">
+21880
+</td>
+<td style="text-align:right;">
+22180
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tasman District Council
+</td>
+<td style="text-align:right;">
+332
+</td>
+<td style="text-align:left;">
+Eighty Eight Valley Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAS2-S
+</td>
+<td style="text-align:right;">
+3962
+</td>
+<td style="text-align:right;">
+4262
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tasman District Council
+</td>
+<td style="text-align:right;">
+434
+</td>
+<td style="text-align:left;">
+Haycock Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAS3-S
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tasman District Council
+</td>
+<td style="text-align:right;">
+987
+</td>
+<td style="text-align:left;">
+Telenius Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAS4-S
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP WEST
+</td>
+<td style="text-align:right;">
+3517
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU1
+</td>
+<td style="text-align:right;">
+4490
+</td>
+<td style="text-align:right;">
+4290
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tauranga City Council
+</td>
+<td style="text-align:right;">
+911
+</td>
+<td style="text-align:left;">
+Takitimu Dr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU1
+</td>
+<td style="text-align:right;">
+750
+</td>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP WEST
+</td>
+<td style="text-align:right;">
+3517
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU2
+</td>
+<td style="text-align:right;">
+4290
+</td>
+<td style="text-align:right;">
+4090
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tauranga City Council
+</td>
+<td style="text-align:right;">
+911
+</td>
+<td style="text-align:left;">
+Takitimu Dr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU2
+</td>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+1150
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP WEST
+</td>
+<td style="text-align:right;">
+3517
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU3
+</td>
+<td style="text-align:right;">
+4090
+</td>
+<td style="text-align:right;">
+3890
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tauranga City Council
+</td>
+<td style="text-align:right;">
+911
+</td>
+<td style="text-align:left;">
+Takitimu Dr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU3
+</td>
+<td style="text-align:right;">
+1150
+</td>
+<td style="text-align:right;">
+1350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP WEST
+</td>
+<td style="text-align:right;">
+3517
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU4
+</td>
+<td style="text-align:right;">
+3890
+</td>
+<td style="text-align:right;">
+3690
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tauranga City Council
+</td>
+<td style="text-align:right;">
+911
+</td>
+<td style="text-align:left;">
+Takitimu Dr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU4
+</td>
+<td style="text-align:right;">
+1350
+</td>
+<td style="text-align:right;">
+1550
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP WEST
+</td>
+<td style="text-align:right;">
+3517
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU5
+</td>
+<td style="text-align:right;">
+3390
+</td>
+<td style="text-align:right;">
+3190
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tauranga City Council
+</td>
+<td style="text-align:right;">
+911
+</td>
+<td style="text-align:left;">
+Takitimu Dr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU5
+</td>
+<td style="text-align:right;">
+1850
+</td>
+<td style="text-align:right;">
+2050
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP WEST
+</td>
+<td style="text-align:right;">
+3517
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU6
+</td>
+<td style="text-align:right;">
+3190
+</td>
+<td style="text-align:right;">
+2990
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Tauranga City Council
+</td>
+<td style="text-align:right;">
+911
+</td>
+<td style="text-align:left;">
+Takitimu Dr
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TAU6
+</td>
+<td style="text-align:right;">
+2050
+</td>
+<td style="text-align:right;">
+2250
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Thames-Coromandel District Council
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+Hikuai Settlement Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TCDC1
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Thames-Coromandel District Council
+</td>
+<td style="text-align:right;">
+391
+</td>
+<td style="text-align:left;">
+Morrison Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TCDC2
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Thames-Coromandel District Council
+</td>
+<td style="text-align:right;">
+598
+</td>
+<td style="text-align:left;">
+Townsend Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+TCDC3-S
+</td>
+<td style="text-align:right;">
+1600
+</td>
+<td style="text-align:right;">
+1900
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wanganui District Council
+</td>
+<td style="text-align:right;">
+262
+</td>
+<td style="text-align:left;">
+No.3 Line
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WAN1-S
+</td>
+<td style="text-align:right;">
+3800
+</td>
+<td style="text-align:right;">
+4100
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wanganui District Council
+</td>
+<td style="text-align:right;">
+262
+</td>
+<td style="text-align:left;">
+No.3 Line
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WAN2-S
+</td>
+<td style="text-align:right;">
+4370
+</td>
+<td style="text-align:right;">
+4670
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wanganui District Council
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+Blueskin Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WAN3-S
+</td>
+<td style="text-align:right;">
+3260
+</td>
+<td style="text-align:right;">
+3560
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+986
+</td>
+<td style="text-align:left;">
+Colwill Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WCC1-S
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+348
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+885
+</td>
+<td style="text-align:left;">
+Forest Hill Rd
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WCC2
+</td>
+<td style="text-align:right;">
+1550
+</td>
+<td style="text-align:right;">
+1850
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland City Council
+</td>
+<td style="text-align:right;">
+235
+</td>
+<td style="text-align:left;">
+Wharf Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WCC3-S
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wellington City Council
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Adelaide Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WEL1
+</td>
+<td style="text-align:right;">
+1650
+</td>
+<td style="text-align:right;">
+1950
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wellington City Council
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:left;">
+Duncan Street
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WEL2
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wellington City Council
+</td>
+<td style="text-align:right;">
+1069
+</td>
+<td style="text-align:left;">
+Nalanda Cres
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WEL3
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+550
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wellington City Council
+</td>
+<td style="text-align:right;">
+1166
+</td>
+<td style="text-align:left;">
+Palm Avenue
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WEL4-S
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Wellington City Council
+</td>
+<td style="text-align:right;">
+334
+</td>
+<td style="text-align:left;">
+Churton Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WEL5-S
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Whangarei District Council
+</td>
+<td style="text-align:right;">
+217
+</td>
+<td style="text-align:left;">
+Kensington Avenue
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WHG1-S
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Whangarei District Council
+</td>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:left;">
+Kamo Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WHG2
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+340
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Whangarei District Council
+</td>
+<td style="text-align:right;">
+892
+</td>
+<td style="text-align:left;">
+Bream Bay Drive
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WHG3-S
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Whangarei District Council
+</td>
+<td style="text-align:right;">
+1362
+</td>
+<td style="text-align:left;">
+Ngunguru Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WHG4-S
+</td>
+<td style="text-align:right;">
+14300
+</td>
+<td style="text-align:right;">
+14600
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Whangarei District Council
+</td>
+<td style="text-align:right;">
+434
+</td>
+<td style="text-align:left;">
+Whangarei Heads Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WHG5-S
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Waitaki District Council
+</td>
+<td style="text-align:right;">
+338
+</td>
+<td style="text-align:left;">
+Gibsons Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WTK1-S
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+750
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Waitaki District Council
+</td>
+<td style="text-align:right;">
+326
+</td>
+<td style="text-align:left;">
+McPhersons Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WTK3
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Waitaki District Council
+</td>
+<td style="text-align:right;">
+335
+</td>
+<td style="text-align:left;">
+Ferry Road
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+WTK4
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1300
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+CENTRAL WAIKATO
+</td>
+<td style="text-align:right;">
+434
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-12
+</td>
+<td style="text-align:right;">
+7200
+</td>
+<td style="text-align:right;">
+7500
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:right;">
+6820
+</td>
+<td style="text-align:right;">
+7820
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+CENTRAL WAIKATO
+</td>
+<td style="text-align:right;">
+1559
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+777
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-13b
+</td>
+<td style="text-align:right;">
+3880
+</td>
+<td style="text-align:right;">
+4180
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:right;">
+2320
+</td>
+<td style="text-align:right;">
+4180
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+EAST WAIKATO
+</td>
+<td style="text-align:right;">
+1774
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-17
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+5300
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:right;">
+4800
+</td>
+<td style="text-align:right;">
+5600
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+WEST WAIKATO SOUTH
+</td>
+<td style="text-align:right;">
+1244
+</td>
+<td style="text-align:left;">
+003
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-18
+</td>
+<td style="text-align:right;">
+1600
+</td>
+<td style="text-align:right;">
+1900
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+2200
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+WEST WAIKATO SOUTH
+</td>
+<td style="text-align:right;">
+1240
+</td>
+<td style="text-align:left;">
+003
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-19
+</td>
+<td style="text-align:right;">
+13500
+</td>
+<td style="text-align:right;">
+13800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:right;">
+13000
+</td>
+<td style="text-align:right;">
+14000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+TAIRAWHITI ROADS WESTERN
+</td>
+<td style="text-align:right;">
+335
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+474
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-23
+</td>
+<td style="text-align:right;">
+5300
+</td>
+<td style="text-align:right;">
+5600
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:right;">
+5300
+</td>
+<td style="text-align:right;">
+5600
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+HAWKES BAY
+</td>
+<td style="text-align:right;">
+421
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-25a
+</td>
+<td style="text-align:right;">
+8800
+</td>
+<td style="text-align:right;">
+9100
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:right;">
+8560
+</td>
+<td style="text-align:right;">
+9600
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+HAWKES BAY
+</td>
+<td style="text-align:right;">
+421
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-25b
+</td>
+<td style="text-align:right;">
+9100
+</td>
+<td style="text-align:right;">
+9400
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:right;">
+8560
+</td>
+<td style="text-align:right;">
+9600
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+HAWKES BAY
+</td>
+<td style="text-align:right;">
+438
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-27a
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+10300
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+11000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+HAWKES BAY
+</td>
+<td style="text-align:right;">
+438
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-27b
+</td>
+<td style="text-align:right;">
+10300
+</td>
+<td style="text-align:right;">
+10600
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+11000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+MANAWATU
+</td>
+<td style="text-align:right;">
+1084
+</td>
+<td style="text-align:left;">
+004
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-30
+</td>
+<td style="text-align:right;">
+3100
+</td>
+<td style="text-align:right;">
+3400
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:right;">
+3050
+</td>
+<td style="text-align:right;">
+4050
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+MANAWATU
+</td>
+<td style="text-align:right;">
+1641
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+751
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-32
+</td>
+<td style="text-align:right;">
+4520
+</td>
+<td style="text-align:right;">
+4820
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:right;">
+4520
+</td>
+<td style="text-align:right;">
+5520
+</td>
+<td style="text-align:left;">
+2006/07
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+TARANAKI
+</td>
+<td style="text-align:right;">
+1131
+</td>
+<td style="text-align:left;">
+045
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-34
+</td>
+<td style="text-align:right;">
+5100
+</td>
+<td style="text-align:right;">
+5400
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:right;">
+4490
+</td>
+<td style="text-align:right;">
+5970
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+WELLINGTON
+</td>
+<td style="text-align:right;">
+1175
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+995
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-35
+</td>
+<td style="text-align:right;">
+14400
+</td>
+<td style="text-align:right;">
+14700
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:right;">
+14400
+</td>
+<td style="text-align:right;">
+15400
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+MARLBOROUGH
+</td>
+<td style="text-align:right;">
+505
+</td>
+<td style="text-align:left;">
+063
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-37a
+</td>
+<td style="text-align:right;">
+4700
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:right;">
+4586
+</td>
+<td style="text-align:right;">
+6000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+MARLBOROUGH
+</td>
+<td style="text-align:right;">
+486
+</td>
+<td style="text-align:left;">
+01S
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-38
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:right;">
+1405
+</td>
+<td style="text-align:right;">
+2028
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+012
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-4
+</td>
+<td style="text-align:right;">
+14450
+</td>
+<td style="text-align:right;">
+14750
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+7000
+</td>
+<td style="text-align:right;">
+8000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+NTH CANTERBURY
+</td>
+<td style="text-align:right;">
+608
+</td>
+<td style="text-align:left;">
+01S
+</td>
+<td style="text-align:right;">
+284
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-41
+</td>
+<td style="text-align:right;">
+7800
+</td>
+<td style="text-align:right;">
+8100
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:right;">
+7500
+</td>
+<td style="text-align:right;">
+8500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+SOUTH CANTERBURY
+</td>
+<td style="text-align:right;">
+698
+</td>
+<td style="text-align:left;">
+01S
+</td>
+<td style="text-align:right;">
+447
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-43
+</td>
+<td style="text-align:right;">
+4500
+</td>
+<td style="text-align:right;">
+4800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+WEST COAST
+</td>
+<td style="text-align:right;">
+3331
+</td>
+<td style="text-align:left;">
+006
+</td>
+<td style="text-align:right;">
+448
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-45a
+</td>
+<td style="text-align:right;">
+9260
+</td>
+<td style="text-align:right;">
+9560
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:right;">
+12500
+</td>
+<td style="text-align:right;">
+13500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+748
+</td>
+<td style="text-align:left;">
+01S
+</td>
+<td style="text-align:right;">
+618
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-48
+</td>
+<td style="text-align:right;">
+9100
+</td>
+<td style="text-align:right;">
+9400
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Mod
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:right;">
+8500
+</td>
+<td style="text-align:right;">
+9500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+012
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-5
+</td>
+<td style="text-align:right;">
+10450
+</td>
+<td style="text-align:right;">
+10750
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+7950
+</td>
+<td style="text-align:right;">
+10750
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+848
+</td>
+<td style="text-align:left;">
+008
+</td>
+<td style="text-align:right;">
+417
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-51
+</td>
+<td style="text-align:right;">
+2200
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Mod
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+857
+</td>
+<td style="text-align:left;">
+083
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-52a
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+4300
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+1362
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-53
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+1700
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R1
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+1700
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+1894
+</td>
+<td style="text-align:left;">
+030
+</td>
+<td style="text-align:right;">
+147
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-54
+</td>
+<td style="text-align:right;">
+8060
+</td>
+<td style="text-align:right;">
+8360
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R6
+</td>
+<td style="text-align:right;">
+8060
+</td>
+<td style="text-align:right;">
+8360
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+1583
+</td>
+<td style="text-align:left;">
+038
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-58
+</td>
+<td style="text-align:right;">
+16830
+</td>
+<td style="text-align:right;">
+17130
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R8
+</td>
+<td style="text-align:right;">
+14400
+</td>
+<td style="text-align:right;">
+15400
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-59
+</td>
+<td style="text-align:right;">
+3670
+</td>
+<td style="text-align:right;">
+3970
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R11
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+CAL-59a
+</td>
+<td style="text-align:right;">
+3670
+</td>
+<td style="text-align:right;">
+3970
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R11
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+2501
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+CAL-59b
+</td>
+<td style="text-align:right;">
+3670
+</td>
+<td style="text-align:right;">
+3970
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R11
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+1922
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-6
+</td>
+<td style="text-align:right;">
+10500
+</td>
+<td style="text-align:right;">
+10800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+9370
+</td>
+<td style="text-align:right;">
+10440
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+MANAWATU
+</td>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:left;">
+057
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CAL-61
+</td>
+<td style="text-align:right;">
+870
+</td>
+<td style="text-align:right;">
+1170
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+273
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-1
+</td>
+<td style="text-align:right;">
+14880
+</td>
+<td style="text-align:right;">
+15180
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+CENTRAL WAIKATO
+</td>
+<td style="text-align:right;">
+1538
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+625
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-11
+</td>
+<td style="text-align:right;">
+7200
+</td>
+<td style="text-align:right;">
+7500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:right;">
+6630
+</td>
+<td style="text-align:right;">
+7700
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+CENTRAL WAIKATO
+</td>
+<td style="text-align:right;">
+1559
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+777
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-13a
+</td>
+<td style="text-align:right;">
+3200
+</td>
+<td style="text-align:right;">
+3500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:right;">
+2320
+</td>
+<td style="text-align:right;">
+4180
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+EAST WAIKATO
+</td>
+<td style="text-align:right;">
+1442
+</td>
+<td style="text-align:left;">
+029
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-14
+</td>
+<td style="text-align:right;">
+550
+</td>
+<td style="text-align:right;">
+850
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+WEST WAIKATO NORTH
+</td>
+<td style="text-align:right;">
+1529
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+574
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+CS-16
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+4300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+319
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-2
+</td>
+<td style="text-align:right;">
+13300
+</td>
+<td style="text-align:right;">
+13600
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+13000
+</td>
+<td style="text-align:right;">
+14000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+WEST WAIKATO SOUTH
+</td>
+<td style="text-align:right;">
+1579
+</td>
+<td style="text-align:left;">
+031
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-20
+</td>
+<td style="text-align:right;">
+5400
+</td>
+<td style="text-align:right;">
+5700
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:right;">
+5500
+</td>
+<td style="text-align:right;">
+6500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+TAIRAWHITI ROADS NORTHERN
+</td>
+<td style="text-align:right;">
+362
+</td>
+<td style="text-align:left;">
+035
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-21
+</td>
+<td style="text-align:right;">
+10150
+</td>
+<td style="text-align:right;">
+10450
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:right;">
+9570
+</td>
+<td style="text-align:right;">
+10500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+TAIRAWHITI ROADS WESTERN
+</td>
+<td style="text-align:right;">
+327
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+375
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-22
+</td>
+<td style="text-align:right;">
+1160
+</td>
+<td style="text-align:right;">
+1560
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:right;">
+680
+</td>
+<td style="text-align:right;">
+1560
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+HAWKES BAY
+</td>
+<td style="text-align:right;">
+383
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+544
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-24
+</td>
+<td style="text-align:right;">
+12700
+</td>
+<td style="text-align:right;">
+13000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:right;">
+12470
+</td>
+<td style="text-align:right;">
+13200
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Napier
+</td>
+<td style="text-align:left;">
+HAWKES BAY
+</td>
+<td style="text-align:right;">
+436
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-26
+</td>
+<td style="text-align:right;">
+14200
+</td>
+<td style="text-align:right;">
+14500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:right;">
+13630
+</td>
+<td style="text-align:right;">
+14820
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+CENTRAL WAIKATO
+</td>
+<td style="text-align:right;">
+956
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+815
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-28
+</td>
+<td style="text-align:right;">
+11800
+</td>
+<td style="text-align:right;">
+12100
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:right;">
+11710
+</td>
+<td style="text-align:right;">
+12900
+</td>
+<td style="text-align:left;">
+2006/07
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+CENTRAL WAIKATO
+</td>
+<td style="text-align:right;">
+1075
+</td>
+<td style="text-align:left;">
+004
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-29
+</td>
+<td style="text-align:right;">
+8400
+</td>
+<td style="text-align:right;">
+8700
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+8420
+</td>
+<td style="text-align:right;">
+9420
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+245
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-3
+</td>
+<td style="text-align:right;">
+6350
+</td>
+<td style="text-align:right;">
+6650
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+6100
+</td>
+<td style="text-align:right;">
+6800
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+WELLINGTON
+</td>
+<td style="text-align:right;">
+1174
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+985
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-31
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+TARANAKI
+</td>
+<td style="text-align:right;">
+1012
+</td>
+<td style="text-align:left;">
+003
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-33
+</td>
+<td style="text-align:right;">
+4100
+</td>
+<td style="text-align:right;">
+4400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:right;">
+550
+</td>
+<td style="text-align:right;">
+1750
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+WELLINGTON
+</td>
+<td style="text-align:right;">
+1642
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+858
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-36
+</td>
+<td style="text-align:right;">
+8950
+</td>
+<td style="text-align:right;">
+9250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:right;">
+9000
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+WELLINGTON
+</td>
+<td style="text-align:right;">
+1642
+</td>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:right;">
+858
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-36A
+</td>
+<td style="text-align:right;">
+8950
+</td>
+<td style="text-align:right;">
+9250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+36A
+</td>
+<td style="text-align:right;">
+9000
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+MARLBOROUGH
+</td>
+<td style="text-align:right;">
+505
+</td>
+<td style="text-align:left;">
+063
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-37b
+</td>
+<td style="text-align:right;">
+5500
+</td>
+<td style="text-align:right;">
+5800
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:right;">
+4586
+</td>
+<td style="text-align:right;">
+6000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+NELSON
+</td>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+006
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-39
+</td>
+<td style="text-align:right;">
+16150
+</td>
+<td style="text-align:right;">
+16450
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:right;">
+16000
+</td>
+<td style="text-align:right;">
+17000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+NELSON
+</td>
+<td style="text-align:right;">
+3020
+</td>
+<td style="text-align:left;">
+006
+</td>
+<td style="text-align:right;">
+225
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-40
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+10300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+11000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+NTH CANTERBURY
+</td>
+<td style="text-align:right;">
+682
+</td>
+<td style="text-align:left;">
+073
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-42
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+2800
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+SOUTH CANTERBURY
+</td>
+<td style="text-align:right;">
+712
+</td>
+<td style="text-align:left;">
+008
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-44
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+4300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:right;">
+3500
+</td>
+<td style="text-align:right;">
+4500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+WEST COAST
+</td>
+<td style="text-align:right;">
+3331
+</td>
+<td style="text-align:left;">
+006
+</td>
+<td style="text-align:right;">
+448
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-45b
+</td>
+<td style="text-align:right;">
+9660
+</td>
+<td style="text-align:right;">
+9960
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:right;">
+12500
+</td>
+<td style="text-align:right;">
+13500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Christchurch
+</td>
+<td style="text-align:left;">
+WEST COAST
+</td>
+<td style="text-align:right;">
+1291
+</td>
+<td style="text-align:left;">
+007
+</td>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-46
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+3300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+771
+</td>
+<td style="text-align:left;">
+01S
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-49
+</td>
+<td style="text-align:right;">
+12000
+</td>
+<td style="text-align:right;">
+12300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Mod
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:right;">
+11500
+</td>
+<td style="text-align:right;">
+12500
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+2607
+</td>
+<td style="text-align:left;">
+01S
+</td>
+<td style="text-align:right;">
+817
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-50
+</td>
+<td style="text-align:right;">
+3100
+</td>
+<td style="text-align:right;">
+3400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Mod
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:right;">
+3100
+</td>
+<td style="text-align:right;">
+3400
+</td>
+<td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+864
+</td>
+<td style="text-align:left;">
+083
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-50a
+</td>
+<td style="text-align:right;">
+7500
+</td>
+<td style="text-align:right;">
+7800
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Dunedin
+</td>
+<td style="text-align:left;">
+COASTAL OTAGO
+</td>
+<td style="text-align:right;">
+857
+</td>
+<td style="text-align:left;">
+083
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-52b
+</td>
+<td style="text-align:right;">
+4600
+</td>
+<td style="text-align:right;">
+4900
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Lim
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+1376
+</td>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-55
+</td>
+<td style="text-align:right;">
+11160
+</td>
+<td style="text-align:right;">
+11460
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R3
+</td>
+<td style="text-align:right;">
+11700
+</td>
+<td style="text-align:right;">
+12700
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+1455
+</td>
+<td style="text-align:left;">
+030
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-56
+</td>
+<td style="text-align:right;">
+4800
+</td>
+<td style="text-align:right;">
+5100
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R4
+</td>
+<td style="text-align:right;">
+4400
+</td>
+<td style="text-align:right;">
+5400
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Hamilton
+</td>
+<td style="text-align:left;">
+BOP EAST
+</td>
+<td style="text-align:right;">
+1462
+</td>
+<td style="text-align:left;">
+030
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-57
+</td>
+<td style="text-align:right;">
+9250
+</td>
+<td style="text-align:right;">
+9550
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+R5
+</td>
+<td style="text-align:right;">
+9100
+</td>
+<td style="text-align:right;">
+10100
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Wanganui
+</td>
+<td style="text-align:left;">
+TARANAKI
+</td>
+<td style="text-align:right;">
+1684
+</td>
+<td style="text-align:left;">
+045
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-60
+</td>
+<td style="text-align:right;">
+4700
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+NORTHLAND
+</td>
+<td style="text-align:right;">
+2800
+</td>
+<td style="text-align:left;">
+15A
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+CS-62
+</td>
+<td style="text-align:right;">
+590
+</td>
+<td style="text-align:right;">
+890
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+AUCK ALLIANCE
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+431
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+CS-7a
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+AUCK ALLIANCE
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+431
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+CS-7b
+</td>
+<td style="text-align:right;">
+1950
+</td>
+<td style="text-align:right;">
+2250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+AUCK ALLIANCE
+</td>
+<td style="text-align:right;">
+1741
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+461
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+CS-8a
+</td>
+<td style="text-align:right;">
+3100
+</td>
+<td style="text-align:right;">
+3400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Auckland
+</td>
+<td style="text-align:left;">
+AUCK ALLIANCE
+</td>
+<td style="text-align:right;">
+1741
+</td>
+<td style="text-align:left;">
+01N
+</td>
+<td style="text-align:right;">
+461
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+CS-8b
+</td>
+<td style="text-align:right;">
+3700
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="rutting" class="section level1">
+<h1>Rutting</h1>
+<pre class="r"><code>library(ggplot2)
+ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Rutting (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Rutting10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Rutting (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-2.png" width="1152" /></p>
+</div>
+<div id="roughness-plots" class="section level1">
+<h1>Roughness Plots</h1>
+<pre class="r"><code># View(Roughness10m)
+
+library(dplyr)
+Roughness10mL &lt;- Roughness10m %&gt;% filter(LwpIRI &lt; 25)
+Roughness10mR &lt;- Roughness10m %&gt;% filter(RwpIRI &lt; 25)
+Roughness10mLN &lt;- Roughness10m %&gt;% filter(LaneIRI &lt; 25)
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Roughness10mL, aes(x=FinancialYear, y=LwpIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Roughness10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Roughness (IRI)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Roughness10mR, aes(x=FinancialYear, y=RwpIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Roughness10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Roughness (IRI)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-2.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Roughness10mLN, aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Roughness10m Lane Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;Lane Roughness (IRI)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Roughness10m%20-3.png" width="1152" /></p>
+</div>
+<div id="texture-plots" class="section level1">
+<h1>Texture Plots</h1>
+<pre class="r"><code>#View(Texture10m)
+
+library(dplyr)
+Texture10mL &lt;- Texture10m %&gt;% filter(LWPTxt &lt; 10)
+Texture10mR &lt;- Texture10m %&gt;% filter(RWPTxt &lt; 10)
+
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-2.png" width="1152" /></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

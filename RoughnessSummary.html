@@ -363,7 +363,7 @@ div.tocify {
   <a href="Ratings.html">Ratings</a>
 </li>
 <li>
-  <a href="Table-Summary.html">Table</a>
+  <a href="Table-Summary.html">Table Data</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -390,7 +390,7 @@ div.tocify {
 <p>The code below imports the data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-10-03 16:42:56 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2019-12-03 12:37:00 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
 
@@ -407,8 +407,9 @@ library(tidyverse)</code></pre>
 ## v tidyr   0.8.3     v purrr   0.3.2
 ## v tibble  2.1.3     v forcats 0.4.0</code></pre>
 <pre><code>## -- Conflicts -------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
+## x dplyr::filter()          masks stats::filter()
+## x kableExtra::group_rows() masks dplyr::group_rows()
+## x dplyr::lag()             masks stats::lag()</code></pre>
 <pre class="r"><code>Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
 
 # Create SH/LA column

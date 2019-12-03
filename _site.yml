@@ -16,5 +16,5 @@ navbar:
       href: TextureSummary.html
     - text: "Ratings"
       href: Ratings.html 
-    - text: "Table"
+    - text: "Table Data"
       href: Table-Summary.html  

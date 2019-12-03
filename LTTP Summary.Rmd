@@ -49,12 +49,25 @@ CalibrationSections <- sqlFetch(con2, "CalibrationSections")
 library(dplyr)
 library(stringr)
 
-CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
+CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA")) %>% arrange(OwnerType, CAL_SECTION_ID)
 
 Rutting10m <- Rutting10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
 Texture10m <- Texture10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
 Roughness10m <- Roughness10m %>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
 Rating50m<- Rating50m%>% left_join(CalibrationSections, by = c("SECTION_ID"="CAL_SECTION_ID"))
+
+```
+
+# LTPP Sites
+
+```{r CalibrationSections, fig.height=10, fig.width=12, echo=TRUE}
+
+CalibrationSections <- CalibrationSections %>%select(-COMMENTS)
+
+library(kableExtra)
+kable(CalibrationSections, format = "html", caption = "LTPP Sites") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
+
 
 ```
 

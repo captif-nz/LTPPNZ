@@ -64,11 +64,32 @@ AdditionalInfoPenetrationTest <- sqlFetch(con2, "tAdditionalInfoPenetrationTest"
 # Data Tables 
 The code below displays data tables
 
+## LTPP Sites
+
+```{r CalibrationSections, fig.height=10, fig.width=12, echo=TRUE}
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+
+CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA")) %>% arrange(OwnerType, CAL_SECTION_ID)
+
+View(CalibrationSections)
+
+CalibrationSections <- CalibrationSections %>%select(-COMMENTS)
+
+library(kableExtra)
+kable(CalibrationSections, format = "html", caption = "LTPP Sites") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
+```
+
 ## CAL_SEC_PAVE_DATA
 
 ```{r CAL_SEC_PAVE_DATA, fig.height=10, fig.width=12, echo=TRUE}
 
-kable(CAL_SEC_PAVE_DATA, format = "html", caption = "CAL_SEC_PAVE_DATA")
+kable(CAL_SEC_PAVE_DATA, format = "html", caption = "CAL_SEC_PAVE_DATA") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## CAL_SEC_PAVE_WIDTH
@@ -76,72 +97,84 @@ kable(CAL_SEC_PAVE_DATA, format = "html", caption = "CAL_SEC_PAVE_DATA")
 ```{r width data, fig.height=10, fig.width=12, echo=TRUE}
 
 
-kable(CAL_SEC_PAVE_WIDTH, format = "html", caption = "CAL_SEC_PAVE_WIDTH")
+kable(CAL_SEC_PAVE_WIDTH, format = "html", caption = "CAL_SEC_PAVE_WIDTH") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ##CAL_SEC_RAINFALL_DATA
 
 ```{r rain data, fig.height=10, fig.width=12, echo=TRUE}
 
-kable(CAL_SEC_RAINFALL_DATA, format = "html", caption = "CAL_SEC_RAINFALL_DATA")
+kable(CAL_SEC_RAINFALL_DATA, format = "html", caption = "CAL_SEC_RAINFALL_DATA") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## SNP Data
 ```{r SNP data, fig.height=10, fig.width=12, echo=TRUE}
 
-kable(CAL_SEC_SNP_DATA, format = "html", caption = "CAL_SEC_SNP_DATA")
+kable(CAL_SEC_SNP_DATA, format = "html", caption = "CAL_SEC_SNP_DATA") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 ## CAL_SEC_SURF_DATA
 ```{r iCAL_SEC_SURF_DATA data, fig.height=10, fig.width=12, echo=TRUE}
-kable(CAL_SEC_SURF_DATA, format = "html", caption = "CAL_SEC_SURF_DATA")
+kable(CAL_SEC_SURF_DATA, format = "html", caption = "CAL_SEC_SURF_DATA") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## CAL_SEC_TRAFFIC_DATA
 ```{r CAL_SEC_TRAFFIC_DATA data, fig.height=10, fig.width=12, echo=TRUE}
 
-kable(CAL_SEC_TRAFFIC_DATA, format = "html", caption = "CAL_SEC_TRAFFIC_DATA")
+kable(CAL_SEC_TRAFFIC_DATA, format = "html", caption = "CAL_SEC_TRAFFIC_DATA") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## NIWA2017 Rain
 ```{r NIWA2017, fig.height=10, fig.width=12, echo=TRUE}
-kable(NIWA2017, format = "html", caption = "NIWA2017 Rain")
+kable(NIWA2017, format = "html", caption = "NIWA2017 Rain") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## NIWAlink
 ```{r NIWAlink data, fig.height=10, fig.width=12, echo=TRUE}
-kable(NIWAlink, format = "html", caption = "NIWA link data")
+kable(NIWAlink, format = "html", caption = "NIWA link data") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## FWD Headers
 
 ```{r FWDHeader data, fig.height=10, fig.width=12, echo=TRUE}
 
-kable(FWDHeader, format = "html", caption = "FWDHeader")
+kable(FWDHeader, format = "html", caption = "FWDHeader") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## Head of FWD Data
 
 ```{r FWDData data, fig.height=10, fig.width=12, echo=TRUE}
-kable(head(FWDData), format = "html", caption = "FWD Data")
+kable(head(FWDData), format = "html", caption = "FWD Data") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ##Summary of layer Info
 ```{r layer Info data, fig.height=10, fig.width=12, echo=TRUE}
 #View(AdditionalInfoPaveLayer)
-kable(AdditionalInfoPaveLayer, format = "html", caption = "Additional Info on Pavement Layers")
+kable(AdditionalInfoPaveLayer, format = "html", caption = "Additional Info on Pavement Layers") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 
 ## Summary of a testpits
 ```{r testpits Info data, fig.height=10, fig.width=12, echo=TRUE}
 #View(TestPitSummary)
-kable(TestPitSummary, format = "html", caption = "Test Pit Summary")
+kable(TestPitSummary, format = "html", caption = "Test Pit Summary") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 ## Summary of Scalas
 ```{r Scalas Info data, fig.height=10, fig.width=12, echo=TRUE}
 #View(AdditionalInfoPenetrationTest)
-kable(AdditionalInfoPenetrationTest, format = "html", caption = "Scalas")
+kable(AdditionalInfoPenetrationTest, format = "html", caption = "Scalas") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 
@@ -149,7 +182,8 @@ kable(AdditionalInfoPenetrationTest, format = "html", caption = "Scalas")
 ```{r ltestpits Info data, fig.height=10, fig.width=12, echo=TRUE}
 AdditionalInfoPenetrationTestDetail <- sqlFetch(con2, "tAdditionalInfoPenetrationTestDetail")
 #View(AdditionalInfoPenetrationTestDetail)
-kable(AdditionalInfoPenetrationTestDetail, format = "html", caption = "AdditionalInfoPenetrationTestDetail")
+kable(AdditionalInfoPenetrationTestDetail, format = "html", caption = "AdditionalInfoPenetrationTestDetail") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
 ```
 
 
@@ -165,21 +199,7 @@ kable(AdditionalInfoPenetrationTestDetail, format = "html", caption = "Additiona
 
 library(tidyverse)
 Councils <- CalibrationSections %>% filter(is.na(Region)) %>% group_by(NMA) %>% summarise()
-kable(Councils, format = "html", caption = "Councils with LTPP Sites")
+kable(Councils, format = "html", caption = "Councils with LTPP Sites") %>%
+  kable_styling("striped", fixed_thead = T) 
 ```
 
-#Data tidy
-
-```{r Data tidy Info data, fig.height=10, fig.width=12, echo=TRUE}
-
-# Create SH/LA column
-library(dplyr)
-library(stringr)
-
-
-CalibrationSections <- CalibrationSections %>% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, "CAL")|str_detect(CAL_SECTION_ID, "CS")), "SH", "LA"))
-
-View(CalibrationSections)
-#print(CalibrationSections)
-
-```
