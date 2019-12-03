@@ -336,4 +336,6 @@ print(ggobj2)
 ggobj2 <- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Shoving%`, col = as.factor(LANE_DIRECTION))) + geom_boxplot() + ggtitle("Rating50m Shoving% Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
+close(con2)
+
 ```

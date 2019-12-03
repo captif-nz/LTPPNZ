@@ -28,7 +28,7 @@ con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accd
 Rutting10m <- sqlFetch(con2, "10mRutting")
 
 CalibrationSections <- sqlFetch(con2, "CalibrationSections")
-
+close(con2)
 # Create SH/LA column
 library(dplyr)
 library(stringr)
@@ -147,5 +147,5 @@ ggobj2RWPrut <- Rutting10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(data=.) 
          aes(x=FinancialYear, y=RWP, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Rut", subtitle = .$SECTION_ID) + ylab("RWP Rutting (mm)") + xlab("Financial Year")) 
 
 print(ggobj2RWPrut$plots)
-
+close(con2)
 ```

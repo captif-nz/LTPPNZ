@@ -115,4 +115,5 @@ ggobj2Texture10mR <- Texture10mR %>% group_by(SECTION_ID) %>% do(plots=ggplot(da
          aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("RWP Texture", subtitle = .$SECTION_ID) + ylab("RWP Texture MPD (mm)") + xlab("Financial Year"))   
 
 print(ggobj2Texture10mR$plots)
+close(con2)
 ```

@@ -30,10 +30,16 @@ db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Ju
 #con2 <- odbcConnectAccess2007(db)
 con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
 
+
+
+
+
 # find all tables
 library(knitr)
 LTPPtables <-(sqlTables(con2, tableType = "TABLE")$TABLE_NAME)
+
 kable(LTPPtables, format = "html", caption = "Tables in LTPP Database")
+
 ```
 
 ## Importing tables
@@ -58,6 +64,7 @@ FWDData <- sqlFetch(con2, "OTHER-FallingWeightDeflectometer")
 AdditionalInfoPaveLayer <- sqlFetch(con2, "tAdditionalInfoPaveLayer")
 TestPitSummary <- sqlFetch(con2, "Test Pit Summary")
 AdditionalInfoPenetrationTest <- sqlFetch(con2, "tAdditionalInfoPenetrationTest")
+
 
 ```
 
@@ -181,6 +188,7 @@ kable(AdditionalInfoPenetrationTest, format = "html", caption = "Scalas") %>%
 ## Summary of AdditionalInfoPenetrationTestDetail
 ```{r ltestpits Info data, fig.height=10, fig.width=12, echo=TRUE}
 AdditionalInfoPenetrationTestDetail <- sqlFetch(con2, "tAdditionalInfoPenetrationTestDetail")
+close(con2)
 #View(AdditionalInfoPenetrationTestDetail)
 kable(AdditionalInfoPenetrationTestDetail, format = "html", caption = "AdditionalInfoPenetrationTestDetail") %>%
   kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")

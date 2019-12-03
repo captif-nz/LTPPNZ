@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>LTPP Texture Detail Report</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LTPP Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="LTTP-Summary.html">LTTP Summary</a>
+</li>
+<li>
+  <a href="Rutting-Summary.html">Rutting</a>
+</li>
+<li>
+  <a href="RoughnessSummary.html">Roughness</a>
+</li>
+<li>
+  <a href="TextureSummary.html">Texture</a>
+</li>
+<li>
+  <a href="Ratings.html">Ratings</a>
+</li>
+<li>
+  <a href="Table-Summary.html">Table Data</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">LTPP Texture Detail Report</h1>
+
+</div>
+
+
+<p>This page contains a national summary of the texture from the LTPP database.</p>
+<p>The code to generate this is displayed first - then the graphics.</p>
+<p>Use the menu to left to go straight to the texture for all sites, State Highway sites, Local Authority sites or Individual sites.</p>
+<div id="data-importing" class="section level1">
+<h1>Data Importing</h1>
+<p>The code below imports the data from the 10m databases</p>
+<pre class="r"><code>#Sys.Date()
+Sys.time()</code></pre>
+<pre><code>## [1] &quot;2019-12-03 13:32:44 NZDT&quot;</code></pre>
+<pre class="r"><code>#load database connection library
+library(RODBC)
+ 
+db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+
+con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))
+
+Texture10m &lt;- sqlFetch(con2, &quot;10mTexture&quot;)
+CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)
+
+library(tidyverse)
+Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
+
+# Create SH/LA column
+library(dplyr)
+library(stringr)
+
+CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;))
+
+Texture10m &lt;- Texture10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+</div>
+<div id="texture-plots" class="section level1">
+<h1>Texture Plots</h1>
+<div id="all-texture-plots" class="section level2">
+<h2>All texture plots</h2>
+<pre class="r"><code>library(dplyr)
+Texture10mL &lt;- Texture10m %&gt;% filter(LWPTxt &lt; 10)
+Texture10mR &lt;- Texture10m %&gt;% filter(RWPTxt &lt; 10)
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Texture10mL, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
+print(ggobj2)</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Texture10m%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
+print(ggobj2)</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Texture10m%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="sh-texture-plots" class="section level2">
+<h2>SH texture plots</h2>
+<pre class="r"><code>#SH Sites
+
+Texture10mLSH &lt;- Texture10mL  %&gt;% filter(OwnerType == &quot;SH&quot;)
+Texture10mRSH &lt;- Texture10mR  %&gt;% filter(OwnerType == &quot;SH&quot;)
+
+
+library(ggplot2)
+ggobj2 &lt;- ggplot(data=Texture10mLSH, aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH Texture10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
+print(ggobj2)</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20SH%20Texture10m%20on%20A3-1.png" width="1152" /></p>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Texture10mRSH, aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION))) +
+  geom_boxplot() + ggtitle(&quot;SH Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) + labs(col = &quot;I/D&quot;) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) 
+print(ggobj2)</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20SH%20Texture10m%20on%20A3-2.png" width="1152" /></p>
+</div>
+<div id="la-texture-plots---none-exist" class="section level2">
+<h2>LA texture plots - none exist</h2>
+<pre class="r"><code>#LA Sites
+
+Texture10mLLA &lt;- Texture10mL  %&gt;% filter(OwnerType == &quot;LA&quot;)
+Texture10mRLA &lt;- Texture10mR  %&gt;% filter(OwnerType == &quot;LA&quot;)</code></pre>
+</div>
+<div id="big-individual-texture-plots-lwp" class="section level2">
+<h2>Big individual texture plots LWP</h2>
+<pre class="r"><code>library(dplyr)
+ggobj2Texture10mL &lt;- Texture10mL %&gt;% group_by(SECTION_ID) %&gt;% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=LWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;LWP Texture&quot;, subtitle = .$SECTION_ID) + ylab(&quot;LWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;))   
+
+print(ggobj2Texture10mL$plots)</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-1.png" width="1920" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-2.png" width="1920" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-3.png" width="1920" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-4.png" width="1920" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-5.png" width="1920" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-6.png" width="1920" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-7.png" width="1920" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-8.png" width="1920" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-9.png" width="1920" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-10.png" width="1920" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-11.png" width="1920" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-12.png" width="1920" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-13.png" width="1920" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-14.png" width="1920" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-15.png" width="1920" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-16.png" width="1920" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-17.png" width="1920" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-18.png" width="1920" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-19.png" width="1920" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-20.png" width="1920" /></p>
+<pre><code>## 
+## [[21]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-21.png" width="1920" /></p>
+<pre><code>## 
+## [[22]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-22.png" width="1920" /></p>
+<pre><code>## 
+## [[23]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-23.png" width="1920" /></p>
+<pre><code>## 
+## [[24]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-24.png" width="1920" /></p>
+<pre><code>## 
+## [[25]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-25.png" width="1920" /></p>
+<pre><code>## 
+## [[26]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-26.png" width="1920" /></p>
+<pre><code>## 
+## [[27]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-27.png" width="1920" /></p>
+<pre><code>## 
+## [[28]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-28.png" width="1920" /></p>
+<pre><code>## 
+## [[29]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-29.png" width="1920" /></p>
+<pre><code>## 
+## [[30]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-30.png" width="1920" /></p>
+<pre><code>## 
+## [[31]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-31.png" width="1920" /></p>
+<pre><code>## 
+## [[32]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-32.png" width="1920" /></p>
+<pre><code>## 
+## [[33]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-33.png" width="1920" /></p>
+</div>
+<div id="big-individual-texture-plots-rwp" class="section level2">
+<h2>Big individual texture plots RWP</h2>
+<pre class="r"><code>library(dplyr)
+ggobj2Texture10mR &lt;- Texture10mR %&gt;% group_by(SECTION_ID) %&gt;% do(plots=ggplot(data=.) +
+         aes(x=FinancialYear, y=RWPTxt, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = &quot;I/D&quot;) + ggtitle(&quot;RWP Texture&quot;, subtitle = .$SECTION_ID) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;))   
+
+print(ggobj2Texture10mR$plots)</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-1.png" width="1920" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-2.png" width="1920" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-3.png" width="1920" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-4.png" width="1920" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-5.png" width="1920" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-6.png" width="1920" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-7.png" width="1920" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-8.png" width="1920" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-9.png" width="1920" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-10.png" width="1920" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-11.png" width="1920" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-12.png" width="1920" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-13.png" width="1920" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-14.png" width="1920" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-15.png" width="1920" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-16.png" width="1920" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-17.png" width="1920" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-18.png" width="1920" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-19.png" width="1920" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-20.png" width="1920" /></p>
+<pre><code>## 
+## [[21]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-21.png" width="1920" /></p>
+<pre><code>## 
+## [[22]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-22.png" width="1920" /></p>
+<pre><code>## 
+## [[23]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-23.png" width="1920" /></p>
+<pre><code>## 
+## [[24]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-24.png" width="1920" /></p>
+<pre><code>## 
+## [[25]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-25.png" width="1920" /></p>
+<pre><code>## 
+## [[26]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-26.png" width="1920" /></p>
+<pre><code>## 
+## [[27]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-27.png" width="1920" /></p>
+<pre><code>## 
+## [[28]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-28.png" width="1920" /></p>
+<pre><code>## 
+## [[29]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-29.png" width="1920" /></p>
+<pre><code>## 
+## [[30]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-30.png" width="1920" /></p>
+<pre><code>## 
+## [[31]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-31.png" width="1920" /></p>
+<pre><code>## 
+## [[32]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-32.png" width="1920" /></p>
+<pre><code>## 
+## [[33]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-33.png" width="1920" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

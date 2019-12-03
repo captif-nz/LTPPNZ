@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>LTPP Ratings Report</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LTPP Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="LTTP-Summary.html">LTTP Summary</a>
+</li>
+<li>
+  <a href="Rutting-Summary.html">Rutting</a>
+</li>
+<li>
+  <a href="RoughnessSummary.html">Roughness</a>
+</li>
+<li>
+  <a href="TextureSummary.html">Texture</a>
+</li>
+<li>
+  <a href="Ratings.html">Ratings</a>
+</li>
+<li>
+  <a href="Table-Summary.html">Table Data</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">LTPP Ratings Report</h1>
+
+</div>
+
+
+<p>This page contains a national summary of the Visual Ratings from the LTPP database.</p>
+<p>The code to generate this is displayed first - then the graphics.</p>
+<p>Use the menu to left to go straight to the Rating type for all sites.</p>
+<div id="data-importing" class="section level1">
+<h1>Data Importing</h1>
+<p>The code below imports the data from the Ratings in the database</p>
+<pre class="r"><code>#Sys.Date()
+Sys.time()</code></pre>
+<pre><code>## [1] &quot;2019-12-03 12:12:19 NZDT&quot;</code></pre>
+<pre class="r"><code>#setup plot theme for plots
+#library(ggplot2)
+#mytheme &lt;- theme_grey() + theme(text = element_text(colour = &quot;black&quot;, size=18))
+
+
+#load database connection library
+library(RODBC)
+ 
+#connect to database 1 - CAPTIF PR3 0404.mdb
+db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+
+#con2 &lt;- odbcConnectAccess2007(db)
+con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))</code></pre>
+<div id="importing-tables" class="section level2">
+<h2>Importing tables</h2>
+<pre class="r"><code>#Check column names of a table 
+#sqlColumns(con2, &quot;Profilometer Profiles&quot;)$COLUMN_NAME
+
+
+Rating50m &lt;- sqlFetch(con2, &quot;50mRating&quot;)
+CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)</code></pre>
+</div>
+</div>
+<div id="data-tidy" class="section level1">
+<h1>Data tidy</h1>
+<pre class="r"><code># Create SH/LA column
+library(dplyr)
+library(stringr)
+
+
+CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;))
+
+View(CalibrationSections)
+#print(CalibrationSections)
+
+Rating50m&lt;- Rating50m%&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
+<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
+## different levels, coercing to character vector</code></pre>
+</div>
+<div id="all-rating-50m---plots" class="section level1">
+<h1>All Rating 50m - plots!</h1>
+<pre class="r"><code>#View(Rutting10m)
+
+library(ggplot2)</code></pre>
+<div id="aloss" class="section level2">
+<h2>ALoss%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ALoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ALoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 9 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20ALoss%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="sloss" class="section level2">
+<h2>SLoss%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`SLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m SLoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 9 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20SLoss%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="chiploss" class="section level2">
+<h2>ChipLoss%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ChipLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ChipLoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 18609 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20ChipLoss%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="delam" class="section level2">
+<h2>Delam%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Delam%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Delam% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Delam%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="mechdamage" class="section level2">
+<h2>MechDamage%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`MechDamage%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m MechDamage% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20MechDamage%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="flush-low" class="section level2">
+<h2>Flush-Low%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Low%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-Low% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 12 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Flush-Low%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="flush-mid" class="section level2">
+<h2>Flush-Mid%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Mid%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-Mid% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Flush-Mid%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="flush-high" class="section level2">
+<h2>Flush-High%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-High%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-High% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Flush-High%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longe-n" class="section level2">
+<h2>LongE-N%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongE-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongE-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longe-w" class="section level2">
+<h2>LongE-W%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongE-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongE-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longe-s" class="section level2">
+<h2>LongE-S%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongE-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongE-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongE-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longwt-n" class="section level2">
+<h2>LongWT-N%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongWT-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongWT-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longwt-w" class="section level2">
+<h2>LongWT-W%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongWT-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20%20LongWT-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longwt-s" class="section level2">
+<h2>LongWT-S%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongWT-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongWT-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longir-n" class="section level2">
+<h2>LongIR-N%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongIR-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongIR-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longir-w" class="section level2">
+<h2>LongIR-W%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongIR-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongIR-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="longir-s" class="section level2">
+<h2>LongIR-S%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`LongIR-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m LongIR-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20LongIR-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="trans-n" class="section level2">
+<h2>Trans-N%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Trans-N% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Trans-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="trans-w" class="section level2">
+<h2>Trans-W%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Trans-W% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Trans-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="trans-s" class="section level2">
+<h2>Trans-S%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Trans-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Trans-S% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Trans-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alg-n" class="section level2">
+<h2>AlG-N</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlG-N Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20AlG-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alg-w" class="section level2">
+<h2>AlG-W</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlG-W Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20AlG-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alg-s" class="section level2">
+<h2>AlG-S</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlG-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlG-S Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20AlG-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alwt-n" class="section level2">
+<h2>AlWT-N</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlWT-N Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20AlWT-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alwt-w" class="section level2">
+<h2>AlWT-W</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlWT-W Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20AlWT-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="alwt-s" class="section level2">
+<h2>AlWT-S</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`AlWT-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m AlWT-S Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20AlWT-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="par-n" class="section level2">
+<h2>PAR-N</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-N`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PAR-N Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PAR-N%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="par-w" class="section level2">
+<h2>PAR-W</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-W`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PAR-W Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PAR-W%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="par-s" class="section level2">
+<h2>PAR-S</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PAR-S`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PAR-S Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PAR-S%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="patchsurf" class="section level2">
+<h2>PatchSurf</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PatchSurf`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PatchSurf Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PatchSurf%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="patchstructure" class="section level2">
+<h2>PatchStructure</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PatchStructure`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PatchStructure Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PatchStructure%20%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="potholediameter" class="section level2">
+<h2>PotholeDiameter</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeDiameter`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PotholeDiameter Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PotholeDiameter%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="potholedepth" class="section level2">
+<h2>PotholeDepth</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeDepth`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PotholeDepth Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PotholeDepth%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="potholenumber" class="section level2">
+<h2>PotholeNumber</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`PotholeNumber`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m PotholeNumber Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20PotholeNumber%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="edgea" class="section level2">
+<h2>EdgeA</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`EdgeA`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m EdgeA Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20EdgeA%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="edged" class="section level2">
+<h2>EdgeD</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`EdgeD`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m EdgeD Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20EdgeD%2050m%20-1.png" width="1152" /></p>
+</div>
+<div id="shoving" class="section level2">
+<h2>Shoving%</h2>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Shoving%`, col = as.factor(LANE_DIRECTION))) + geom_boxplot() + ggtitle(&quot;Rating50m Shoving% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print(ggobj2)</code></pre>
+<pre><code>## Warning: Removed 7 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Ratings_files/figure-html/plot%20Shoving%2050m%20-1.png" width="1152" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

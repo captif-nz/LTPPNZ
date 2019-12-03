@@ -131,5 +131,7 @@ ggobj2Roughness10m <- Roughness10m %>% group_by(SECTION_ID) %>% do(plots=ggplot(
          aes(x=FinancialYear, y=LaneIRI, col = as.factor(LANE_DIRECTION)) +  geom_boxplot() + labs(col = "I/D") + ggtitle("Roughness - Lane IRI", subtitle = .$SECTION_ID) + ylab("Lane Roughness (IRI)") + xlab("Financial Year"))
 
 print(ggobj2Roughness10m$plots)
+
+close(con2)
 ```
 

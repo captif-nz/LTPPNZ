@@ -39,6 +39,7 @@ Texture10m <- sqlFetch(con2, "10mTexture")
 Roughness10m <- sqlFetch(con2, "10mRoughness")
 Rating50m <- sqlFetch(con2, "50mRating")
 CalibrationSections <- sqlFetch(con2, "CalibrationSections")
+
 ```
 
 #Data tidy
@@ -131,6 +132,6 @@ ggobj2 <- ggplot(data=Texture10mR, aes(x=FinancialYear, y=RWPTxt, col = as.facto
   geom_boxplot() + ggtitle("All Texture10m RWP Boxplot") + facet_wrap(~SECTION_ID, ncol=5) + ylab("RWP Texture MPD (mm)") + xlab("Financial Year") + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)
 
-
+close(con2)
 ```
 
