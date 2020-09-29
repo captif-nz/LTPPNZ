@@ -8,7 +8,7 @@ output:
 
 # Introduction
 
-Hello, this a Summary of the NZ LTPP programmes data to 2019!  
+Hello, this a Summary of the NZ LTPP programmes data to 2020!  
   
 The aim of the site is to display the data from the NZ LTPP programme grapically and show case the freeware statistical software used to do this.
   
@@ -18,7 +18,7 @@ The site is delibrately doing this as part of "Data Science" approach to make an
     
 All the code is available for download at Github and a copy of the database is available from the NZTA. 
   
-The site contains only 8 pages but that contain a lot of detail as the short decriptions below will explain.
+The site contains only 8 pages but they contain a lot of detail as the short decriptions below will explain.
    
 (@) The Home page - ie this page, contains the pupose and the structure of the site  
 (@) The About page - explains how to make a website like this  

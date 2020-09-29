@@ -25,7 +25,7 @@ Sys.time()
 library(RODBC)
  
 #connect to database 1 - CAPTIF PR3 0404.mdb
-db <- "C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb"
+db <- "C:/DDATA/LTPP/2020/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb"
 
 #con2 <- odbcConnectAccess2007(db)
 con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
@@ -87,8 +87,22 @@ View(CalibrationSections)
 CalibrationSections <- CalibrationSections %>%select(-COMMENTS)
 
 library(kableExtra)
-kable(CalibrationSections, format = "html", caption = "LTPP Sites") %>%
+kable(CalibrationSections, format = "html", caption = "LTPP Sites by OwnerType and ID") %>%
   kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
+
+
+CalibrationSectionsSH <- CalibrationSections %>% filter(OwnerType == "SH") %>% arrange(`RoadName/SH`, RS, CAL_SECTION_ID)
+
+View(CalibrationSectionsSH)
+
+#CalibrationSectionsSH <- CalibrationSections %>%select(-COMMENTS)
+
+library(kableExtra)
+kable(CalibrationSectionsSH, format = "html", caption = "LTPP Sites by SH, RS and ID") %>%
+  kable_styling("striped", fixed_thead = T) %>% scroll_box(width = "100%", height = "500px")
+
+
+
 ```
 
 ## CAL_SEC_PAVE_DATA
