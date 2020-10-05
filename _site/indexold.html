@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -235,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +263,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -391,7 +397,7 @@ div.tocify {
 <ol class="example" style="list-style-type: decimal">
 <li>Create Github account</li>
 <li>Create Github Repo (folder) and make it public</li>
-<li>Go to settings - Git Hub pages - Source - and make it “Master branch”</li>
+<li>Go to settings - Git Hub pages - Source - and make it &quot;Master branch&quot;</li>
 <li>Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)</li>
 <li>create a .nojekyll file (to stop Github from trying to make a wesite)</li>
 <li>create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)</li>
@@ -402,7 +408,7 @@ div.tocify {
 <li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
 <li>USer Rstudio to Build the website</li>
 <li>I havent had much joy pushing the website to Github using Rstudio so</li>
-<li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then git add -A git commit -m “new website” git push</li>
+<li>After &quot;Build&quot; website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then git add -A git commit -m &quot;new website&quot; git push</li>
 </ol>
 <p>And your new website should be up and running at <a href="https://Github_user_name.github.io/Github_repo_name/" class="uri">https://Github_user_name.github.io/Github_repo_name/</a> ie for me <a href="https://dala009.github.io/LTPPNZ/" class="uri">https://dala009.github.io/LTPPNZ/</a></p>
 <p>And remember you need that redirect index.html in github repo and at .nojekyll file made (with nothing actually in it)</p>
@@ -420,12 +426,12 @@ Redirecting to LTPP Data site
 </div>
 <div id="index.rmd" class="section level2">
 <h2>index.Rmd</h2>
-<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. I am not sure if this could just be called “home” and the yml file adjust - will give it a go one day.</p>
+<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. I am not sure if this could just be called &quot;home&quot; and the yml file adjust - will give it a go one day.</p>
 </div>
 <div id="site.yml-file" class="section level2">
 <h2>_Site.yml file</h2>
-<p>You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page</p>
-<p>name: “LTPP-website” navbar: title: “LTPP Website” left: - text: “Home” href: index.html - text: “About” href: about.html - text: “LTTP Summary” href: LTTP-Summary.html - text: “Rutting Summary” href: Rutting-Summary.html - text: “Roughness Summary” href: RoughnessSummary.html - text: “Texture Summary” href: TextureSummary.html - text: “Single Site Summary” href: SingleSummary.html</p>
+<p>You will need create a text file in R Studio called &quot;_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page</p>
+<p>name: &quot;LTPP-website&quot; navbar: title: &quot;LTPP Website&quot; left: - text: &quot;Home&quot; href: index.html - text: &quot;About&quot; href: about.html - text: &quot;LTTP Summary&quot; href: LTTP-Summary.html - text: &quot;Rutting Summary&quot; href: Rutting-Summary.html - text: &quot;Roughness Summary&quot; href: RoughnessSummary.html - text: &quot;Texture Summary&quot; href: TextureSummary.html - text: &quot;Single Site Summary&quot; href: SingleSummary.html</p>
 </div>
 </div>
 
@@ -479,7 +485,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

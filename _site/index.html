@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -235,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +263,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -384,12 +390,12 @@ div.tocify {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>Hello, this a Summary of the NZ LTPP programmes data to 2019!</p>
+<p>Hello, this a Summary of the NZ LTPP programmes data to 2020!</p>
 <p>The aim of the site is to display the data from the NZ LTPP programme grapically and show case the freeware statistical software used to do this.</p>
 <p>You will see the code used to extract the data from the LTPP database, tidy the data, graphically display the data and then you will see the graphics.</p>
-<p>The site is delibrately doing this as part of “Data Science” approach to make analysis accessible and reproducible.</p>
+<p>The site is delibrately doing this as part of &quot;Data Science&quot; approach to make analysis accessible and reproducible.</p>
 <p>All the code is available for download at Github and a copy of the database is available from the NZTA.</p>
-<p>The site contains only 8 pages but that contain a lot of detail as the short decriptions below will explain.</p>
+<p>The site contains only 8 pages but they contain a lot of detail as the short decriptions below will explain.</p>
 <ol class="example" style="list-style-type: decimal">
 <li>The Home page - ie this page, contains the pupose and the structure of the site<br />
 </li>
@@ -421,7 +427,7 @@ div.tocify {
 <h1>Software used</h1>
 <p>It is a beta site hosted on Github and written with R and R Studio.</p>
 <p>R and Rstudio are very well documented online.</p>
-<p>A detailed discription on how to create a site like this is on the “About” page.</p>
+<p>A detailed discription on how to create a site like this is on the &quot;About&quot; page.</p>
 </div>
 
 
@@ -474,7 +480,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

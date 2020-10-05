@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -235,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +263,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -395,21 +401,21 @@ div.tocify {
 <ol class="example" style="list-style-type: decimal">
 <li>Create Github account</li>
 <li>Create Github Repo (folder) and make it public</li>
-<li>Go to settings - Git Hub pages - Source - and make it “Master branch”</li>
+<li>Go to settings - Git Hub pages - Source - and make it &quot;Master branch&quot;</li>
 <li>Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)</li>
 <li>Create a .nojekyll file (to stop Github from trying to make a wesite)</li>
 <li>Create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)</li>
 <li>Download Git to computer</li>
 <li>In Git CMD (depreciated)</li>
-<li>git config –global user.email “<a href="mailto:you@example.com">you@example.com</a>”</li>
-<li>git config –global user.name “Your Name”</li>
+<li>git config --global user.email &quot;<a href="mailto:you@example.com">you@example.com</a>&quot;</li>
+<li>git config --global user.name &quot;Your Name&quot;</li>
 <li>In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)&quot;</li>
 <li>View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys</li>
 <li>Back in Rstudio - open a new project with version control</li>
 <li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
 <li>Use Rstudio to Build the website</li>
 <li>I havent had much joy pushing the website to Github using Rstudio so</li>
-<li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then</li>
+<li>After &quot;Build&quot; website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then</li>
 </ol>
 <pre><code>
 git add -A  
@@ -432,13 +438,13 @@ and a .nojekyll file made (with nothing actually in it)</p>
 <li>Tick and commit in RStudio Git tab<br />
 </li>
 <li>Give commit a name and push from the commit box in Rstudio</li>
-<li>Test the new look by “knitting”&quot; the new page (except the index)</li>
+<li>Test the new look by &quot;knitting&quot;&quot; the new page (except the index)</li>
 <li>Build a new website if figures or pictures are on a updated page</li>
 <li>If you dont need to build you can commit and push the html created</li>
 <li>If pushing a new website, use step 17 above</li>
 </ul>
 <p>Note.<br />
-- “Kniting” HTML isn’t the same as “Building” a website.<br />
+- &quot;Kniting&quot; HTML isn't the same as &quot;Building&quot; a website.<br />
 - Knitting includes pictures in the HTML, making it slow to load<br />
 - Building strips out the pictures and links to them - making it fast</p>
 </div>
@@ -462,11 +468,11 @@ and a .nojekyll file made (with nothing actually in it)</p>
 </div>
 <div id="index.rmd" class="section level2">
 <h2>index.Rmd</h2>
-<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. And it must be called index as the github looks for index in the folder - tried calling it something else and wasn’t successful.</p>
+<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. And it must be called index as the github looks for index in the folder - tried calling it something else and wasn't successful.</p>
 </div>
 <div id="site.yml-file" class="section level2">
 <h2>_Site.yml file</h2>
-You will need create a text file in R Studio called “_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page<br />
+You will need create a text file in R Studio called &quot;_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page<br />
 
 <pre><code>
 name: "LTPP-website"  
@@ -543,7 +549,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

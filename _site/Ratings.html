@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -235,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +263,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -390,7 +396,7 @@ div.tocify {
 <p>The code below imports the data from the Ratings in the database</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-12-03 12:12:19 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2020-09-29 16:54:19 NZDT&quot;</code></pre>
 <pre class="r"><code>#setup plot theme for plots
 #library(ggplot2)
 #mytheme &lt;- theme_grey() + theme(text = element_text(colour = &quot;black&quot;, size=18))
@@ -400,7 +406,7 @@ Sys.time()</code></pre>
 library(RODBC)
  
 #connect to database 1 - CAPTIF PR3 0404.mdb
-db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+db &lt;- &quot;C:/DDATA/LTPP/2020/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb&quot;
 
 #con2 &lt;- odbcConnectAccess2007(db)
 con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))</code></pre>
@@ -427,8 +433,6 @@ View(CalibrationSections)
 #print(CalibrationSections)
 
 Rating50m&lt;- Rating50m%&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
 </div>
 <div id="all-rating-50m---plots" class="section level1">
 <h1>All Rating 50m - plots!</h1>
@@ -439,21 +443,21 @@ library(ggplot2)</code></pre>
 <h2>ALoss%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ALoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ALoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<pre><code>## Warning: Removed 9 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 12 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="Ratings_files/figure-html/plot%20ALoss%2050m%20-1.png" width="1152" /></p>
 </div>
 <div id="sloss" class="section level2">
 <h2>SLoss%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`SLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m SLoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<pre><code>## Warning: Removed 9 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 12 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="Ratings_files/figure-html/plot%20SLoss%2050m%20-1.png" width="1152" /></p>
 </div>
 <div id="chiploss" class="section level2">
 <h2>ChipLoss%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`ChipLoss%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m ChipLoss% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<pre><code>## Warning: Removed 18609 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 18732 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="Ratings_files/figure-html/plot%20ChipLoss%2050m%20-1.png" width="1152" /></p>
 </div>
 <div id="delam" class="section level2">
@@ -474,7 +478,7 @@ print(ggobj2)</code></pre>
 <h2>Flush-Low%</h2>
 <pre class="r"><code>ggobj2 &lt;- ggplot(data=Rating50m, aes(x=FinancialYear, y=`Flush-Low%`, col = as.factor(LANE_DIRECTION))) +  geom_boxplot() + ggtitle(&quot;Rating50m Flush-Low% Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
-<pre><code>## Warning: Removed 12 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 13 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="Ratings_files/figure-html/plot%20Flush-Low%2050m%20-1.png" width="1152" /></p>
 </div>
 <div id="flush-mid" class="section level2">
@@ -688,6 +692,7 @@ print(ggobj2)</code></pre>
 print(ggobj2)</code></pre>
 <pre><code>## Warning: Removed 7 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="Ratings_files/figure-html/plot%20Shoving%2050m%20-1.png" width="1152" /></p>
+<pre class="r"><code>close(con2)</code></pre>
 </div>
 </div>
 
@@ -741,7 +746,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

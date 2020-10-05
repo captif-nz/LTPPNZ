@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -235,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +263,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -390,11 +396,11 @@ div.tocify {
 <p>The code below imports the data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-12-03 12:37:00 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2020-09-29 17:27:03 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
 
-db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+db &lt;- &quot;C:/DDATA/LTPP/2020/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb&quot;
 
 con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))
 
@@ -402,25 +408,28 @@ Roughness10m &lt;- sqlFetch(con2, &quot;10mRoughness&quot;)
 CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)
 
 library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages ----------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v tibble  2.1.3     v readr   1.3.1
-## v tidyr   0.8.3     v purrr   0.3.2
-## v tibble  2.1.3     v forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## -- Attaching packages ----------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v tibble  3.0.3     v purrr   0.3.4
+## v tidyr   1.1.0     v forcats 0.5.0
+## v readr   1.3.1</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.6.3</code></pre>
 <pre><code>## -- Conflicts -------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter()          masks stats::filter()
 ## x kableExtra::group_rows() masks dplyr::group_rows()
 ## x dplyr::lag()             masks stats::lag()</code></pre>
-<pre class="r"><code>Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
-
-# Create SH/LA column
+<pre class="r"><code>Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code># Create SH/LA column
 library(dplyr)
 library(stringr)
 
 CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;))
 
 Roughness10m &lt;- Roughness10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
 </div>
 <div id="all-roughness-plots" class="section level1">
 <h1>All Roughness Plots</h1>
@@ -516,7 +525,7 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-5.png" width="1920" /></p>
 <pre><code>## 
 ## [[6]]</code></pre>
-<pre><code>## Warning: Removed 60 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 90 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-6.png" width="1920" /></p>
 <pre><code>## 
 ## [[7]]</code></pre>
@@ -580,6 +589,7 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-26.png" width="1920" /></p>
 <pre><code>## 
 ## [[27]]</code></pre>
+<pre><code>## Warning: Removed 16 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-27.png" width="1920" /></p>
 <pre><code>## 
 ## [[28]]</code></pre>
@@ -598,7 +608,6 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-32.png" width="1920" /></p>
 <pre><code>## 
 ## [[33]]</code></pre>
-<pre><code>## Warning: Removed 16 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-33.png" width="1920" /></p>
 <pre><code>## 
 ## [[34]]</code></pre>
@@ -704,6 +713,7 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-67.png" width="1920" /></p>
 <pre><code>## 
 ## [[68]]</code></pre>
+<pre><code>## Warning: Removed 20 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-68.png" width="1920" /></p>
 <pre><code>## 
 ## [[69]]</code></pre>
@@ -743,7 +753,6 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-80.png" width="1920" /></p>
 <pre><code>## 
 ## [[81]]</code></pre>
-<pre><code>## Warning: Removed 20 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-81.png" width="1920" /></p>
 <pre><code>## 
 ## [[82]]</code></pre>
@@ -780,6 +789,7 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-92.png" width="1920" /></p>
 <pre><code>## 
 ## [[93]]</code></pre>
+<pre><code>## Warning: Removed 120 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-93.png" width="1920" /></p>
 <pre><code>## 
 ## [[94]]</code></pre>
@@ -837,7 +847,6 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-111.png" width="1920" /></p>
 <pre><code>## 
 ## [[112]]</code></pre>
-<pre><code>## Warning: Removed 90 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-112.png" width="1920" /></p>
 <pre><code>## 
 ## [[113]]</code></pre>
@@ -895,6 +904,7 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-130.png" width="1920" /></p>
 <pre><code>## 
 ## [[131]]</code></pre>
+<pre><code>## Warning: Removed 90 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-131.png" width="1920" /></p>
 <pre><code>## 
 ## [[132]]</code></pre>
@@ -952,7 +962,6 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-149.png" width="1920" /></p>
 <pre><code>## 
 ## [[150]]</code></pre>
-<pre><code>## Warning: Removed 90 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-150.png" width="1920" /></p>
 <pre><code>## 
 ## [[151]]</code></pre>
@@ -980,69 +989,13 @@ print(ggobj2Roughness10m$plots)</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-158.png" width="1920" /></p>
 <pre><code>## 
 ## [[159]]</code></pre>
+<pre><code>## Warning: Removed 120 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-159.png" width="1920" /></p>
 <pre><code>## 
 ## [[160]]</code></pre>
+<pre><code>## Warning: Removed 120 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-160.png" width="1920" /></p>
-<pre><code>## 
-## [[161]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-161.png" width="1920" /></p>
-<pre><code>## 
-## [[162]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-162.png" width="1920" /></p>
-<pre><code>## 
-## [[163]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-163.png" width="1920" /></p>
-<pre><code>## 
-## [[164]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-164.png" width="1920" /></p>
-<pre><code>## 
-## [[165]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-165.png" width="1920" /></p>
-<pre><code>## 
-## [[166]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-166.png" width="1920" /></p>
-<pre><code>## 
-## [[167]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-167.png" width="1920" /></p>
-<pre><code>## 
-## [[168]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-168.png" width="1920" /></p>
-<pre><code>## 
-## [[169]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-169.png" width="1920" /></p>
-<pre><code>## 
-## [[170]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-170.png" width="1920" /></p>
-<pre><code>## 
-## [[171]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-171.png" width="1920" /></p>
-<pre><code>## 
-## [[172]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-172.png" width="1920" /></p>
-<pre><code>## 
-## [[173]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-173.png" width="1920" /></p>
-<pre><code>## 
-## [[174]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-174.png" width="1920" /></p>
-<pre><code>## 
-## [[175]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-175.png" width="1920" /></p>
-<pre><code>## 
-## [[176]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-176.png" width="1920" /></p>
-<pre><code>## 
-## [[177]]</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-177.png" width="1920" /></p>
-<pre><code>## 
-## [[178]]</code></pre>
-<pre><code>## Warning: Removed 90 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-178.png" width="1920" /></p>
-<pre><code>## 
-## [[179]]</code></pre>
-<pre><code>## Warning: Removed 90 rows containing non-finite values (stat_boxplot).</code></pre>
-<p><img src="RoughnessSummary_files/figure-html/plot%20%20Big%20individual%20%20Roughness%20plots%20-179.png" width="1920" /></p>
+<pre class="r"><code>close(con2)</code></pre>
 </div>
 
 
@@ -1095,7 +1048,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

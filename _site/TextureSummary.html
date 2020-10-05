@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -235,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +263,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -390,11 +396,11 @@ div.tocify {
 <p>The code below imports the data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-12-03 13:32:44 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2020-10-01 13:00:07 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
  
-db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+db &lt;- &quot;C:/DDATA/LTPP/2020/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb&quot;
 
 con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))
 
@@ -402,17 +408,15 @@ Texture10m &lt;- sqlFetch(con2, &quot;10mTexture&quot;)
 CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)
 
 library(tidyverse)
-Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
-
-# Create SH/LA column
+Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code># Create SH/LA column
 library(dplyr)
 library(stringr)
 
 CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;))
 
 Texture10m &lt;- Texture10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
 </div>
 <div id="texture-plots" class="section level1">
 <h1>Texture Plots</h1>
@@ -562,6 +566,9 @@ print(ggobj2Texture10mL$plots)</code></pre>
 <pre><code>## 
 ## [[33]]</code></pre>
 <p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-33.png" width="1920" /></p>
+<pre><code>## 
+## [[34]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20LWP-34.png" width="1920" /></p>
 </div>
 <div id="big-individual-texture-plots-rwp" class="section level2">
 <h2>Big individual texture plots RWP</h2>
@@ -668,6 +675,10 @@ print(ggobj2Texture10mR$plots)</code></pre>
 <pre><code>## 
 ## [[33]]</code></pre>
 <p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-33.png" width="1920" /></p>
+<pre><code>## 
+## [[34]]</code></pre>
+<p><img src="TextureSummary_files/figure-html/plot%20Big%20individual%20texture%20plots%20RWP-34.png" width="1920" /></p>
+<pre class="r"><code>close(con2)</code></pre>
 </div>
 </div>
 
@@ -721,7 +732,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

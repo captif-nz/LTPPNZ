@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -236,6 +235,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -264,6 +264,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -391,12 +397,12 @@ div.tocify {
 <p>The code below imports the rutting, roughness and texture data from the 10m databases</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2019-12-03 14:08:40 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2020-09-29 16:48:59 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
  
 #connect to database 
-db &lt;- &quot;C:/DDATA/LTPP/2019/LTPP 2018-19 database/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2019.mdb&quot;
+db &lt;- &quot;C:/DDATA/LTPP/2020/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb&quot;
 
 con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))</code></pre>
 <div id="importing-tables" class="section level2">
@@ -412,6 +418,7 @@ CalibrationSections &lt;- sqlFetch(con2, &quot;CalibrationSections&quot;)</code>
 <h1>Data tidy</h1>
 <pre class="r"><code># Create SH/LA column
 library(dplyr)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.3</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -424,18 +431,10 @@ library(dplyr)</code></pre>
 
 CalibrationSections &lt;- CalibrationSections %&gt;% mutate(OwnerType = if_else((str_detect(CAL_SECTION_ID, &quot;CAL&quot;)|str_detect(CAL_SECTION_ID, &quot;CS&quot;)), &quot;SH&quot;, &quot;LA&quot;)) %&gt;% arrange(OwnerType, CAL_SECTION_ID)
 
-Rutting10m &lt;- Rutting10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
-<pre class="r"><code>Texture10m &lt;- Texture10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
-<pre class="r"><code>Roughness10m &lt;- Roughness10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
-<pre class="r"><code>Rating50m&lt;- Rating50m%&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
-<pre><code>## Warning: Column `SECTION_ID`/`CAL_SECTION_ID` joining factors with
-## different levels, coercing to character vector</code></pre>
+Rutting10m &lt;- Rutting10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))
+Texture10m &lt;- Texture10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))
+Roughness10m &lt;- Roughness10m %&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))
+Rating50m&lt;- Rating50m%&gt;% left_join(CalibrationSections, by = c(&quot;SECTION_ID&quot;=&quot;CAL_SECTION_ID&quot;))</code></pre>
 </div>
 <div id="ltpp-sites" class="section level1">
 <h1>LTPP Sites</h1>
@@ -508,6 +507,9 @@ BM RP Start
 BM RP End
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+FY_FirstSurveyed
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
 FY_WhenAbandoned
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
@@ -524,10 +526,10 @@ OwnerType
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-1309
+31309
 </td>
 <td style="text-align:left;">
 Tamaki Drive
@@ -569,6 +571,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -583,10 +588,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-4233
+34233
 </td>
 <td style="text-align:left;">
 Pah Road
@@ -628,6 +633,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -642,10 +650,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-4137
+34137
 </td>
 <td style="text-align:left;">
 Neilson Street
@@ -660,10 +668,10 @@ NA
 AKL3-S
 </td>
 <td style="text-align:right;">
-815
+560
 </td>
 <td style="text-align:right;">
-1115
+860
 </td>
 <td style="text-align:right;">
 1
@@ -685,6 +693,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -746,6 +757,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 2006/07
 </td>
 <td style="text-align:left;">
@@ -803,6 +817,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -864,6 +881,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -923,7 +943,10 @@ NA
 NA
 </td>
 <td style="text-align:left;">
-NA
+2004/05
+</td>
+<td style="text-align:left;">
+2008/09
 </td>
 <td style="text-align:left;">
 LA
@@ -982,7 +1005,10 @@ NA
 NA
 </td>
 <td style="text-align:left;">
-NA
+2004/05
+</td>
+<td style="text-align:left;">
+2008/09
 </td>
 <td style="text-align:left;">
 LA
@@ -1039,6 +1065,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 2008/09
@@ -1100,6 +1129,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 2008/09
 </td>
 <td style="text-align:left;">
@@ -1157,6 +1189,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 2008/09
@@ -1221,6 +1256,9 @@ NA
 2003/04
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 LA
 </td>
 </tr>
@@ -1275,6 +1313,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 2008/09
@@ -1336,6 +1377,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1393,6 +1437,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -1454,6 +1501,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1511,6 +1561,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -1572,6 +1625,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1629,6 +1685,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -1690,6 +1749,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1747,6 +1809,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -1808,6 +1873,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1865,6 +1933,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -1926,6 +1997,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1983,6 +2057,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2044,6 +2121,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2101,6 +2181,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2162,6 +2245,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2219,6 +2305,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2280,6 +2369,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2337,6 +2429,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2398,6 +2493,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2455,6 +2553,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2516,6 +2617,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2530,10 +2634,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-1790
+51790
 </td>
 <td style="text-align:left;">
 Mahia Rd
@@ -2575,6 +2679,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2589,19 +2696,81 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-2492
+54735
 </td>
 <td style="text-align:left;">
-Te Rakau Drive
+Te Rakau Drive (Westbound)
 </td>
 <td style="text-align:right;">
 NA
 </td>
 <td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+MCC2
+</td>
+<td style="text-align:right;">
+3315
+</td>
+<td style="text-align:right;">
+3015
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
 NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Auckland Transport
+</td>
+<td style="text-align:right;">
+52492
+</td>
+<td style="text-align:left;">
+Te Rakau Drive (Eastbound)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+I
 </td>
 <td style="text-align:left;">
 MCC2
@@ -2634,6 +2803,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2648,10 +2820,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-2159
+52159
 </td>
 <td style="text-align:left;">
 Prince Regent Drive
@@ -2691,6 +2863,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2752,6 +2927,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2809,6 +2987,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2870,6 +3051,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -2927,6 +3111,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -2988,6 +3175,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3045,6 +3235,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3106,6 +3299,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3163,6 +3359,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3224,6 +3423,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3238,10 +3440,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-190
+60190
 </td>
 <td style="text-align:left;">
 Porchester Rd
@@ -3283,6 +3485,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3297,10 +3502,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-285
+60285
 </td>
 <td style="text-align:left;">
 Airfield Rd
@@ -3340,6 +3545,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3401,6 +3609,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3458,6 +3669,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3519,6 +3733,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3576,6 +3793,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3637,6 +3857,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 2006/07
 </td>
 <td style="text-align:left;">
@@ -3694,6 +3917,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3755,6 +3981,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3812,6 +4041,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3873,6 +4105,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -3930,6 +4165,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -3991,6 +4229,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4048,6 +4289,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -4109,6 +4353,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4166,6 +4413,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -4227,6 +4477,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4284,6 +4537,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -4345,6 +4601,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4402,6 +4661,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -4463,6 +4725,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4522,6 +4787,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4579,6 +4847,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -4640,6 +4911,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4697,6 +4971,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -4758,6 +5035,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4815,6 +5095,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -4876,6 +5159,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -4933,6 +5219,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -4994,6 +5283,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5051,6 +5343,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5112,6 +5407,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5169,6 +5467,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5230,6 +5531,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5289,6 +5593,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5303,10 +5610,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-986
+40986
 </td>
 <td style="text-align:left;">
 Colwill Rd
@@ -5348,6 +5655,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5362,10 +5672,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-885
+40885
 </td>
 <td style="text-align:left;">
 Forest Hill Rd
@@ -5407,6 +5717,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5421,10 +5734,10 @@ LA
 NA
 </td>
 <td style="text-align:left;">
-Auckland City Council
+Auckland Transport
 </td>
 <td style="text-align:right;">
-235
+40235
 </td>
 <td style="text-align:left;">
 Wharf Road
@@ -5439,10 +5752,10 @@ NA
 WCC3-S
 </td>
 <td style="text-align:right;">
-400
+470
 </td>
 <td style="text-align:right;">
-700
+770
 </td>
 <td style="text-align:right;">
 1
@@ -5464,6 +5777,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5525,6 +5841,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5582,6 +5901,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5643,6 +5965,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5700,6 +6025,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5761,6 +6089,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5818,6 +6149,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5879,6 +6213,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -5936,6 +6273,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -5997,6 +6337,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6054,6 +6397,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -6115,6 +6461,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6172,6 +6521,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2003/04
 </td>
 <td style="text-align:left;">
 NA
@@ -6233,6 +6585,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2003/04
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6292,6 +6647,9 @@ NA
 7820
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6321,7 +6679,7 @@ CENTRAL WAIKATO
 N
 </td>
 <td style="text-align:left;">
-CAL-13b
+CAL-13B
 </td>
 <td style="text-align:right;">
 3880
@@ -6351,6 +6709,9 @@ NA
 4180
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6362,10 +6723,10 @@ SH
 3
 </td>
 <td style="text-align:left;">
-Hamilton
+Auckland
 </td>
 <td style="text-align:left;">
-EAST WAIKATO
+AUCK ALLIANCE
 </td>
 <td style="text-align:right;">
 1774
@@ -6408,6 +6769,9 @@ NA
 </td>
 <td style="text-align:right;">
 5600
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -6469,6 +6833,9 @@ NA
 2200
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6526,6 +6893,9 @@ NA
 </td>
 <td style="text-align:right;">
 14000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -6587,6 +6957,9 @@ NA
 5600
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6616,7 +6989,7 @@ HAWKES BAY
 N
 </td>
 <td style="text-align:left;">
-CAL-25a
+CAL-25A
 </td>
 <td style="text-align:right;">
 8800
@@ -6646,6 +7019,9 @@ NA
 9600
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6675,7 +7051,7 @@ HAWKES BAY
 N
 </td>
 <td style="text-align:left;">
-CAL-25b
+CAL-25B
 </td>
 <td style="text-align:right;">
 9100
@@ -6705,6 +7081,9 @@ NA
 9600
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6734,7 +7113,7 @@ HAWKES BAY
 N
 </td>
 <td style="text-align:left;">
-CAL-27a
+CAL-27A
 </td>
 <td style="text-align:right;">
 10000
@@ -6764,6 +7143,9 @@ NA
 11000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6793,7 +7175,7 @@ HAWKES BAY
 N
 </td>
 <td style="text-align:left;">
-CAL-27b
+CAL-27B
 </td>
 <td style="text-align:right;">
 10300
@@ -6823,6 +7205,9 @@ NA
 11000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6837,7 +7222,7 @@ SH
 Wanganui
 </td>
 <td style="text-align:left;">
-MANAWATU
+MANAWATU-WHANGANUI
 </td>
 <td style="text-align:right;">
 1084
@@ -6882,6 +7267,9 @@ NA
 4050
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -6896,7 +7284,7 @@ SH
 Wanganui
 </td>
 <td style="text-align:left;">
-MANAWATU
+MANAWATU-WHANGANUI
 </td>
 <td style="text-align:right;">
 1641
@@ -6939,6 +7327,9 @@ NA
 </td>
 <td style="text-align:right;">
 5520
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 2006/07
@@ -7000,6 +7391,9 @@ NA
 5970
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7059,6 +7453,9 @@ NA
 15400
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7088,7 +7485,7 @@ MARLBOROUGH
 N
 </td>
 <td style="text-align:left;">
-CAL-37a
+CAL-37A
 </td>
 <td style="text-align:right;">
 4700
@@ -7116,6 +7513,9 @@ NA
 </td>
 <td style="text-align:right;">
 6000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -7177,6 +7577,9 @@ NA
 2028
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7234,6 +7637,9 @@ NA
 </td>
 <td style="text-align:right;">
 8000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -7295,6 +7701,9 @@ NA
 8500
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7354,6 +7763,9 @@ NA
 5000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7383,7 +7795,7 @@ WEST COAST
 N
 </td>
 <td style="text-align:left;">
-CAL-45a
+CAL-45A
 </td>
 <td style="text-align:right;">
 9260
@@ -7411,6 +7823,9 @@ NA
 </td>
 <td style="text-align:right;">
 13500
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -7472,6 +7887,9 @@ NA
 9500
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7504,10 +7922,10 @@ N
 CAL-5
 </td>
 <td style="text-align:right;">
-10450
+10530
 </td>
 <td style="text-align:right;">
-10750
+10830
 </td>
 <td style="text-align:right;">
 0
@@ -7529,6 +7947,9 @@ NA
 </td>
 <td style="text-align:right;">
 10750
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -7590,6 +8011,9 @@ NA
 3000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7619,7 +8043,7 @@ COASTAL OTAGO
 N
 </td>
 <td style="text-align:left;">
-CAL-52a
+CAL-52A
 </td>
 <td style="text-align:right;">
 4000
@@ -7647,6 +8071,9 @@ NA
 </td>
 <td style="text-align:right;">
 5000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -7708,6 +8135,9 @@ R1
 1700
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7765,6 +8195,9 @@ R6
 </td>
 <td style="text-align:right;">
 8360
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -7826,6 +8259,9 @@ R8
 15400
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -7885,6 +8321,9 @@ R11
 1800
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 2007/08
 </td>
 <td style="text-align:left;">
@@ -7914,7 +8353,7 @@ BOP EAST
 I
 </td>
 <td style="text-align:left;">
-CAL-59a
+CAL-59A
 </td>
 <td style="text-align:right;">
 3670
@@ -7942,6 +8381,9 @@ R11
 </td>
 <td style="text-align:right;">
 1800
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -7973,7 +8415,7 @@ BOP EAST
 D
 </td>
 <td style="text-align:left;">
-CAL-59b
+CAL-59B
 </td>
 <td style="text-align:right;">
 3670
@@ -8001,6 +8443,9 @@ R11
 </td>
 <td style="text-align:right;">
 1800
+</td>
+<td style="text-align:left;">
+2007/08
 </td>
 <td style="text-align:left;">
 NA
@@ -8062,6 +8507,9 @@ NA
 10440
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8076,7 +8524,7 @@ SH
 Wanganui
 </td>
 <td style="text-align:left;">
-MANAWATU
+MANAWATU-WHANGANUI
 </td>
 <td style="text-align:right;">
 1229
@@ -8119,6 +8567,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2006/07
 </td>
 <td style="text-align:left;">
 NA
@@ -8180,6 +8631,9 @@ NA
 1100
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8239,6 +8693,9 @@ NA
 7700
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8268,7 +8725,7 @@ CENTRAL WAIKATO
 N
 </td>
 <td style="text-align:left;">
-CS-13a
+CS-13A
 </td>
 <td style="text-align:right;">
 3200
@@ -8296,6 +8753,9 @@ NA
 </td>
 <td style="text-align:right;">
 4180
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -8357,6 +8817,9 @@ NA
 1200
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8414,6 +8877,9 @@ NA
 </td>
 <td style="text-align:right;">
 5000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -8475,6 +8941,9 @@ NA
 14000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8532,6 +9001,9 @@ NA
 </td>
 <td style="text-align:right;">
 6500
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -8593,6 +9065,9 @@ NA
 10500
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8650,6 +9125,9 @@ NA
 </td>
 <td style="text-align:right;">
 1560
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -8711,6 +9189,9 @@ NA
 13200
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -8768,6 +9249,9 @@ NA
 </td>
 <td style="text-align:right;">
 14820
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -8829,6 +9313,9 @@ NA
 12900
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 2006/07
 </td>
 <td style="text-align:left;">
@@ -8886,6 +9373,9 @@ NA
 </td>
 <td style="text-align:right;">
 9420
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -8947,6 +9437,9 @@ NA
 6800
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9004,6 +9497,9 @@ NA
 </td>
 <td style="text-align:right;">
 1500
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -9065,6 +9561,9 @@ NA
 1750
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9124,7 +9623,10 @@ NA
 10000
 </td>
 <td style="text-align:left;">
-NA
+2001/02
+</td>
+<td style="text-align:left;">
+2017/18
 </td>
 <td style="text-align:left;">
 SH
@@ -9183,6 +9685,9 @@ NA
 10000
 </td>
 <td style="text-align:left;">
+2016/17
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9212,7 +9717,7 @@ MARLBOROUGH
 N
 </td>
 <td style="text-align:left;">
-CS-37b
+CS-37B
 </td>
 <td style="text-align:right;">
 5500
@@ -9242,6 +9747,9 @@ NA
 6000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9256,7 +9764,7 @@ SH
 Wellington
 </td>
 <td style="text-align:left;">
-NELSON
+NELSON-TASMAN
 </td>
 <td style="text-align:right;">
 513
@@ -9301,6 +9809,9 @@ NA
 17000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9315,7 +9826,7 @@ SH
 Wellington
 </td>
 <td style="text-align:left;">
-NELSON
+NELSON-TASMAN
 </td>
 <td style="text-align:right;">
 3020
@@ -9358,6 +9869,9 @@ NA
 </td>
 <td style="text-align:right;">
 11000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -9419,6 +9933,9 @@ NA
 3000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9478,6 +9995,9 @@ NA
 4500
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9507,7 +10027,7 @@ WEST COAST
 N
 </td>
 <td style="text-align:left;">
-CS-45b
+CS-45B
 </td>
 <td style="text-align:right;">
 9660
@@ -9535,6 +10055,9 @@ NA
 </td>
 <td style="text-align:right;">
 13500
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -9596,6 +10119,9 @@ NA
 2500
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9653,6 +10179,9 @@ NA
 </td>
 <td style="text-align:right;">
 12500
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -9714,6 +10243,9 @@ NA
 3400
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 2003/04
 </td>
 <td style="text-align:left;">
@@ -9743,7 +10275,7 @@ COASTAL OTAGO
 N
 </td>
 <td style="text-align:left;">
-CS-50a
+CS-50A
 </td>
 <td style="text-align:right;">
 7500
@@ -9771,6 +10303,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2004/05
 </td>
 <td style="text-align:left;">
 NA
@@ -9802,7 +10337,7 @@ COASTAL OTAGO
 N
 </td>
 <td style="text-align:left;">
-CS-52b
+CS-52B
 </td>
 <td style="text-align:right;">
 4600
@@ -9830,6 +10365,9 @@ NA
 </td>
 <td style="text-align:right;">
 5000
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -9891,6 +10429,9 @@ R3
 12700
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -9948,6 +10489,9 @@ R4
 </td>
 <td style="text-align:right;">
 5400
+</td>
+<td style="text-align:left;">
+2001/02
 </td>
 <td style="text-align:left;">
 NA
@@ -10009,6 +10553,9 @@ R5
 10100
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -10066,6 +10613,9 @@ NA
 </td>
 <td style="text-align:right;">
 NA
+</td>
+<td style="text-align:left;">
+2006/07
 </td>
 <td style="text-align:left;">
 NA
@@ -10127,6 +10677,9 @@ NA
 NA
 </td>
 <td style="text-align:left;">
+2007/08
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -10156,7 +10709,7 @@ AUCK ALLIANCE
 I
 </td>
 <td style="text-align:left;">
-CS-7a
+CS-7A
 </td>
 <td style="text-align:right;">
 1000
@@ -10186,6 +10739,9 @@ NA
 2000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -10215,7 +10771,7 @@ AUCK ALLIANCE
 I
 </td>
 <td style="text-align:left;">
-CS-7b
+CS-7B
 </td>
 <td style="text-align:right;">
 1950
@@ -10245,6 +10801,9 @@ NA
 2000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -10274,7 +10833,7 @@ AUCK ALLIANCE
 I
 </td>
 <td style="text-align:left;">
-CS-8a
+CS-8A
 </td>
 <td style="text-align:right;">
 3100
@@ -10304,6 +10863,9 @@ NA
 4000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -10333,7 +10895,7 @@ AUCK ALLIANCE
 I
 </td>
 <td style="text-align:left;">
-CS-8b
+CS-8B
 </td>
 <td style="text-align:right;">
 3700
@@ -10363,6 +10925,9 @@ NA
 4000
 </td>
 <td style="text-align:left;">
+2001/02
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -10375,8 +10940,9 @@ SH
 </div>
 <div id="rutting" class="section level1">
 <h1>Rutting</h1>
-<pre class="r"><code>library(ggplot2)
-ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.3</code></pre>
+<pre class="r"><code>ggobj2 &lt;- ggplot(data=Rutting10m, aes(x=FinancialYear, y=LWP, col = as.factor(LANE_DIRECTION))) +
   geom_boxplot() + ggtitle(&quot;All Rutting10m LWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;LWP Rutting (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Rutting10m%20-1.png" width="1152" /></p>
@@ -10426,6 +10992,7 @@ print(ggobj2)</code></pre>
   geom_boxplot() + ggtitle(&quot;All Texture10m RWP Boxplot&quot;) + facet_wrap(~SECTION_ID, ncol=5) + ylab(&quot;RWP Texture MPD (mm)&quot;) + xlab(&quot;Financial Year&quot;) + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
 print(ggobj2)</code></pre>
 <p><img src="LTTP-Summary_files/figure-html/plot%20Texture10m%20-2.png" width="1152" /></p>
+<pre class="r"><code>close(con2)</code></pre>
 </div>
 
 
@@ -10478,7 +11045,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
