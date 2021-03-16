@@ -44,9 +44,9 @@ git push
 </code></pre>
 
 And your new website should be up and running at   
-https://Github_user_name.github.io/Github_repo_name/  
+https://Github_user_name.github.io/Github_repo_name/_site/  
 ie for captif-nz
-https://captif-nz.github.io/LTPPNZ/  
+https://captif-nz.github.io/LTPPNZ/_site/  
   
 And remember you need that redirect index.html in github repo   
 and a .nojekyll file made (with nothing actually in it)    
