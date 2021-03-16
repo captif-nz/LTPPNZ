@@ -12,7 +12,7 @@ These pages are in R Markdown document. Markdown is a simple formatting syntax f
 
 When in RStudio you click the **Knit** button and a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
 
-For more information - contact David Alabaster - dala009@aucklanduni.ac.nz
+For more information - contact captif@nzta.govt.nz
 
 # Notes on Website creation
 
@@ -38,7 +38,6 @@ Steps
 (@) I havent had much joy pushing the website to Github using Rstudio so 
 (@) After "Build" website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then
 
-<pre><code>
 git add -A  
 git commit -m "new website"  
 git push  
@@ -46,8 +45,8 @@ git push
 
 And your new website should be up and running at   
 https://Github_user_name.github.io/Github_repo_name/  
-ie for me   
-https://dala009.github.io/LTPPNZ/  
+ie for captif-nz
+https://captif-nz.github.io/LTPPNZ/  
   
 And remember you need that redirect index.html in github repo   
 and a .nojekyll file made (with nothing actually in it)    
@@ -82,7 +81,7 @@ You will need a redirect file called index.html that gets loaded directly to the
 &lttitle>Redirecting to LTPP Data site  
 &lt/title>    
     
-&ltmeta http-equiv="refresh" content="1; URL=https://dala009.github.io/LTPPNZ/_site">    
+&ltmeta http-equiv="refresh" content="1; URL=https://captif-nz.github.io/LTPPNZ/_site">    
     
 &ltmeta name="keywords" content="automatic redirection">    
     
