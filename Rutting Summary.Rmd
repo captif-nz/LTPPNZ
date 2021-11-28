@@ -21,7 +21,7 @@ Sys.time()
 #load database connection library
 library(RODBC)
  
-db <- "C:/DDATA/LTPP/2020/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb"
+db <- "C:/local_databases/NZTA_SH&LA_LTPPData_IntCalib_1Jul2001-30Jun2021.mdb"
 
 con2 <- odbcDriverConnect(paste0("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=", db))
 

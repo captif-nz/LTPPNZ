@@ -13,12 +13,22 @@
 
 <title>LTPP Data Tables</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,13 +36,18 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -45,32 +60,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -80,10 +70,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -100,40 +86,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -161,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -173,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -184,10 +143,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -199,7 +171,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -325,7 +296,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -380,7 +351,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -389,7 +360,7 @@ div.tocify {
 </div>
 
 
-<p>This page contains a national summary of the data tables in the LTPP database that don't track distress but identify a property of the sites.</p>
+<p>This page contains a national summary of the data tables in the LTPP database that don’t track distress but identify a property of the sites.</p>
 <p>The code to generate this is displayed first - then the table.</p>
 <p>Use the menu to left to go straight to the table required.</p>
 <p>The FWD data table only displays the first few lines as it is very large.</p>
@@ -398,12 +369,12 @@ div.tocify {
 <p>The code below imports the data that are tables in the databases - a bit ugly thanks to large field names</p>
 <pre class="r"><code>#Sys.Date()
 Sys.time()</code></pre>
-<pre><code>## [1] &quot;2020-10-01 12:59:47 NZDT&quot;</code></pre>
+<pre><code>## [1] &quot;2021-11-29 11:08:57 NZDT&quot;</code></pre>
 <pre class="r"><code>#load database connection library
 library(RODBC)
  
 #connect to database 1 - CAPTIF PR3 0404.mdb
-db &lt;- &quot;C:/DDATA/LTPP/2020/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2020.mdb&quot;
+db &lt;- &quot;C:/local_databases/NZTA_SH&amp;LA_LTPPData_IntCalib_1Jul2001-30Jun2021.mdb&quot;
 
 #con2 &lt;- odbcConnectAccess2007(db)
 con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=&quot;, db))
@@ -413,9 +384,8 @@ con2 &lt;- odbcDriverConnect(paste0(&quot;Driver={Microsoft Access Driver (*.mdb
 
 
 # find all tables
-library(knitr)</code></pre>
-<pre><code>## Warning: package &#39;knitr&#39; was built under R version 3.6.3</code></pre>
-<pre class="r"><code>LTPPtables &lt;-(sqlTables(con2, tableType = &quot;TABLE&quot;)$TABLE_NAME)
+library(knitr)
+LTPPtables &lt;-(sqlTables(con2, tableType = &quot;TABLE&quot;)$TABLE_NAME)
 
 kable(LTPPtables, format = &quot;html&quot;, caption = &quot;Tables in LTPP Database&quot;)</code></pre>
 <table>
@@ -7723,7 +7693,7 @@ CAL-35
 Low
 </td>
 <td style="text-align:right;">
-1
+0
 </td>
 <td style="text-align:left;">
 NA
@@ -7741,7 +7711,7 @@ NA
 2001/02
 </td>
 <td style="text-align:left;">
-NA
+2019/20
 </td>
 <td style="text-align:left;">
 SH
@@ -14191,7 +14161,7 @@ CAL-35
 Low
 </td>
 <td style="text-align:right;">
-1
+0
 </td>
 <td style="text-align:left;">
 NA
@@ -14209,7 +14179,7 @@ NA
 2001/02
 </td>
 <td style="text-align:left;">
-NA
+2019/20
 </td>
 <td style="text-align:left;">
 SH
@@ -24092,9 +24062,7 @@ NA
 </tbody>
 </table>
 </div>
-</div>
-<div id="cal_sec_rainfall_data" class="section level2">
-<h2>CAL_SEC_RAINFALL_DATA</h2>
+<p>##CAL_SEC_RAINFALL_DATA</p>
 <pre class="r"><code>kable(CAL_SEC_RAINFALL_DATA, format = &quot;html&quot;, caption = &quot;CAL_SEC_RAINFALL_DATA&quot;) %&gt;%
   kable_styling(&quot;striped&quot;, fixed_thead = T) %&gt;% scroll_box(width = &quot;100%&quot;, height = &quot;500px&quot;)</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
@@ -40881,7 +40849,7 @@ AKL1
 A6487B
 </td>
 <td style="text-align:left;">
-&quot;KHYBER PASS, AUCKLAND REGIONAL COUNCIL&quot;
+“KHYBER PASS, AUCKLAND REGIONAL COUNCIL”
 </td>
 <td style="text-align:right;">
 -36.868
@@ -40916,7 +40884,7 @@ AKL2-S
 A6487B
 </td>
 <td style="text-align:left;">
-&quot;KHYBER PASS, AUCKLAND REGIONAL COUNCIL&quot;
+“KHYBER PASS, AUCKLAND REGIONAL COUNCIL”
 </td>
 <td style="text-align:right;">
 -36.868
@@ -41126,7 +41094,7 @@ BPC2
 H32894
 </td>
 <td style="text-align:left;">
-&quot;AKAROA,ONUKU&quot;
+“AKAROA,ONUKU”
 </td>
 <td style="text-align:right;">
 -43.843
@@ -41301,7 +41269,7 @@ DUN1
 I50843
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN,BALACLAVA&quot;
+“DUNEDIN,BALACLAVA”
 </td>
 <td style="text-align:right;">
 -45.892
@@ -41336,7 +41304,7 @@ DUN2-S
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -41371,7 +41339,7 @@ DUN3-S
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -41406,7 +41374,7 @@ DUN4
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -41441,7 +41409,7 @@ DUN5
 I50843
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN,BALACLAVA&quot;
+“DUNEDIN,BALACLAVA”
 </td>
 <td style="text-align:right;">
 -45.892
@@ -41476,7 +41444,7 @@ DUN6
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -42106,7 +42074,7 @@ MCC3
 A6487B
 </td>
 <td style="text-align:left;">
-&quot;KHYBER PASS, AUCKLAND REGIONAL COUNCIL&quot;
+“KHYBER PASS, AUCKLAND REGIONAL COUNCIL”
 </td>
 <td style="text-align:right;">
 -36.868
@@ -42246,7 +42214,7 @@ NPY1
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -42281,7 +42249,7 @@ NPY2
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -42316,7 +42284,7 @@ NPY3
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -42351,7 +42319,7 @@ NPY4-S
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -42946,7 +42914,7 @@ TAS2-S
 G12491
 </td>
 <td style="text-align:left;">
-&quot;KOHATU,HIGHFIELD 2&quot;
+“KOHATU,HIGHFIELD 2”
 </td>
 <td style="text-align:right;">
 -41.482
@@ -43016,7 +42984,7 @@ TAS4-S
 G13304
 </td>
 <td style="text-align:left;">
-&quot;BRIGHTWATER, TEAPOT VALLEY 2&quot;
+“BRIGHTWATER, TEAPOT VALLEY 2”
 </td>
 <td style="text-align:right;">
 -41.370
@@ -43051,7 +43019,7 @@ TCDC1
 B65961
 </td>
 <td style="text-align:left;">
-&quot;COROMANDEL, COROGLEN&quot;
+“COROMANDEL, COROGLEN”
 </td>
 <td style="text-align:right;">
 -36.929
@@ -43086,7 +43054,7 @@ TCDC2
 B65961
 </td>
 <td style="text-align:left;">
-&quot;COROMANDEL, COROGLEN&quot;
+“COROMANDEL, COROGLEN”
 </td>
 <td style="text-align:right;">
 -36.929
@@ -43156,7 +43124,7 @@ WAN1-S
 E95911
 </td>
 <td style="text-align:left;">
-&quot;OKOIA, MANGAONE&quot;
+“OKOIA, MANGAONE”
 </td>
 <td style="text-align:right;">
 -39.925
@@ -43191,7 +43159,7 @@ WAN2-S
 E95911
 </td>
 <td style="text-align:left;">
-&quot;OKOIA, MANGAONE&quot;
+“OKOIA, MANGAONE”
 </td>
 <td style="text-align:right;">
 -39.925
@@ -43226,7 +43194,7 @@ WAN3-S
 E95902
 </td>
 <td style="text-align:left;">
-&quot;WANGANUI,SPRIGGENS PARK EWS&quot;
+“WANGANUI,SPRIGGENS PARK EWS”
 </td>
 <td style="text-align:right;">
 -39.939
@@ -43261,7 +43229,7 @@ WCC1-S
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -43296,7 +43264,7 @@ WCC2
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -43331,7 +43299,7 @@ WCC3-S
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -43366,7 +43334,7 @@ WEL1
 E14386
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON,RONGOTAI&quot;
+“WELLINGTON,RONGOTAI”
 </td>
 <td style="text-align:right;">
 -41.321
@@ -43436,7 +43404,7 @@ WEL3
 E1427P
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON, KELBURN AWS&quot;
+“WELLINGTON, KELBURN AWS”
 </td>
 <td style="text-align:right;">
 -41.285
@@ -43471,7 +43439,7 @@ WEL4-S
 E14386
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON,RONGOTAI&quot;
+“WELLINGTON,RONGOTAI”
 </td>
 <td style="text-align:right;">
 -41.321
@@ -43821,7 +43789,7 @@ AKL1
 A6487B
 </td>
 <td style="text-align:left;">
-&quot;KHYBER PASS, AUCKLAND REGIONAL COUNCIL&quot;
+“KHYBER PASS, AUCKLAND REGIONAL COUNCIL”
 </td>
 <td style="text-align:right;">
 -36.868
@@ -43856,7 +43824,7 @@ AKL2-S
 A6487B
 </td>
 <td style="text-align:left;">
-&quot;KHYBER PASS, AUCKLAND REGIONAL COUNCIL&quot;
+“KHYBER PASS, AUCKLAND REGIONAL COUNCIL”
 </td>
 <td style="text-align:right;">
 -36.868
@@ -44066,7 +44034,7 @@ BPC2
 H32894
 </td>
 <td style="text-align:left;">
-&quot;AKAROA,ONUKU&quot;
+“AKAROA,ONUKU”
 </td>
 <td style="text-align:right;">
 -43.843
@@ -44241,7 +44209,7 @@ DUN1
 I50843
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN,BALACLAVA&quot;
+“DUNEDIN,BALACLAVA”
 </td>
 <td style="text-align:right;">
 -45.892
@@ -44276,7 +44244,7 @@ DUN2-S
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -44311,7 +44279,7 @@ DUN3-S
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -44346,7 +44314,7 @@ DUN4
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -44381,7 +44349,7 @@ DUN5
 I50843
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN,BALACLAVA&quot;
+“DUNEDIN,BALACLAVA”
 </td>
 <td style="text-align:right;">
 -45.892
@@ -44416,7 +44384,7 @@ DUN6
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -45046,7 +45014,7 @@ MCC3
 A6487B
 </td>
 <td style="text-align:left;">
-&quot;KHYBER PASS, AUCKLAND REGIONAL COUNCIL&quot;
+“KHYBER PASS, AUCKLAND REGIONAL COUNCIL”
 </td>
 <td style="text-align:right;">
 -36.868
@@ -45186,7 +45154,7 @@ NPY1
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -45221,7 +45189,7 @@ NPY2
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -45256,7 +45224,7 @@ NPY3
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -45291,7 +45259,7 @@ NPY4-S
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -45886,7 +45854,7 @@ TAS2-S
 G12491
 </td>
 <td style="text-align:left;">
-&quot;KOHATU,HIGHFIELD 2&quot;
+“KOHATU,HIGHFIELD 2”
 </td>
 <td style="text-align:right;">
 -41.482
@@ -45956,7 +45924,7 @@ TAS4-S
 G13304
 </td>
 <td style="text-align:left;">
-&quot;BRIGHTWATER, TEAPOT VALLEY 2&quot;
+“BRIGHTWATER, TEAPOT VALLEY 2”
 </td>
 <td style="text-align:right;">
 -41.370
@@ -46201,7 +46169,7 @@ TCDC1
 B65961
 </td>
 <td style="text-align:left;">
-&quot;COROMANDEL, COROGLEN&quot;
+“COROMANDEL, COROGLEN”
 </td>
 <td style="text-align:right;">
 -36.929
@@ -46236,7 +46204,7 @@ TCDC2
 B65961
 </td>
 <td style="text-align:left;">
-&quot;COROMANDEL, COROGLEN&quot;
+“COROMANDEL, COROGLEN”
 </td>
 <td style="text-align:right;">
 -36.929
@@ -46306,7 +46274,7 @@ WAN1-S
 E95911
 </td>
 <td style="text-align:left;">
-&quot;OKOIA, MANGAONE&quot;
+“OKOIA, MANGAONE”
 </td>
 <td style="text-align:right;">
 -39.925
@@ -46341,7 +46309,7 @@ WAN2-S
 E95911
 </td>
 <td style="text-align:left;">
-&quot;OKOIA, MANGAONE&quot;
+“OKOIA, MANGAONE”
 </td>
 <td style="text-align:right;">
 -39.925
@@ -46376,7 +46344,7 @@ WAN3-S
 E95902
 </td>
 <td style="text-align:left;">
-&quot;WANGANUI,SPRIGGENS PARK EWS&quot;
+“WANGANUI,SPRIGGENS PARK EWS”
 </td>
 <td style="text-align:right;">
 -39.939
@@ -46411,7 +46379,7 @@ WCC1-S
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -46446,7 +46414,7 @@ WCC2
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -46481,7 +46449,7 @@ WCC3-S
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -46516,7 +46484,7 @@ WEL1
 E14386
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON,RONGOTAI&quot;
+“WELLINGTON,RONGOTAI”
 </td>
 <td style="text-align:right;">
 -41.321
@@ -46586,7 +46554,7 @@ WEL3
 E1427P
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON, KELBURN AWS&quot;
+“WELLINGTON, KELBURN AWS”
 </td>
 <td style="text-align:right;">
 -41.285
@@ -46621,7 +46589,7 @@ WEL4-S
 E14386
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON,RONGOTAI&quot;
+“WELLINGTON,RONGOTAI”
 </td>
 <td style="text-align:right;">
 -41.321
@@ -47076,7 +47044,7 @@ BOP2-S
 B75482
 </td>
 <td style="text-align:left;">
-&quot;WAIHI, WOODLANDS ROAD&quot;
+“WAIHI, WOODLANDS ROAD”
 </td>
 <td style="text-align:right;">
 -37.480
@@ -47356,7 +47324,7 @@ DUN1
 I50843
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN,BALACLAVA&quot;
+“DUNEDIN,BALACLAVA”
 </td>
 <td style="text-align:right;">
 -45.892
@@ -47391,7 +47359,7 @@ DUN2-S
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -47426,7 +47394,7 @@ DUN3-S
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -47461,7 +47429,7 @@ DUN4
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -47496,7 +47464,7 @@ DUN5
 I50843
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN,BALACLAVA&quot;
+“DUNEDIN,BALACLAVA”
 </td>
 <td style="text-align:right;">
 -45.892
@@ -47531,7 +47499,7 @@ DUN6
 I50954
 </td>
 <td style="text-align:left;">
-&quot;DUNEDIN, MUSSELBURGH EWS&quot;
+“DUNEDIN, MUSSELBURGH EWS”
 </td>
 <td style="text-align:right;">
 -45.901
@@ -48301,7 +48269,7 @@ NPY1
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -48336,7 +48304,7 @@ NPY2
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -48371,7 +48339,7 @@ NPY3
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -48406,7 +48374,7 @@ NPY4-S
 C94125
 </td>
 <td style="text-align:left;">
-&quot;LEPPERTON, PUKE RA&quot;
+“LEPPERTON, PUKE RA”
 </td>
 <td style="text-align:right;">
 -39.100
@@ -48966,7 +48934,7 @@ TAS2-S
 G12491
 </td>
 <td style="text-align:left;">
-&quot;KOHATU,HIGHFIELD 2&quot;
+“KOHATU,HIGHFIELD 2”
 </td>
 <td style="text-align:right;">
 -41.482
@@ -49036,7 +49004,7 @@ TAS4-S
 G13304
 </td>
 <td style="text-align:left;">
-&quot;BRIGHTWATER, TEAPOT VALLEY 2&quot;
+“BRIGHTWATER, TEAPOT VALLEY 2”
 </td>
 <td style="text-align:right;">
 -41.370
@@ -49281,7 +49249,7 @@ TCDC1
 B65961
 </td>
 <td style="text-align:left;">
-&quot;COROMANDEL, COROGLEN&quot;
+“COROMANDEL, COROGLEN”
 </td>
 <td style="text-align:right;">
 -36.929
@@ -49316,7 +49284,7 @@ TCDC2
 B65961
 </td>
 <td style="text-align:left;">
-&quot;COROMANDEL, COROGLEN&quot;
+“COROMANDEL, COROGLEN”
 </td>
 <td style="text-align:right;">
 -36.929
@@ -49386,7 +49354,7 @@ WAN1-S
 E95911
 </td>
 <td style="text-align:left;">
-&quot;OKOIA, MANGAONE&quot;
+“OKOIA, MANGAONE”
 </td>
 <td style="text-align:right;">
 -39.925
@@ -49421,7 +49389,7 @@ WAN2-S
 E95911
 </td>
 <td style="text-align:left;">
-&quot;OKOIA, MANGAONE&quot;
+“OKOIA, MANGAONE”
 </td>
 <td style="text-align:right;">
 -39.925
@@ -49456,7 +49424,7 @@ WAN3-S
 E95902
 </td>
 <td style="text-align:left;">
-&quot;WANGANUI,SPRIGGENS PARK EWS&quot;
+“WANGANUI,SPRIGGENS PARK EWS”
 </td>
 <td style="text-align:right;">
 -39.939
@@ -49491,7 +49459,7 @@ WCC1-S
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -49526,7 +49494,7 @@ WCC2
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -49561,7 +49529,7 @@ WCC3-S
 A64863
 </td>
 <td style="text-align:left;">
-&quot;HENDERSON, RIVER PK&quot;
+“HENDERSON, RIVER PK”
 </td>
 <td style="text-align:right;">
 -36.855
@@ -49596,7 +49564,7 @@ WEL1
 E14386
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON,RONGOTAI&quot;
+“WELLINGTON,RONGOTAI”
 </td>
 <td style="text-align:right;">
 -41.321
@@ -49666,7 +49634,7 @@ WEL3
 E1427P
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON, KELBURN AWS&quot;
+“WELLINGTON, KELBURN AWS”
 </td>
 <td style="text-align:right;">
 -41.285
@@ -49701,7 +49669,7 @@ WEL4-S
 E14386
 </td>
 <td style="text-align:left;">
-&quot;WELLINGTON,RONGOTAI&quot;
+“WELLINGTON,RONGOTAI”
 </td>
 <td style="text-align:right;">
 -41.321
@@ -55090,7 +55058,7 @@ Bitumen Bound Chipseal
 2
 </td>
 <td style="text-align:left;">
-3/'5
+3/’5
 </td>
 <td style="text-align:left;">
 1999-03-31
@@ -55230,7 +55198,7 @@ NA
 2
 </td>
 <td style="text-align:left;">
-3/'5
+3/’5
 </td>
 <td style="text-align:left;">
 1999-04-19
@@ -55510,7 +55478,7 @@ Bitumen Bound Chipseal. Reseal
 3
 </td>
 <td style="text-align:left;">
-3'/5
+3’/5
 </td>
 <td style="text-align:left;">
 2000-12-14
@@ -55662,7 +55630,7 @@ Bitumen Bound Chipseal. G3 size
 30
 </td>
 <td style="text-align:left;">
-<a href="mailto:30mm@/5.0">30mm@/5.0</a> and <a href="mailto:40mm@/5.2">40mm@/5.2</a>
+30mm@/5.0 and 40mm@/5.2
 </td>
 <td style="text-align:left;">
 2002-04-04
@@ -55825,7 +55793,7 @@ Bitumen Bound Chipseal
 2
 </td>
 <td style="text-align:left;">
-3/'4
+3/’4
 </td>
 <td style="text-align:left;">
 1999-11-16
@@ -56035,7 +56003,7 @@ Bitumen Bound Chipseal
 2
 </td>
 <td style="text-align:left;">
-3/'5
+3/’5
 </td>
 <td style="text-align:left;">
 1996-05-21
@@ -56070,7 +56038,7 @@ NA
 2
 </td>
 <td style="text-align:left;">
-3/'5
+3/’5
 </td>
 <td style="text-align:left;">
 1996-05-21
@@ -56105,7 +56073,7 @@ Bitumen Bound Chipseal - Reseal
 5
 </td>
 <td style="text-align:left;">
-3/'5
+3/’5
 </td>
 <td style="text-align:left;">
 1999-11-01
@@ -56525,7 +56493,7 @@ Bitumen Bound Chipseal
 5
 </td>
 <td style="text-align:left;">
-4/'5
+4/’5
 </td>
 <td style="text-align:left;">
 1998-12-25
@@ -56537,7 +56505,7 @@ Bitumen Bound Chipseal
 25
 </td>
 <td style="text-align:left;">
-<a href="mailto:25mm@16.2">25mm@16.2</a> &amp;<a href="mailto:35mm@16.4">35mm@16.4</a>
+<a href="mailto:25mm@16.2" class="email">25mm@16.2</a> &amp;<a href="mailto:35mm@16.4" class="email">35mm@16.4</a>
 </td>
 <td style="text-align:left;">
 2002-04-04
@@ -56595,7 +56563,7 @@ Bitumen Bound Chipseal
 3
 </td>
 <td style="text-align:left;">
-4/'5
+4/’5
 </td>
 <td style="text-align:left;">
 2002-04-04
@@ -56630,7 +56598,7 @@ Bitumen Bound Chipseal. Very thick layer.
 3
 </td>
 <td style="text-align:left;">
-3/'4
+3/’4
 </td>
 <td style="text-align:left;">
 2001-02-14
@@ -56700,7 +56668,7 @@ Bitumen Bound Chipseal
 3
 </td>
 <td style="text-align:left;">
-3/'5
+3/’5
 </td>
 <td style="text-align:left;">
 1990-11-01
@@ -56910,7 +56878,7 @@ Bitumen Bound Chipseal
 3
 </td>
 <td style="text-align:left;">
-3/'4
+3/’4
 </td>
 <td style="text-align:left;">
 1994-01-01
@@ -57132,7 +57100,7 @@ NA
 NA
 </td>
 <td style="text-align:left;">
-New surface record based on recorded maintenance done on 15/10/2003 (period 2003/2004). The maintenance detail description is &quot;Void Fill Sealed Gr 5 Chip&quot;.
+New surface record based on recorded maintenance done on 15/10/2003 (period 2003/2004). The maintenance detail description is “Void Fill Sealed Gr 5 Chip”.
 </td>
 <td style="text-align:left;">
 2004-11-08
@@ -169329,9 +169297,7 @@ L1
 </tbody>
 </table>
 </div>
-</div>
-<div id="summary-of-layer-info" class="section level2">
-<h2>Summary of layer Info</h2>
+<p>##Summary of layer Info</p>
 <pre class="r"><code>#View(AdditionalInfoPaveLayer)
 kable(AdditionalInfoPaveLayer, format = &quot;html&quot;, caption = &quot;Additional Info on Pavement Layers&quot;) %&gt;%
   kable_styling(&quot;striped&quot;, fixed_thead = T) %&gt;% scroll_box(width = &quot;100%&quot;, height = &quot;500px&quot;)</code></pre>
@@ -172178,19 +172144,13 @@ CS-42
 </tbody>
 </table>
 </div>
-</div>
-<div id="photo-listing---not-operational" class="section level2">
-<h2>Photo listing - not operational</h2>
+<p>##Photo listing - not operational</p>
 <pre class="r"><code>#TmpImportTmp &lt;- sqlFetch(con2, &quot;TmpImportTmp&quot;) #Photo listing
 #View(TmpImportTmp)</code></pre>
-</div>
-</div>
-<div id="councils-with-ltpp-sites" class="section level1">
-<h1>Councils with LTPP sites</h1>
+<p>#Councils with LTPP sites</p>
 <pre class="r"><code>library(tidyverse)
-Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre class="r"><code>kable(Councils, format = &quot;html&quot;, caption = &quot;Councils with LTPP Sites&quot;) %&gt;%
+Councils &lt;- CalibrationSections %&gt;% filter(is.na(Region)) %&gt;% group_by(NMA) %&gt;% summarise()
+kable(Councils, format = &quot;html&quot;, caption = &quot;Councils with LTPP Sites&quot;) %&gt;%
   kable_styling(&quot;striped&quot;, fixed_thead = T) </code></pre>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -172307,6 +172267,7 @@ Whangarei District Council
 </tbody>
 </table>
 </div>
+</div>
 
 
 
@@ -172319,7 +172280,7 @@ Whangarei District Council
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -172337,7 +172298,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -172346,6 +172307,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

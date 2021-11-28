@@ -13,12 +13,22 @@
 
 <title>About</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,12 +36,16 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,32 +58,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -79,10 +68,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -99,40 +84,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -160,7 +118,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -172,7 +130,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -183,10 +141,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -198,7 +169,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -324,7 +294,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -379,7 +349,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -392,7 +362,7 @@ div.tocify {
 <h1>R Markdown</h1>
 <p>These pages are in R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
 <p>When in RStudio you click the <strong>Knit</strong> button and a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.</p>
-<p>For more information - contact <a href="mailto:captif@nzta.govt.nz">captif@nzta.govt.nz</a></p>
+<p>For more information - contact <a href="mailto:captif@nzta.govt.nz" class="email">captif@nzta.govt.nz</a></p>
 </div>
 <div id="notes-on-website-creation" class="section level1">
 <h1>Notes on Website creation</h1>
@@ -401,31 +371,30 @@ div.tocify {
 <ol class="example" style="list-style-type: decimal">
 <li>Create Github account</li>
 <li>Create Github Repo (folder) and make it public</li>
-<li>Go to settings - Git Hub pages - Source - and make it &quot;Master branch&quot;</li>
+<li>Go to settings - Git Hub pages - Source - and make it “Master branch”</li>
 <li>Upload existing R files to Repo (include a _site.YML and index.rmd, see following pages)</li>
 <li>Create a .nojekyll file (to stop Github from trying to make a wesite)</li>
 <li>Create a index.html redirect in Repo master folder to redirect to _Site folder that RStudio is about to make (see following page re direct HTML)</li>
 <li>Download Git to computer</li>
 <li>In Git CMD (depreciated)</li>
-<li>git config --global user.email &quot;<a href="mailto:you@example.com">you@example.com</a>&quot;</li>
-<li>git config --global user.name &quot;Your Name&quot;</li>
-<li>In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)&quot;</li>
+<li>git config –global user.email “<a href="mailto:you@example.com" class="email">you@example.com</a>”</li>
+<li>git config –global user.name “Your Name”</li>
+<li>In RStudio Go to tools global options and check it is pointing to the git.exe (mine is at C:/Program Files/Git/bin/git.exe)”</li>
 <li>View SSH RSA Key while there - copy to GitHub - your_user_ID - Edit Profile (at top of page not side) - Personal Settings - SSH and GPG Keys</li>
 <li>Back in Rstudio - open a new project with version control</li>
 <li>Provide the URL for Git Hub repo - this should make a new folder on your PC with the Git Hub Repo name and download all the files back to your PC</li>
 <li>Use Rstudio to Build the website</li>
 <li>I havent had much joy pushing the website to Github using Rstudio so</li>
-<li>After &quot;Build&quot; website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then</li>
+<li>After “Build” website in RStudio go back to the Windows Start Menu - Git CMD (Deprecated) to cd.. and cd into right directory then</li>
 </ol>
-<pre><code>
-git add -A  
-git commit -m "new website"  
-git push  
-</code></pre>
+git add -A<br />
+git commit -m “new website”<br />
+git push<br />
+</code>
+</pre>
 <p>And your new website should be up and running at<br />
 <a href="https://Github_user_name.github.io/Github_repo_name/_site/" class="uri">https://Github_user_name.github.io/Github_repo_name/_site/</a><br />
-ie for captif-nz<br />
-<a href="https://captif-nz.github.io/LTPPNZ/_site/" class="uri">https://captif-nz.github.io/LTPPNZ/_site/</a></p>
+ie for captif-nz <a href="https://captif-nz.github.io/LTPPNZ/_site/" class="uri">https://captif-nz.github.io/LTPPNZ/_site/</a></p>
 <p>And remember you need that redirect index.html in github repo<br />
 and a .nojekyll file made (with nothing actually in it)</p>
 <div id="updating-website-in-rstudio" class="section level2">
@@ -438,13 +407,13 @@ and a .nojekyll file made (with nothing actually in it)</p>
 <li>Tick and commit in RStudio Git tab<br />
 </li>
 <li>Give commit a name and push from the commit box in Rstudio</li>
-<li>Test the new look by &quot;knitting&quot;&quot; the new page (except the index)</li>
+<li>Test the new look by “knitting”” the new page (except the index)</li>
 <li>Build a new website if figures or pictures are on a updated page</li>
 <li>If you dont need to build you can commit and push the html created</li>
 <li>If pushing a new website, use step 17 above</li>
 </ul>
 <p>Note.<br />
-- &quot;Kniting&quot; HTML isn't the same as &quot;Building&quot; a website.<br />
+- “Kniting” HTML isn’t the same as “Building” a website.<br />
 - Knitting includes pictures in the HTML, making it slow to load<br />
 - Building strips out the pictures and links to them - making it fast</p>
 </div>
@@ -468,11 +437,9 @@ and a .nojekyll file made (with nothing actually in it)</p>
 </div>
 <div id="index.rmd" class="section level2">
 <h2>index.Rmd</h2>
-<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. And it must be called index as the github looks for index in the folder - tried calling it something else and wasn't successful.</p>
-</div>
-<div id="site.yml-file" class="section level2">
-<h2>_Site.yml file</h2>
-You will need create a text file in R Studio called &quot;_Site.yml&quot; in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page<br />
+<p>You will also need a file called index.RMD file to act as a home page (It can contain anything) when you build the website in Rstudio - if you use the _Site.yml file format on the next page. Unfortunately if you knit this file you will over write the index.html file for the repo-master folder from the previous page. And it must be called index as the github looks for index in the folder - tried calling it something else and wasn’t successful.</p>
+<p>##_Site.yml file</p>
+You will need create a text file in R Studio called “_Site.yml” in the R Project that looks a bit like this below. It is the structure of your site. That index file is not the same as the one mentioned above as a redirect - this a RMD file called index that is built for the webiste as its home page<br />
 
 <pre><code>
 name: "LTPP-website"  
@@ -510,7 +477,7 @@ navbar:
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -528,7 +495,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -537,6 +504,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
