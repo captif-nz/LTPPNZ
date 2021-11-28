@@ -8,19 +8,19 @@ output:
 
 # Introduction
 
-Hello, this a Summary of the NZ LTPP programmes data to 2020!  
+Hello, this a Summary of the NZ LTPP programmes data to 2021!  
   
-The aim of the site is to display the data from the NZ LTPP programme grapically and show case the freeware statistical software used to do this.
+The aim of the site is to display the data from the NZ LTPP programme graphically and show case the freeware statistical software used to do this.
   
 You will see the code used to extract the data from the LTPP database, tidy the data, graphically display the data and then you will see the graphics.  
   
-The site is delibrately doing this as part of "Data Science" approach to make analysis accessible and reproducible.
+The site is deliberately doing this as part of "Data Science" approach to make analysis accessible and reproducible.
     
 All the code is available for download at Github and a copy of the database is available from the NZTA. 
   
-The site contains only 8 pages but they contain a lot of detail as the short decriptions below will explain.
+The site contains only 8 pages but they contain a lot of detail as the short descriptions below will explain.
    
-(@) The Home page - ie this page, contains the pupose and the structure of the site  
+(@) The Home page - i.e. this page, contains the purpose and the structure of the site  
 (@) The About page - explains how to make a website like this  
 (@) The LTPP Summary page - contains a giant graphic showing all the data for each of the big 3 (Rutting, Roughness, Texture)  
 (@) The Rutting page - contains graphics showing all the sites together, the sites split to SH and Council roads and finally each individual site
